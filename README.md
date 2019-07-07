@@ -17,7 +17,7 @@
 
 ### Association
 - has_one :adress
-- has_one :adress
+- has_one :card
 - has_many :tradings
 - has_many :comments
 - has_many :likes
@@ -63,6 +63,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|index: true, null: false|
+|detail|text|null: false|
 |large_category_id|references|foreign_key: true|
 |midium_category_id|references|foreign_key: true|
 |small_category_id|references|foreign_key: true, null: true|
