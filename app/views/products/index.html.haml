@@ -1,0 +1,17 @@
+.top-container
+  = render partial: 'common/main-header'
+  %main.top-main
+    .top-banner
+      = image_tag src="/assets/top_page_header_banner.jpg", class: "topbanner"
+    .pickup-item
+      %h3.pickup-item__heading ピックアップカテゴリー
+      - 4.times do
+        = render partial: 'common/item_box'
+    .pickup-item
+      %h3.pickup-item__heading ピックアップブランド
+      - 4.times do
+        = render partial: 'common/item_box'
+    .top-banner
+      = image_tag src="/assets/top_page_footer_banner.jpg", class: "topbanner"
+  = render partial: 'common/top-footer'
+= render partial: 'common/sell_btn'
