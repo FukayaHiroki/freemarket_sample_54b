@@ -1,0 +1,77 @@
+// フッター
+.top-footer{
+  padding: 0 20px 10px 20px;
+  background: #212121;
+  color: #fff;
+  height: 450px;
+
+  &__container {
+    width: 1020px;
+    margin: 0 auto;
+    display: flex;
+  }
+  &__contents {
+    float: left;
+    margin-top: 18px;
+    padding-right: 20px;
+  }
+  &__item {
+    margin-top: 18px;
+
+    &__inner {
+      float: left;
+      width: 50%;
+    }
+
+    &--list {
+      font-size: 12px;
+      margin-top: 16px;
+      line-height: 28px;
+      padding-right: 10px;
+    }
+  }
+  &__bottom {
+    margin: 50px auto 20px;
+    width: 1020px;
+    &__image {
+      float: left;
+    }
+    &__copy {
+      display: inline-block;
+      vertical-align: sub;
+      width: 745px;
+      text-align: center;
+      font-size: 12px;
+      margin-top: 8px; 
+    }
+  }
+}
+
+.sns__btn {
+  margin: 30px 18px 0 0;
+  font-size: 26px;
+  font-weight: 400;
+  display: inline-block;
+  .sns__btn--twitter {
+    opacity: 1;
+  }
+  .sns__btn--facebook {
+    opacity: 1.0;
+  }
+}
+
+.first {
+  width: 20%;
+}
+
+.second {
+  width: 23%;
+}
+
+.third {
+  width: 42%;
+}
+
+.op{
+  opacity: 0.7;
+}

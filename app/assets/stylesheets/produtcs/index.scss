@@ -1,0 +1,31 @@
+// メインコンテンツ
+.topbanner {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+
+.top-main {
+  background-color: #f5f5f5;
+}
+
+.pickup-item {
+  width: 940px;
+  padding: 40px 0;
+  margin: 0 auto;
+  &__heading{
+    font-size: 28px;
+    text-align: center;
+  }
+  .category__text {
+    font-size: 22px;
+    text-align: center;
+    margin: 13px 11px;
+    color: #0099e8;
+  }
+}
+.show-items {
+  padding: 20px 0 30px;
+  text-align: right;
+  color: #0099e8;
+}
