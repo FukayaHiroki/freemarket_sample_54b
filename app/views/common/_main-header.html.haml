@@ -3,7 +3,7 @@
     .header-top
       .header-top__logo
         %h1
-          %a.header-top__logo--href{href:"/"}
+          = link_to "#",class:"header-top__logo--href"
             %img.header-top__logo--img{src:"//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?270352715",alt:"mercari",width:"134"}
       .form.header-top__search
         %input.header-top__search--input{placeholder:"何かお探しですか？", type: "search"}
@@ -13,12 +13,12 @@
       .header-bottom__left
         %ul
           %li.w2
-            = link_to "",class:"w3" do
+            = link_to "#",class:"w3" do
               %i
               = fa_icon "list-ul"
               %span カテゴリーから探す
           %li.w2
-            = link_to "",class:"w3" do
+            = link_to "#",class:"w3" do
               %i
               =fa_icon "angle-double-left"
               %span ブランドから探す
