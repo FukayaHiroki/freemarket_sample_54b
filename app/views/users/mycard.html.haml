@@ -1,0 +1,47 @@
+.user-container
+  = render partial: 'common/main-header'
+  .bread
+    %ul.bread__content
+      %li 
+        =link_to "#", class: "bread__link" do
+          メルカリ
+      %li
+        = fa_icon 'angle-right', class:"bread__icon"
+      %li 
+        =link_to "#", class: "bread__link" do
+          マイページ
+      %li
+        = fa_icon 'angle-right',class:"bread__icon"
+      %li
+        支払い方法
+  .content.clearfix
+    .card
+      %h2.card__header 支払い方法
+      .card__info
+        .card__info__title
+          %h3 クレジットカード一覧
+        - if true #current_user.card.present?
+          %ul.card__info__index
+            %li
+              .a-card
+                .a-card__image
+                  = image_tag "credit_card/visa.svg",class: "a-card__img"
+                .a-card__num
+                  = "************1234"
+                .a-card__exp
+                  = "10 / 23"
+                %button{type: "submit", class:"a-card__remove"} 削除する
+        - else 
+          .card__add
+            .card__add__btn
+              %a
+                = fa_icon 'credit-card', class: "card__add__btn__icon"
+                クレジットカードを追加する
+        .card__how
+          %a 支払い方法について＞
+    .side 
+      = render partial: "side-bar"
+    .clearfix::after
+  .banner
+  = render partial: 'common/top-footer'
+= render partial: 'common/sell_btn'
