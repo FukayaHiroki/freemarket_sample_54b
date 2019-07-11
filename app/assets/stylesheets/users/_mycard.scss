@@ -7,8 +7,7 @@
       max-width: 320px;
       margin: 0 auto;
       h3{
-        font-size:16px;
-        font-weight: bold;
+        @include font_type
       }
     }
     &__index{
@@ -39,13 +38,11 @@
           line-height: 16px;
         }
         &__remove{
+          @include btn_radius(#fff,3px);
+          @include font_type(14px,400);
           color: #ea352d;
-          font-size: 14px;
-          font-weight: 400;
           line-height: 14px;
-          background: #fff;
           border: 1px solid #ea352d;
-          border-radius: 3px;
           padding: 4px 6px;
           position: absolute;
           top:0;
@@ -61,13 +58,12 @@
     &__btn{
       margin-bottom: 8px;
       &__icon{
+        @include font_type(14px,400);
         display: inline-block;
         width: 14px;
         height: 14px;
         line-height: 48px;
         color: #fff;
-        font-size: 14px;
-        font-weight: 400;
         margin-right: 16px;
       }
       a{

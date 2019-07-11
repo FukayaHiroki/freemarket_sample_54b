@@ -1,3 +1,4 @@
+// メインヘッダー
 .header{
   display: block;
   background-color: #fff;
@@ -14,8 +15,7 @@
     position: relative;
     width: 100%;
       &--input{
-        background: #f5f5f5;
-        border-radius: 4px;
+        @include btn_radius(#f5f5f5);
         padding: 0 42px 0 10px;
         width: 100%;
         height: 40px;
@@ -59,8 +59,7 @@
       }
     }
     .w3{
-      font-weight: bold;
-      font-size: 14px;
+      @include font_type(14px);
       text-decoration: none;
       &:visited{
         color: black;
@@ -76,9 +75,8 @@
       float: right;
       font-size: 14px;
       &--signup{
+        @include btn_radius(#EA352D);
         display: inline-block;
-        background: #EA352D;
-        border-radius: 4px;
         .header_btn--signup{
           display: inline-block;
           color: white;
@@ -86,9 +84,8 @@
         }
       }
       &--logout{
+        @include btn_radius(white);
         display: inline-block;
-        background: white;
-        border-radius: 4px;
         border: 1px solid #0099e8;
         margin-left: 8px;
         &:hover{
@@ -114,5 +111,16 @@
   }
   .user-btn{
     text-decoration: none;
+  }
+}
+
+// サブヘッダー
+.sub-header {
+  height: 88px;
+  text-align: center;
+  padding-top: 40px;
+  &__image {
+    display: inline-block;
+    width: 185px;    
   }
 }

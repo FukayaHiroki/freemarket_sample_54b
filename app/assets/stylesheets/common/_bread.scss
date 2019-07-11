@@ -27,9 +27,8 @@
     }
   }
   &__icon{
+    @include font_type;
     color: #888;
-    font-size: 16px;
     margin: 0 8px;
-    font-weight: bold;
   }
 }

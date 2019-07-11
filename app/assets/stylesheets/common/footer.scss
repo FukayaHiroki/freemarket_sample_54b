@@ -1,4 +1,4 @@
-// フッター
+// メインフッター
 .top-footer{
   padding: 0 20px 10px 20px;
   background: #212121;
@@ -48,9 +48,8 @@
 }
 
 .sns__btn {
+  @include font_type(26px, 400);
   margin: 30px 18px 0 0;
-  font-size: 26px;
-  font-weight: 400;
   display: inline-block;
   .sns__btn--twitter {
     opacity: 1;
@@ -74,4 +73,24 @@
 
 .op{
   opacity: 0.7;
+}
+
+// サブフッター
+.sub-footer {
+  height: 180px;
+  padding-top: 40px;
+  text-align: center;
+  &__nav {
+    display: inline-block;
+    margin-left:16px;
+    font-size: 12px;
+  }
+  &__image {
+    display: inline-block;
+    width: 80px;
+    padding-top: 20px;
+  }
+  &__copy-write {
+    font-size: 8px;
+  }
 }

@@ -13,8 +13,7 @@
     width: 700px;
     margin: 0 auto;
     &__heading {
-      font-size: 22px;
-      font-weight: bold;
+      @include font_type(22px);
       height: 32px;
       padding: 32px;
       text-align: center;

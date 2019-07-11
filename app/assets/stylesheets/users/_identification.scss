@@ -29,14 +29,13 @@
   margin: 0;
   background: #fff;
   &__head {
-    font-size: 24px;
+    @include font_type(24px);
     padding: 8px 24px;
     border-bottom: 1px solid #f5f5f5;
     text-align: center;
     line-height: 1.4;
     background: #fff;
     font-family: 'メイリオ';
-    font-weight: bold;
   }
 }
 
@@ -70,19 +69,17 @@
     margin: 8px 0 0;
     height: 48px;
     padding: 0 16px 0;
-    border-radius: 4px;
+    @include btn_radius(white);
     border: 1px solid #ccc;
-    background: #fff;
     line-height: 1,5;
     font-size: 16px;
   }
 }
 
 .form-require {
-  background: #ea352d;
+  @include btn_radius(#ea352d,2px);
   margin: 0 0 0 8px;
   padding: 2px 4px;
-  border-radius: 2px;
   color: #fff;
   font-size: 12px;
   vertical-align: top;
@@ -94,10 +91,9 @@
 }
 
 .form-arbitray {
-  background: #ccc;
+  @include btn_radius(#ccc,2px);
   margin: 0 0 0 8px;
   padding: 2px 4px;
-  border-radius: 2px;
   color: #fff;
   font-size: 12px;
   vertical-align: top;
@@ -112,4 +108,3 @@
 .my_list {
   padding-top: 40px;
 }
-
