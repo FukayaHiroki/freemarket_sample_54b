@@ -1,0 +1,34 @@
+.sub-container 
+
+  =render 'sub_header'
+
+  %main.login-main
+    .login-panel
+      .login-panel__no-account
+        %p アカウントをお持ちでない方はこちら
+        = link_to '' do
+          新規会員登録
+      .login-form-inner
+        .main-block__buttons.facebook.l_center
+          %i.fa.fa-facebook-square
+          Facebookでログイン
+        .main-block__buttons.google.l_center
+          %i.fa.fa-google
+          Googleでログイン
+      %form
+        .login-inner
+          .form-group_l
+            %input.login-form-inner__input{placeholder: "メールアドレス"}
+            %input.login-form-inner__input{placeholder: "パスワード"}
+          .form-group
+            %figure
+              = image_tag 'recaptcha.png', class: "recaptcha-center"
+          .form-group
+            %button.profile_chapter__btn
+              ログイン
+            .form-group.uinfo_chapter__right
+              %p.number_text.number_left
+                = link_to '' do
+                  パスワードをお忘れの方
+.lo_footer
+  =render 'sub_footer'
