@@ -23,42 +23,42 @@
             .form-group
               %label お名前
               %span.form-require 必須
-              %input.input-default{placeholder: "例）山田"}
-              %input.input-default{placeholder: "例）彩"}
+              = f.text_field :name, class: :input_default, placeholder: "例）山田"
+              = f.text_field :name, class: :input_default, placeholder: "例）彩"
             .form-group
               %label お名前カナ
               %span.form-require 必須
-              %input.input-default{placeholder: "例）ヤマダ"}
-              %input.input-default{placeholder: "例）アヤ"}
+              = f.text_field :name, class: :input_default, placeholder: "例）ヤマダ"
+              = f.text_field :name, class: :input_default, placeholder: "例）アヤ"
             .form-group
               %label 生年月日
               %span.form-require 必須
               %br
               .birthday-select-wrap
                 .select-wrap
-                  %input.input-default{type: "date"}
+                  = f.text_field :date, class: :input_default
               %p.uinfo_text
                 ※出品されたことがある、本人情報未登録のお客さまもご対象となります。
             .form-group
               %label 郵便番号
               %span.form-arbitray 任意
-              %input.input-default{placeholder: "例）1234567"}
+              = f.text_field :integer, class: :input_default, placeholder: "例）1234567"
             .form-group
               %label 都道府県
               %span.form-arbitray 任意
-              %input.input-default{placeholder: "--"}
+              = f.text_field :name, class: :input_default, placeholder: "--"
             .form-group
               %label 市町村
               %span.form-arbitray 任意
-              %input.input-default{placeholder: "例) 横浜市緑区"}
+              = f.text_field :name, class: :input_default, placeholder: "例）横浜市緑区"
             .form-group
               %label 番地
               %span.form-arbitray 任意
-              %input.input-default{placeholder: "例) 青山1−1−1"}
+              = f.text_field :name, class: :input_default, placeholder: "例) 青山1−1−1"
             .form-group
               %label 建物名
               %span.form-arbitray 任意
-              %input.input-default{placeholder: "例) 柳ビル103"}
+              = f.text_field :name, class: :input_default, placeholder: "例）柳ビル103"
             %button.profile_chapter__btn
               登録する
             .form-group.uinfo_chapter__right
