@@ -1,0 +1,99 @@
+.main_wrapper {
+  background: #eeeeee;
+}
+.main-block {
+  &__container {
+    width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    line-height: 1.5;
+    text-align: center;
+  }
+  &__head {
+    border-bottom: 1px solid #f5f5f5;
+  }
+  &__inner {
+    padding: 24px 16px 40px;
+    display: inline-block;
+    line-height: 1,5;
+  }
+  &__content {
+    max-width: 343px;
+    margin: 0 auto;
+  }
+  &__label {
+    font-size: 14px;
+    float: left;
+  }
+
+  &__name {
+    float: left;
+  }
+
+  &__text {
+    text-align: left;
+    max-width: 8px 0 0;
+    padding: 0;
+    font-size: 14px;
+  }
+  
+}
+
+.registration {
+  font-size: 22px;
+  padding: 32px;
+}
+
+.registration-form {
+  padding: 24px 16px 40px;
+  max-width: 343px;
+  
+}
+
+.input-default {
+  &__half {
+  margin-right: 8px;
+  padding-right: 8px;
+  display: inline-block;
+  width: calc(50% - 6px);
+  margin: 8px 0 0;
+  height: 48px;
+  display: flex;
+  padding: 0 16px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1,5;
+  font-size: 16px;
+  }
+}
+
+.left {
+  display: inline-block;
+  float: left;
+}
+
+.text_center {
+  text-align: center;
+}
+
+.recaptcha {
+  width: 120%;
+  height: 120%;
+}
+
+.m_footer {
+  background: #eeeeee;
+}
+
+.m_header {
+  height: 130px;
+}
+
+.form-group {
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    float: left;
+  }
+}
