@@ -4,4 +4,7 @@ class UsersController < ApplicationController
 
   def mycard_create
   end
+
+  def identification
+  end
 end

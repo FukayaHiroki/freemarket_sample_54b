@@ -1,0 +1,72 @@
+.user-container
+  .my_page_header
+    = render 'common/main-header'
+    = render 'common/bread'
+  .wrapper
+    .my_page_main_container
+      .my_page_side_bar
+        .my_list
+          = render 'common/side_bar'
+    
+    .uinfo_container
+      %section.uinfo_chapter
+        %h2.uinfo_chapter__head
+          本人情報の登録
+        %form.uinfo_chapter__inner
+          .uinfo_chapter__text
+            %p お客さまの本人情報をご登録ください。
+            %p 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+            %p.uinfo_chapter__right
+              = link_to '' do
+                本人確認書類のアップロードについて
+                = fa_icon 'angle-right', class: "uinfo_chapter__icon"
+            .form-group
+              %label お名前
+              %span.form-require 必須
+              %input.input-default{placeholder: "例）山田"}
+              %input.input-default{placeholder: "例）彩"}
+            .form-group
+              %label お名前カナ
+              %span.form-require 必須
+              %input.input-default{placeholder: "例）ヤマダ"}
+              %input.input-default{placeholder: "例）アヤ"}
+            .form-group
+              %label 生年月日
+              %span.form-require 必須
+              %br
+              .birthday-select-wrap
+                .select-wrap
+                  %input.input-default{type: "date"}
+              %p.uinfo_text
+                ※出品されたことがある、本人情報未登録のお客さまもご対象となります。
+            .form-group
+              %label 郵便番号
+              %span.form-arbitray 任意
+              %input.input-default{placeholder: "例）1234567"}
+            .form-group
+              %label 都道府県
+              %span.form-arbitray 任意
+              %input.input-default{placeholder: "--"}
+            .form-group
+              %label 市町村
+              %span.form-arbitray 任意
+              %input.input-default{placeholder: "例) 横浜市緑区"}
+            .form-group
+              %label 番地
+              %span.form-arbitray 任意
+              %input.input-default{placeholder: "例) 青山1−1−1"}
+            .form-group
+              %label 建物名
+              %span.form-arbitray 任意
+              %input.input-default{placeholder: "例) 柳ビル103"}
+            %button.profile_chapter__btn
+              登録する
+            .form-group.uinfo_chapter__right
+              %p
+                = link_to '' do
+                  本人情報の登録について
+                  = fa_icon 'angle-right', class: "uinfo_chapter__icon"
+  .top-banner
+    = image_tag "top_page_footer_banner.jpg", class: "topbanner"
+  .my_page_footer
+    = render 'common/top-footer'
