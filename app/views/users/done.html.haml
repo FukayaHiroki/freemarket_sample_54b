@@ -1,0 +1,18 @@
+.sub-container 
+  .m_header
+    =render 'common/sub_header'
+
+  .main_wrapper
+    %main.main-block
+      %section.main-block__container
+        %h2.main-block__head.registration 会員登録完了
+        %form.main-block__inner.registration-form
+          .main-block__content
+            .form-group
+            %p.number_text ありがとうございます。
+            %p.number_text 会員登録が完了しました。
+            .form-group
+              %button.profile_chapter__btn.length_btn
+                メルカリをはじめる
+  .m_footer
+    =render 'common/sub_footer'

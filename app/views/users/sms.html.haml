@@ -1,0 +1,25 @@
+.m_header
+  =render 'common/sub_header'
+  
+.main_wrapper  
+  %main.main-block
+    %section.main-block__container
+      %h2.main-block__head.registration 電話番号の確認
+      %form.main-block__inner.registration-form
+        .main-block__content
+          .form-group
+            %label.main-block__label 携帯電話の番号
+            %input.input_default{placeholder: "携帯電話の番号を入力"}
+          %p.number_text.number_left 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+          .form-grou
+            %button.profile_chapter__btn
+              SMSを送信する
+            %p.number_text.number_left
+              ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+          .form-group.uinfo_chapter__right
+            %p.number_text
+              = link_to '' do
+                電話番号の確認が必要な理由
+                = fa_icon 'angle-right', class: "uinfo_chapter__icon"
+.m_footer
+  =render 'common/sub_footer'

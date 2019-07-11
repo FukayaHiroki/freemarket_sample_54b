@@ -1,0 +1,32 @@
+.m_header
+  =render 'common/sub_header'
+
+.main_wrapper  
+  %main.main-block
+    %section.main-block__container.height
+      %h2.main-block__head.registration 電話番号承認
+      %form.main-block__inner.registration-form
+        .main-block__content
+          .form-group
+            %label.main-block__label 認証番号
+            %input.input_default{placeholder: "承認番号を入力"}
+          %p.number_text.number_left SMSで届いた認証番号を入力してください
+          %button.profile_chapter__btn
+            承認して完了
+          .main-block__content
+            .form-group
+              %label.main-block__label 30秒たっても認証番号が届かない方へ
+            %br
+            %p.number_text.number_left 電話で認証番号を聞くこともできます
+            %button.profile_chapter__btn
+              電話で認証番号を聞く（通話無料）
+        .main-block__content
+          .form-group
+            %label.main-block__label.number_left 認証番号を再送することもできます。もう一度電話番号を入力して下さい。
+          .form-group.uinfo_chapter__right
+            %p.number_text.number_left
+              = link_to '' do
+                電話番号を再度入力する
+          %p.number_text.number_left ※SMSが届かない場合はSMS受信設定を確認して、もう一度電話番号を入力してください。
+.m_footer
+  =render 'common/sub_footer'
