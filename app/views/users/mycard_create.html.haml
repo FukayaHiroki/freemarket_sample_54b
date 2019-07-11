@@ -1,19 +1,7 @@
 .user-container
   = render partial: 'common/main-header'
   .bread
-    %ul.bread__content
-      %li 
-        =link_to "#", class: "bread__link" do
-          メルカリ
-      %li
-        = fa_icon 'angle-right', class:"bread__icon"
-      %li 
-        =link_to "#", class: "bread__link" do
-          マイページ
-      %li
-        = fa_icon 'angle-right',class:"bread__icon"
-      %li
-        支払い方法
+    = render 'common/bread'
   .content.clearfix
     .card
       %h2.card__header クレジットカード情報入力
@@ -91,7 +79,7 @@
           -# =f.submit "追加する", class: "card__form__submit"
           %button{type: "submit", class:"card__form__submit"} 追加する
     .side 
-      = render partial: "side-bar"
+      = render partial: "common/side_bar"
     .clearfix::after
   .banner
   = render partial: 'common/top-footer'
