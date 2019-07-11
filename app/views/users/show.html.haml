@@ -1,82 +1,85 @@
-.my_page_header
-  = render 'common/main-header'
+.user-container
+  .my_page_header
+    = render 'common/main-header'
+    = render 'common/bread'
 
-.wrapper
-  .my_page_main_container
-    .my_page_side_bar
-      .my_list
-        = render 'common/side_bar'
+  .wrapper
+    .my_page_main_container
+      .my_page_side_bar
+        .my_list
+          = render 'common/side_bar'
 
-  .my_page_main
-    %section.my_page_top
-      = link_to '' do
-        %figure
-          = image_tag 'mypage_user_icon.png'
-        %h2.bold
-          Yamada Hnako
-        .my_page_main_top__nember
-          評価
-          %span.bold
-          0
-          出品数
-          %span.bold
-          0
-    %section.my_page_container
-      %ul.my_page_container__tabs
-        %li.my_page_container__tabs--active
-          %h3
-            = link_to '' do
-              お知らせ
-        %li.my_page_container__tabs--normal
-          %h3
-            = link_to '' do
-              やることリスト
-      .my_page_container__tab-content
-        %ul.my_page_container__tab-content--item
+    .my_page_main
+      %section.my_page_top
+        = link_to '' do
+          %figure
+            = image_tag 'mypage_user_icon.png'
+          %h2.bold
+            Yamada Hnako
+          .my_page_main_top__nember
+            評価
+            %span.bold
+            0
+            出品数
+            %span.bold
+            0
+      %section.my_page_container
+        %ul.my_page_container__tabs
+          %li.my_page_container__tabs--active
+            %h3
+              = link_to '' do
+                お知らせ
+          %li.my_page_container__tabs--normal
+            %h3
+              = link_to '' do
+                やることリスト
+        .my_page_container__tab-content
+          %ul.my_page_container__tab-content--item
+            %li
+              = link_to '', class: "my_page_link" do
+                %figure
+                  = image_tag 'mercari_profile.png', size: "48×48"
+                .my_page_link__body
+                  .my_page_link__text
+                    事務局から個別メッセージ「Facebookログイン通知」
+                  %time
+                    = fa_icon 'fa-clock'
+                    %span
+                      23時間前
+                = fa_icon 'angle-right', class: "icon-arrow"
+
+            %li
+              = link_to '', class: "my_page_link" do
+                %figure
+                  = image_tag 'mercari_profile.png', size: "48×48"
+                .my_page_link__body
+                  .my_page_link__text
+                    事務局から個別メッセージ「Facebookログイン通知」
+                  %time
+                    = fa_icon 'fa-clock'
+                    %span
+                      23時間前
+                = fa_icon 'angle-right', class: "icon-arrow"
+            %li.my_page_link__go
+              = link_to '' do
+                一覧を見る
+      %section.my_page_l_container
+        %h2.my_page_container__head
+          購入した商品
+        %ul.my_page_container__tabs
+          %li.my_page_container__tabs--active
+            %h3
+              = link_to '' do
+                取引中
           %li
-            = link_to '', class: "my_page_link" do
-              %figure
-                = image_tag 'mercari_profile.png', size: "48×48"
-              .my_page_link__body
-                .my_page_link__text
-                  事務局から個別メッセージ「Facebookログイン通知」
-                %time
-                  = fa_icon 'fa-clock'
-                  %span
-                    23時間前
-              = fa_icon 'angle-right', class: "icon-arrow"
-
-          %li
-            = link_to '', class: "my_page_link" do
-              %figure
-                = image_tag 'mercari_profile.png', size: "48×48"
-              .my_page_link__body
-                .my_page_link__text
-                  事務局から個別メッセージ「Facebookログイン通知」
-                %time
-                  = fa_icon 'fa-clock'
-                  %span
-                    23時間前
-              = fa_icon 'angle-right', class: "icon-arrow"
-          %li.my_page_link__go
-            = link_to '' do
-              一覧を見る
-    %section.my_page_l_container
-      %h2.my_page_container__head
-        購入した商品
-      %ul.my_page_container__tabs
-        %li.my_page_container__tabs--active
-          %h3
-            = link_to '' do
-              取引中
-        %li
-          %h3
-            = link_to '' do
-              過去の取引
-      .my_page_container__tab-content
-        %ul.my_page_container__tab-content--item
-          %li.my_page_container__field
-            取引中の商品がありません
-
-.my_page_footer
-  = render 'common/top-footer'
+            %h3
+              = link_to '' do
+                過去の取引
+        .my_page_container__tab-content
+          %ul.my_page_container__tab-content--item
+            %li.my_page_container__field
+              取引中の商品がありません
+  .top-banner
+    = image_tag "/assets/top_page_footer_banner.jpg", class: "topbanner"
+  .my_page_footer
+    = render 'common/top-footer'
