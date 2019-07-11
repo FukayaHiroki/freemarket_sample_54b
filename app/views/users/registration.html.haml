@@ -1,5 +1,5 @@
 .m_header
-  = render 'sub_header.html.haml'
+  =render 'common/sub_header'
 .main_wrapper  
   %main.main-block
     %section.main-block__container
@@ -63,4 +63,5 @@
                 本人情報の登録について
                 = fa_icon 'angle-right', class: "uinfo_chapter__icon"
 .m_footer
-  = render 'sub_footer.html.haml'
+  =render 'common/sub_footer'
+  
