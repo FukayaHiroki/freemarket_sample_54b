@@ -17,4 +17,11 @@ Rails.application.routes.draw do
   end
   resources :products, except: [:edit]
   get 'products/buy/:id' => 'products#buy'
+
+  # view確認用仮置き
+  get 'identification' => 'users#identification'
+  get 'mycard' => 'users#mycard'
+  get 'mycard_create' => 'users#mycard_create'
+  get 'profile' => 'users#profile'
+  get 'users' => 'users#show'
 end
