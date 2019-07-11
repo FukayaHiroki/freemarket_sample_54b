@@ -1,0 +1,63 @@
+.container{
+  margin: 0;
+  padding: 0;
+}
+.bread-crumbs{
+  position: relative;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  background: #fff;
+  border-top: 1px solid #eee;
+  .brand{
+    width: 700px;
+    margin: 0 auto;
+    padding: 16px 0;
+    li{
+      display: inline-block;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+  }
+}
+.comment_chapter{
+  margin: 8px auto;
+  width: 700px;
+  background: #fff;
+  padding: 24px;
+  .comment-form p{
+    padding: 8px;
+    font-size: 14px;
+    background: #fff6de;
+  }
+  &__set-content{
+    margin-top: 8px;
+    padding: 10px 0;
+    width: 100%;
+    min-height: 104px;
+  }
+  &__btn {
+    margin: 16px 0 0;
+    background: #ccc;
+    border: 1px solid #ccc;
+    color: #fff;
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 16px;
+    text-align: center;
+  }
+}
+.pickup-item__three {
+  width: 700px;
+  padding: 40px 0;
+  margin: 0 auto;
+  &__heading{
+    font-size: 28px;
+    text-align: center;
+  }
+  .category__text {
+    font-size: 22px;
+    text-align: center;
+    margin: 13px 11px;
+    color: #0099e8;
+  }
+}

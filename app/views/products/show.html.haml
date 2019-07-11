@@ -1,0 +1,22 @@
+.container
+  = render partial: 'common/main-header'
+  %nav.bread-crumbs
+    %ul.brand
+      %li メルカリ
+      %li ⇨
+      %li マーブルシュッド　ワンピース
+  = render partial: 'item_detail'
+  .comment_chapter
+    %form.comment-form
+      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      = text_area :page, :comtent, class: 'textarea comment_chapter__set-content'
+      %button.comment_chapter__btn
+        コメントする
+  .pickup-item__three
+    %h3.pickup-item__heading ピックアップカテゴリー
+    - 3.times do
+      = render partial: 'common/item_box3times'
+  .top-banner
+    = image_tag "top_page_footer_banner.jpg", class: "topbanner"
+  = render partial: 'common/top-footer'
+= render partial: 'common/sell_btn'

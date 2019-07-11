@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   # devise_for :users
   root 'products#index'
+  # 仮置き contollerにも書いてるよ！
+  get 'products/show' => 'products#show'
+  
   resources :users, only: [:show] do
     collection  do
       get 'sign_up/resistration' => 'user#registration'
