@@ -1,0 +1,20 @@
+.user-container
+  .my_page_header
+    = render 'common/main-header'
+    = render 'common/bread'
+
+  .wrapper
+    .my_page_main_container
+      .my_page_side_bar
+        .my_list
+          = render 'common/side_bar'
+    
+    .profile_container
+      %section.profile_chapter
+        .profile_chapter__set-content
+          %button.profile_chapter__btn.length_btn.center_btn
+            ログアウト
+  .top-banner
+    = image_tag "top_page_footer_banner.jpg", class: "topbanner"
+  .my_page_footer
+    = render 'common/top-footer'
