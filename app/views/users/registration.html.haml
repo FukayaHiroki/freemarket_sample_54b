@@ -1,67 +1,71 @@
-.m_header
-  =render 'common/sub_header'
-.main_wrapper  
-  %main.main-block
-    %section.main-block__container
-      %h2.main-block__head.registration 新規会員登録
-      %form.main-block__inner.registration-form
-        .main-block__content
-          .form-group
-            %label.main-block__label ニックネーム
-            %span.form-require.main-block__name 必須
-            %input.input_default{placeholder: "例) メルカリ太郎"}
-          .form-group
-            %label.main-block__label メールアドレス
-            %span.form-require.main-block__name 必須
-            %input.input_default{placeholder: "PC・携帯どちらでも可"}
-          .form-group
-            %label.main-block__label パスワード
-            %span.form-require.main-block__name 必須
-            %input.input_default{placeholder: "6文字以上"}
-          .form-group
-            %label.main-block__label パスワード（確認）
-            %span.form-require.main-block__name 必須
-            %input.input_default{placeholder: "6文字以上"}
-          .form-group
-            %h3 本人確認
-            %br
-            %p.main-block__text
-              安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
-          .from-group
-            %label.main-block__label お名前 (全角) 
-            %span.form-require.main-block__name 必須
-            .main-block__style{style: "display:inline-flex"}
-            %input.input_default__half{placeholder: "例) 山田"}
-            %input.input_default__half{placeholder: "例) 彩"}
-          .form-group
-            %label.main-block__label お名前カナ (全角) 
-            %span.form-require.main-block__name 必須
-            %input.input_default__half{placeholder: "例) ヤマダ"}
-            %input.input_default__half{placeholder: "例) アヤ"}
-          .form-group
-            %label.main-block__label 生年月日
-            %span.form-require.main-block__name 必須
-            %br
-            .birthday-select-wrap
-              .select-wrap
-                %input.input_default{type: "date"}
-              %p.uinfo_text
-                ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-            .card-date
+.sub-container
+  %header.sub-header
+    %a.sub-header__image
+      = image_tag "logo.svg"
+    .sub-header__image.progress
+      = image_tag "progress_bar1.png"
+  .main_wrapper  
+    %main.main-block
+      %section.main-block__container
+        %h2.main-block__head.registration 新規会員登録
+        %form.main-block__inner.registration-form
+          .main-block__content
+            .form-group
+              %label.main-block__label ニックネーム
+              %span.form-require.main-block__name 必須
+              %input.input_default{placeholder: "例) メルカリ太郎"}
+            .form-group
+              %label.main-block__label メールアドレス
+              %span.form-require.main-block__name 必須
+              %input.input_default{placeholder: "PC・携帯どちらでも可"}
+            .form-group
+              %label.main-block__label パスワード
+              %span.form-require.main-block__name 必須
+              %input.input_default{placeholder: "6文字以上"}
+            .form-group
+              %label.main-block__label パスワード（確認）
+              %span.form-require.main-block__name 必須
+              %input.input_default{placeholder: "6文字以上"}
+            .form-group
+              %h3 本人確認
+              %br
+              %p.main-block__text
+                安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+            .from-group
+              %label.main-block__label お名前 (全角) 
+              %span.form-require.main-block__name 必須
+              .main-block__style{style: "display:inline-flex"}
+              %input.input_default__half{placeholder: "例) 山田"}
+              %input.input_default__half{placeholder: "例) 彩"}
+            .form-group
+              %label.main-block__label お名前カナ (全角) 
+              %span.form-require.main-block__name 必須
+              %input.input_default__half{placeholder: "例) ヤマダ"}
+              %input.input_default__half{placeholder: "例) アヤ"}
+            .form-group
+              %label.main-block__label 生年月日
+              %span.form-require.main-block__name 必須
+              %br
+              .birthday-select-wrap
+                .select-wrap
+                  %input.input_default{type: "date"}
+                %p.uinfo_text
+                  ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+              .card-date
 
-          .form-group
-            %figure
-              = image_tag 'recaptcha.png', class: "recaptcha"
-          .form-group
-            %p.main-block__text.text_center
-              「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします
-            %button.profile_chapter__btn
-              次へ進む
-          .form-group.uinfo_chapter__right
-            %p
-              = link_to '' do
-                本人情報の登録について
-                = fa_icon 'angle-right', class: "uinfo_chapter__icon"
-.m_footer
-  =render 'common/sub_footer'
-  
+            .form-group
+              %figure
+                = image_tag 'recaptcha.png', class: "recaptcha"
+            .form-group
+              %p.main-block__text.text_center
+                「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします
+              %button.profile_chapter__btn
+                次へ進む
+            .form-group.uinfo_chapter__right
+              %p
+                = link_to '' do
+                  本人情報の登録について
+                  = fa_icon 'angle-right', class: "uinfo_chapter__icon"
+  .m_footer
+    =render 'common/sub_footer'
+    
