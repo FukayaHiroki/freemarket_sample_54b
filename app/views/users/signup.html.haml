@@ -1,0 +1,19 @@
+.sub-container.view-height
+  =render 'common/sub_header'
+
+  %main.main-block
+    %section.main-block__container
+      %h2.main-block__container__heading 新規会員登録
+      .main-block__container__inner
+        .main-block__content
+          .main-block__buttons.mail
+            %i.fa.fa-envelope-o.sns__icon
+            %p メールアドレスで登録
+          .main-block__buttons.facebook
+            %i.fa.fa-facebook-square.sns__icon
+            %p Facebookで登録
+          .main-block__buttons.google
+            %i.fa.fa-google.sns__icon
+            %p Googleで登録
+
+  =render 'common/sub_footer'
