@@ -1,0 +1,28 @@
+.user-container
+  .my_page_header
+    = render 'common/main-header'
+    = render 'common/bread'
+
+  .wrapper
+    .my_page_main_container
+      .my_page_side_bar
+        .my_list
+          = render 'common/side_bar'
+    
+    .profile_container
+      %section.profile_chapter
+        %h2.profile_chapter__head
+          プロフィール
+        .profile_chapter__set-icon
+          %figure
+            = image_tag 'profile_icon.png'
+          = text_field :input,'', class: 'input_page', placeholder: 'ユーザー名'
+        %form
+          .profile_chapter__set-content
+            = text_area :page, :comtent, class: 'textarea', placeholder: 'こんにちは！ご覧いただきありがとうございます！'
+            %button.profile_chapter__btn
+              変更する
+  .top-banner
+    = image_tag "top_page_footer_banner.jpg", class: "topbanner"
+  .my_page_footer
+    = render 'common/top-footer'
