@@ -1,8 +1,8 @@
 .sub-container.view-height
-  %header.sub-header
-    %a.sub-header__image
+  %header.progress-header
+    %a.progress-header__image
       = image_tag "logo.svg"
-    .sub-header__image.progress
+    .progress-header__image.progress
       = image_tag "progress_bar5.png"
 
   .main_wrapper
@@ -17,5 +17,8 @@
             .form-group
               %button.profile_chapter__btn.length_btn
                 メルカリをはじめる
+        .done_banner
+          = image_tag "done-banner.jpg", class: "done_banner"
+
   .m_footer
     =render 'common/sub_footer'

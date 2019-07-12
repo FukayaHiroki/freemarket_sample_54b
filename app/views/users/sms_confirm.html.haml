@@ -1,22 +1,22 @@
 .sub-container
-  %header.sub-header
-    %a.sub-header__image
+  %header.progress-header
+    %a.progress-header__image
       = image_tag "logo.svg"
-    .sub-header__image.progress
+    .progress-header__image.progress
       = image_tag "progress_bar2.png"
 
   .main_wrapper  
     %main.main-block
       %section.main-block__container.height
-        %h2.main-block__head.registration 電話番号承認
+        %h2.main-block__head.registration 電話番号認証
         %form.main-block__inner.registration-form
           .main-block__content
             .form-group
               %label.main-block__label 認証番号
-              %input.input_default{placeholder: "承認番号を入力"}
+              %input.input_default{placeholder: "認証番号を入力"}
             %p.number_text.number_left SMSで届いた認証番号を入力してください
             %button.profile_chapter__btn
-              承認して完了
+              認証して完了
             .main-block__content
               .form-group
                 %label.main-block__label 30秒たっても認証番号が届かない方へ
