@@ -1,5 +1,4 @@
 .card{
-  width: 343px;
   background-color: #ffffff;
   float:right;
   &__header{
@@ -133,4 +132,8 @@
 .u_text {
   font-size: 14px;
   text-align: right;
+}
+
+.mypage_card {
+  width: 343px;
 }
