@@ -18,14 +18,12 @@
 ### Association
 - has_one :adress
 - has_one :card
+- has_many :products
 - has_many :tradings
 - has_many :comments
 - has_many :likes
-- has_many :tradings_of_seller, class_name: 'Trading', foreign_key: 'seller_id'
-- has_many :tradings_of_buyer, class_name: 'Trading', foreign_key: 'buyer_id'
-- has_many :products_of_seller, through: :tradings_of_seller, source: 'product'
-- has_many :products_of_buyer, through: :tradings_of_buyer, source: 'product'
-- has_many :comment_products, through::comments, 
+- has_many :trading_products, through: :tradings
+- has_many :comment_products, through: :comments
 - has_many :like_products, through: :likes
 
 
@@ -33,8 +31,12 @@
 
 |Column|Type|Options|
 |------|----|-------|
+|family_name|string|null:false|
+|first_name|string|null:false|
+|family_name_kana|string|null:false|
+|first_name_kana|string|null:false|
 |postal_code|integer|null: false|
-|prefecture|string|null: false|
+|prefecture_id|integer|null: false|
 |city|string|null: false|
 |block|string|null: false|
 |building|string|null: true|
@@ -43,6 +45,7 @@
 
 ### Association
 - belongs_to :user
+- belongs_to_active_hash :prefecture
 
 
 ## cardテーブル
@@ -64,32 +67,34 @@
 |------|----|-------|
 |name|string|index: true, null: false|
 |detail|text|null: false|
+|user_id|references|foreign_key: true|
+|image_id|references|foreign_key: true|
 |large_category_id|references|foreign_key: true|
 |midium_category_id|references|foreign_key: true|
 |small_category_id|references|foreign_key: true, null: true|
-|size|string|null: true|
+|size_id|integer|null: true|
 |brand_id|references|foreign_key: true, null: true|
-|condition|string|null: false|
-|delivery_fee|string|null: false|
-|shipping_method|string|null: false|
-|region_from|string|null: false|
-|shipping_speed|string|null: false|
+|condition_id|integer|null: false|
+|delivery_fee_id|integer|null: false|
+|shipping_method_id|integer|null: false|
+|prefecture_id|integer|null: false|
+|shipping_speed_id|integer|null: false|
 |price|integer|null: false|
 
 ### Association
+- belongs_to :user
+- has_many :images
 - belongs_to :large_category
 - belongs_to :midium_category
 - belongs_to :small_category, optional: true
 - belongs_to :brand, optional: true
-
-- has_many :images
 - has_one :trading
 - has_many :comments
 - has_many :likes
-- has_one :sellers, through: :tradings
-- has_one :buyers, through: :tradings
-- has_many :comment_users, through::comments, 
+- has_one :trading_user, through: :tradings
+- has_many :comment_users, through: :comments, 
 - has_many :like_users, through: :likes
+- belongs_to_active_hash :size, :condition, :delivery_fee, :shipping_method, :prefecture :shipping_speed
 
 
 ## imageテーブル
@@ -156,12 +161,13 @@
 |Column|Type|Options|
 |------|----|-------|
 |product_id|references|foreign_key: true|
-|seller_id|references|foreign_key: true|
-|buyer_id|references|foreign_key: true|
+|user_id|references|foreign_key: true|
+|status_id|integer|null: false|
 
 ### Association
 - belongs_to : product
 - belongs_to : user
+- belongs_to_active_hash :status
 
 
 ## commentテーブル(中間)
