@@ -1,6 +1,9 @@
-.sub-container 
-  .m_header
-    =render 'common/sub_header'
+.sub-container.view-height
+  %header.sub-header
+    %a.sub-header__image
+      = image_tag "logo.svg"
+    .sub-header__image.progress
+      = image_tag "progress_bar5.png"
 
   .main_wrapper
     %main.main-block
