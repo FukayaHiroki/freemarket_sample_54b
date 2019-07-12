@@ -62,7 +62,6 @@
     text-align: center;
     position: relative;
     height: 72px;
-
     &--active {
       background: #fff;
       border-top: 2px solid #ea352d;
@@ -72,7 +71,6 @@
         width: 50%;
         float: left;
       }
-
     a {
       position: relative;
       display: inline-block;
@@ -179,14 +177,8 @@
   text-align: center;
 }
 
-.my_list {
-  padding-top: 40px;
-}
+.my_list { padding-top: 40px;}
 
-.user-container {
-  background: #f5f5f5;
-}
+.user-container { background: #f5f5f5;}
 
-.my_page_header {
-  background: #fff;
-}
+.my_page_header { background: #fff; }
