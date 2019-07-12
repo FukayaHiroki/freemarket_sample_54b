@@ -1,7 +1,8 @@
 %section.item
-  %h1.item__name 商品名が入るところだよ！
+  %h1.item__name ブーツ！
   .item__body
     .item__body__photo
+      = image_tag "item_detail.jpg", class: "item__body__photo--image"
     %table.item__body__detail
       %tbody
         %tr.tr_data
@@ -57,5 +58,5 @@
         %span 不適切な商品の報告
     .btn-footer__right
       %p
-        %span 🔑
+        %i.fa.fa-lock
         %span あんしん・あんぜんへの取り組み
