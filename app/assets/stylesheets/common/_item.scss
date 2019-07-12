@@ -1,5 +1,6 @@
 .pickup-item__box {
-  width: auto;
+  width: 700px;
+  text-align: center;
   height: 330px;
   display: flex;
   &__item{
@@ -39,4 +40,8 @@
       }
     }
   }
+}
+
+.three {
+  margin-left: 100px;
 }
