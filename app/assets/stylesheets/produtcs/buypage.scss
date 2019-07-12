@@ -1,0 +1,90 @@
+.text_center{
+  text-align: center;
+}
+
+.buy_content{
+  margin: 40px 0 0;
+  padding: 24px 12.5% 0;
+  border-top: 1px solid #f5f5f5;
+}
+.buy_content_first{
+  margin: 0;
+  padding: 24px 12.5% 0;
+  .buy_item{
+    &__inner{
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 320px;
+      margin: 0 auto;
+      &__img{
+        width: 64px;
+      }
+      &__text{
+        width: calc(100% - 80px);
+        margin: 0 0 0 16px;
+        text-align: left;
+        font-weight: 600;
+      }
+    }
+  }
+  .buy_btn_form{
+    width: 100%;
+    &__price{
+      margin: 8px 0 0;
+      line-height: 1.5;
+      font-weight: 600;
+      font-size: 22px;
+      span{
+        margin: 0 0 0 8px;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+    .point_not{
+      background: #ccc;
+      margin: 16px 0 0;
+      &__text{
+        cursor: default;
+        padding: 16px;
+        border: 1px solid #ccc;
+      }
+    }
+    .buy_price{
+      display: table;
+      border-collapse: collapse;
+      width: 100%;
+      div{
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+        .buy_price__left{
+          padding: 16px 0;
+          text-align: left;
+          
+        }
+        .buy_price__right{
+          display: table-cell;
+          padding: 16px 0;
+          float: right;
+        }
+      }
+    }
+  }
+}
+.buy_user_data{
+  max-width: 320px;
+  margin: 0 auto;
+  font-size: 14px;
+  h3{
+    font-weight: 600;
+  }
+  p{
+    text-align: right;
+    color: #0099e8;
+  }
+}
+
+.bg_gray{
+  background-color: #f5f5f5;
+}
