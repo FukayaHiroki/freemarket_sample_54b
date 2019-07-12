@@ -7,7 +7,7 @@
       %h2.main-block__head.registration 支払い方法
       %form.main-block__inner.registration-form
         .main-block__content
-          .card
+          .card.mypage_card
             %form.card__form{:action => "/pay", :method => "POST"}
             %span.charge-errors
             .card__form__content
@@ -18,19 +18,19 @@
                 %input.number{maxlength: "16", name: "number", placeholder: "半角数字のみ", type: "text", class: "card__form__group__box"}/
                 %ul.card__form__group__images
                   %li 
-                  = image_tag "visa.svg",class: "card__img"
+                  = image_tag "credit_card/visa.svg",class: "card__img"
                   %li 
-                  = image_tag "master-card.svg",class: "card__img"
+                  = image_tag "credit_card/master-card.svg",class: "card__img"
                   %li 
-                  = image_tag "saison-card.svg",class: "card__img"
+                  = image_tag "credit_card/saison-card.svg",class: "card__img"
                   %li 
-                  = image_tag "jcb.svg",class: "card__img"
+                  = image_tag "credit_card/jcb.svg",class: "card__img"
                   %li 
-                  = image_tag "american_express.svg",class: "card__img"
+                  = image_tag "credit_card/american_express.svg",class: "card__img"
                   %li 
-                  = image_tag "dinersclub.svg",class: "card__img"
+                  = image_tag "credit_card/dinersclub.svg",class: "card__img"
                   %li 
-                  = image_tag "discover.svg",class: "card__img"
+                  = image_tag "credit_card/discover.svg",class: "card__img"
               .card__form__group
                 .card__form__group__title
                   %label 有効期限
