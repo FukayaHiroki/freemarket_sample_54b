@@ -7,3 +7,19 @@
     width: 185px;    
   }
 }
+
+.progress-header {
+  height: 88px;
+  padding-top: 40px;
+  width: 700px;
+  margin: 0 auto;
+  &__image {
+    display: inline-block;
+    width: 185px;    
+  }
+}
+
+.progress img {
+  width: 500px;
+  padding-left: 30px;
+}

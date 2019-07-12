@@ -1,44 +1,48 @@
-.m_header
-  =render 'common/sub_header'
+.sub-container
+  %header.progress-header
+    %a.progress-header__image
+      = image_tag "logo.svg"
+    .progress-header__image.progress
+      = image_tag "progress_bar3.png"
 
-.main_wrapper
-  %main.main-block
-    %section.main-block__container
-      %h2.main-block__head.registration 発送元・お届け先住所入力
-      %form.main-block__inner.registration-form
-        .main-block__content
-          .form-group
-            %label.main-block__label お名前
-            %span.form-require.main-block__name 必須
-            %input.input_default{placeholder: "例）山田"}
-              %input.input_default{placeholder: "例）彩"}
-          .form-group
-            %label.main-block__label お名前カナ
-            %span.form-require.main-block__name 必須
-            %input.input_default{placeholder: "例）ヤマダ"}
-            %input.input_default{placeholder: "例）アヤ"}
-          .form-group
-            %label.main-block__label 郵便番号
-            %span.form-arbitray.main-block__name 任意
-            %input.input_default{placeholder: "例）1234567"}
-          .form-group
-            %label.main-block__label 都道府県
-            %span.form-arbitray.main-block__name 任意
-            %input.input_default{placeholder: "--"}
-          .form-group
-            %label.main-block__label 市町村
-            %span.form-arbitray.main-block__name 任意
-            %input.input_default{placeholder: "例) 横浜市緑区"}
-          .form-group
-            %label.main-block__label 番地
-            %span.form-arbitray.main-block__name 任意
-            %input.input_default{placeholder: "例) 青山1−1−1"}
-          .form-group
-            %label.main-block__label 建物名
-            %span.form-arbitray.main-block__name 任意
-            %input.input_default{placeholder: "例) 柳ビル103"}
-          .form-group
-            %button.profile_chapter__btn
-              次へ進む
-.m_footer
-  =render 'common/sub_footer'
+  .main_wrapper
+    %main.main-block
+      %section.main-block__container
+        %h2.main-block__head.registration 発送元・お届け先住所入力
+        %form.main-block__inner.registration-form
+          .main-block__content
+            .form-group
+              %label.main-block__label お名前
+              %span.form-require.main-block__name 必須
+              %input.input_default{placeholder: "例）山田"}
+                %input.input_default{placeholder: "例）彩"}
+            .form-group
+              %label.main-block__label お名前カナ
+              %span.form-require.main-block__name 必須
+              %input.input_default{placeholder: "例）ヤマダ"}
+              %input.input_default{placeholder: "例）アヤ"}
+            .form-group
+              %label.main-block__label 郵便番号
+              %span.form-arbitray.main-block__name 任意
+              %input.input_default{placeholder: "例）1234567"}
+            .form-group
+              %label.main-block__label 都道府県
+              %span.form-arbitray.main-block__name 任意
+              %input.input_default{placeholder: "--"}
+            .form-group
+              %label.main-block__label 市町村
+              %span.form-arbitray.main-block__name 任意
+              %input.input_default{placeholder: "例) 横浜市緑区"}
+            .form-group
+              %label.main-block__label 番地
+              %span.form-arbitray.main-block__name 任意
+              %input.input_default{placeholder: "例) 青山1−1−1"}
+            .form-group
+              %label.main-block__label 建物名
+              %span.form-arbitray.main-block__name 任意
+              %input.input_default{placeholder: "例) 柳ビル103"}
+            .form-group
+              %button.profile_chapter__btn
+                次へ進む
+  .m_footer
+    =render 'common/sub_footer'
