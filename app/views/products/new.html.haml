@@ -1,0 +1,105 @@
+.sub-container
+  =render 'common/sub_header'
+  .main_wrapper  
+    %main.main-block
+      %section.main-block__container
+        %h2.main-block__head.registration 商品の情報を入力
+        %form.sell_form
+          .sell_upload
+            .form-group
+              %label.main-block__label 出品画像
+              %span.form-require.main-block__name 必須
+              %br
+              %p.sell_upload__text
+                最大10枚までアップロードできます
+              .sell_upload__box
+                %input.sell_upload__drop
+                %pre.visible-pc
+                  ドラッグアンドドロップまたはクリックしてファイルをアップロード
+          .sell_content
+            .form-group
+              %label.main-block__label 商品名
+              %span.form-require.main-block__name 必須
+              %input.sell_center{placeholder: "商品名（必須 40文字まで)"}
+            .form-group
+              %label.main-block__label 商品の説明
+              %span.form-require.main-block__name 必須
+              %br
+              %input.textarea_defult{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）"}
+          .sell_content.clearfix
+            %h3.sell_sub 商品の詳細
+            .sell_form_box
+              .form-first
+                %label.main-block__label カテゴリー
+                %span.form-require.main-block__name 必須
+              .sell_form_box__tab
+                .select-wrap
+                  %select.select-default
+              .sell_space
+              .form-first
+                %label.main-block__label 商品の状態
+                %span.form-require.main-block__name 必須
+              .sell_form_box__tab
+                .select-wrap
+                  %select.select-default
+          .sell_content.clearfix
+            %h3.sell_sub 
+              配送について
+              = fa_icon 'question-circle'
+            .sell_form_box
+              .sell_space
+              .form-first
+                %label.main-block__label 配送料の負担
+                %span.form-require.main-block__name 必須
+              .sell_form_box__tab
+                .select-wrap
+                  %select.select-default
+              .sell_space
+              .form-first
+                %label.main-block__label 発送元の地域
+                %span.form-require.main-block__name 必須
+              .sell_form_box__tab
+                .select-wrap
+                  %select.select-default
+              .sell_space
+              .form-first
+                %label.main-block__label 発送までの日数
+                %span.form-require.main-block__name 必須
+              .sell_form_box__tab
+                .select-wrap
+                  %select.select-default
+          .sell_content.clearfix
+            %h3.sell_sub 
+              販売価格(300〜9,999,999)
+              = fa_icon 'question-circle'
+            .sell_form_box
+              %ul.sell_price
+                %li.form-group
+                  .clearfix
+                    %label.main-block__label.l-left 価格
+                    %span.form-require.main-block__name 必須 
+                    %span ¥
+                    .l-right.sell-price-input
+                      .l-mark
+                      %input.sell_center{placeholder: "例）300"}
+                %li.clearfix
+                  .l-left
+                    販売手数料 (10%)
+                  .l-right
+                %li.clearfix.bold
+                  .l-left
+                    販売利益
+                  .l-right
+          .sell_content.clearfix.sell-btn-box
+            .sell_content__text
+              %p 禁止されている出品、行為を必ずご確認ください。
+              %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
+              %p また、出品をもちまして加盟店規約に同意したことになります。
+            %button.profile_chapter__btn
+              出品する
+            .btn-gray
+              = link_to '' do
+                もどる
+
+.m_footer
+  =render 'common/sub_footer'
