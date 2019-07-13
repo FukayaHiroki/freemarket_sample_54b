@@ -12,7 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    redirect_to controller: 'users', action: 'sms'
   end
 
   # GET /resource/edit
@@ -23,7 +22,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     super
-    redirect_to controller: 'users', action: 'sms_confirm'
   end
 
   # DELETE /resource
@@ -54,7 +52,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    super(resource)
+    sign_up_sms_confirmation_sms_users_path
   end
 
   # The path used after sign up for inactive accounts.

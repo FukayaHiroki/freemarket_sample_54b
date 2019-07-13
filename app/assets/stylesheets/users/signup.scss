@@ -27,6 +27,7 @@
     }
   }
   &__buttons {
+    display: inline-block;
     width: 350px;
     height: 50px;
     line-height: 50px;
@@ -35,6 +36,7 @@
     justify-content: center;
     margin-top: 20px;
     position: relative;
+    color: black;
   }
 }
 
