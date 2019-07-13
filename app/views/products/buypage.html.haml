@@ -1,0 +1,64 @@
+.sub-container
+  %header.progress-header
+    %h1.text_center
+      %a.progress-header__image
+        = image_tag "logo.svg"
+  .main_wrapper  
+    %main.main-block
+      %section.main-block__container
+        %h2.main-block__head.registration 購入確認
+        %section.buy_content_first.buy_item
+          .buy_item__inner
+            %h3
+              = image_tag "item_detail.jpg", class: "buy_item__inner__img"
+            %p.buy_item__inner__text アイテムのタイトルが入る所になりますよ
+            .buy_btn_form
+              %p.buy_btn_form__price ¥66,000 送料込み
+              %ul.point_not
+                %li
+                  .point_not__text ポイントはありません
+              %ul.buy_price
+                %div
+                  .buy_price__left 支払い金額
+                  .buy_price__right ¥66,000
+              %button.profile_chapter__btn.length_btn
+                購入する
+        %section.buy_content
+          .buy_user_data
+            %h3 配送先
+            %address
+              〒000-0000
+              東京都 oo区oioioi2-00-0 okok000
+              山田　太郎
+            %p.change_btn 変更する >
+        %section.clearfix
+          .card
+            .card__info
+              .card__info__title
+                %h3 支払い方法
+              - if true #current_user.card.present?
+                %ul.card__info__index
+                  %li
+                    .a-card
+                      .a-card__image
+                        = image_tag "credit_card/visa.svg",class: "a-card__img"
+                      .a-card__num
+                        = "************1234"
+                      .a-card__exp
+                        = "10 / 23"
+                      %p.change_btn 変更する >
+              - else 
+                .card__add
+                  .card__add__btn
+                    %a
+                      = fa_icon 'credit-card', class: "card__add__btn__icon"
+                      クレジットカードを追加する
+%footer.sub-footer.bg_gray
+  %nav
+    %ul
+      %li.sub-footer__nav プライバシーポリシー
+      %li.sub-footer__nav メルカリ利用規約
+      %li.sub-footer__nav 特定商取引に関する表記
+  %a.sub-footer__image
+    = image_tag "logo-gray.svg"
+  %p.sub-footer__copy-write © 2019 Mercari

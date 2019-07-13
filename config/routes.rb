@@ -28,5 +28,5 @@ Rails.application.routes.draw do
   get 'sign_up' => 'users#signup'
   get 'sign_in' => 'users#login'
   get 'products/show' => 'products#show'
-
+  get 'item/buypage'  => 'products#buypage'
 end
