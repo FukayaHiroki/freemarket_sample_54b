@@ -38,13 +38,6 @@ ActiveRecord::Schema.define(version: 2019_07_17_085550) do
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
-  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "customer_id", null: false
-    t.string "card_id", null: false
-    t.index ["user_id"], name: "index_cards_on_user_id"
-  end
-
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "url", null: false
     t.bigint "product_id"
@@ -62,6 +55,8 @@ ActiveRecord::Schema.define(version: 2019_07_17_085550) do
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "detail", null: false
+    t.integer "price", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -73,6 +68,8 @@ ActiveRecord::Schema.define(version: 2019_07_17_085550) do
     t.integer "shipping_method_id", null: false
     t.bigint "large_category_id"
     t.index ["large_category_id"], name: "index_products_on_large_category_id"
+    t.bigint "image_id"
+    t.index ["image_id"], name: "index_products_on_image_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -108,6 +105,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_085550) do
   add_foreign_key "adresses", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "images", "products"
+  add_foreign_key "products", "images"
   add_foreign_key "products", "users"
   add_foreign_key "tradings", "products"
   add_foreign_key "tradings", "users"
