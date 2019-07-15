@@ -34,9 +34,20 @@
     = image_tag "top_page_footer_banner.jpg", class: "topbanner"
   = render partial: 'common/top-footer'
 = render partial: 'common/sell_btn'
-%p
-  %a#modal-open.button-link クリックするとモーダルウィンドウを開きます。
-#modal-content
-  %p 「閉じる」か「背景」をクリックするとモーダルウィンドウを終了します。
-  %p
-    %a#modal-close.button-link 閉じる
+.modal-container
+  #modal-content
+    .modal-content__box
+      .modal-content__box__text 確認
+      %p.modal-text-small
+        削除すると二度と復活できません
+        %br
+        削除する代わりに停止することもできます。
+        %br
+        %br
+        本当に削除しますか？
+    .modal-content__box__btn
+      .modal-content__box__btn__delete#modal-close
+        キャンセル
+      .modal-content__box__btn__delete
+        = link_to product_path, method: :delete, class: "button-link", id: "modal-close" do
+          削除する

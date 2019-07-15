@@ -5,6 +5,12 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find_by(id: 1)
   end
+  
+  def destory
+    @product = Post.find_by(id: params[:id])
+    @product.destroy
+    redirect_to("/")
+  end
 
   def buypage
   end

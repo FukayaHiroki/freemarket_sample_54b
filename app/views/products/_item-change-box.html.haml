@@ -4,22 +4,24 @@
   %p.text_center or
   = link_to "#", class: "item-change-box__btn item-btn-gray" do
     出品を一旦停止する
-  = link_to "#", class: "item-change-box__btn item-btn-gray #modal-open" do
+  .item-change-box__btn.item-btn-gray#modal-open
     この商品を削除する
 
 :javascript
-  $("#modal-open").click(
-    function(){
-      $(this).blur() ;
-      if($("#modal-overlay")[0]) return false ;
-      $("body").append('<div id="modal-overlay"></div>');
-      $("#modal-overlay").fadeIn("slow");
-      $("#modal-content").fadeIn("slow");
-    }
-  );
-
-  $("#modal-overlay,#modal-close").unbind().click(function(){
-    $("#modal-content,#modal-overlay").fadeOut("slow",function(){
-      $("#modal-overlay").remove();
+  $(function(){
+    $("#modal-open").click(
+      function(){
+        $(this).blur();
+        if($("#modal-overlay")[0]) return false ;
+        $("body").append('<div id="modal-overlay"></div>');
+        $("#modal-overlay").fadeIn("slow");
+        $("#modal-content").fadeIn("slow");
+      }
+    );
+    $("#modal-close").click(
+      function(){
+        $("#modal-content,#modal-overlay").fadeOut("slow",function(){
+        $("#modal-overlay").remove();
+      });
     });
   });
