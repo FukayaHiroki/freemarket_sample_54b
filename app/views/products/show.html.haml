@@ -34,3 +34,9 @@
     = image_tag "top_page_footer_banner.jpg", class: "topbanner"
   = render partial: 'common/top-footer'
 = render partial: 'common/sell_btn'
+%p
+  %a#modal-open.button-link クリックするとモーダルウィンドウを開きます。
+#modal-content
+  %p 「閉じる」か「背景」をクリックするとモーダルウィンドウを終了します。
+  %p
+    %a#modal-close.button-link 閉じる

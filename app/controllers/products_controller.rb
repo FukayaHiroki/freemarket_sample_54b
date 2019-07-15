@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find_by(id: 1)
   end
 
   def buypage
