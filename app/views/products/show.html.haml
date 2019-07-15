@@ -49,5 +49,5 @@
       .modal-content__box__btn__delete#modal-close
         キャンセル
       .modal-content__box__btn__delete
-        = link_to product_path, method: :delete, class: "button-link", id: "modal-close" do
+        = link_to product_path(@product), method: :delete, class: "button-link" do
           削除する
