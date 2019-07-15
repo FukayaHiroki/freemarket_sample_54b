@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :products, except: [:edit]
   get 'products/buy/:id' => 'products#buy'
   post 'confirm' => 'users#confirm'
+  post 'adress' => 'users#set_adress'
 
   # view確認用仮置き
   get 'identification' => 'users#identification'

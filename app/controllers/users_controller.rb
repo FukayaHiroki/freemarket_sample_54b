@@ -36,6 +36,15 @@ class UsersController < ApplicationController
     @adress = Adress.new
   end
 
+  def set_adress
+    @adress = Adress.new(adress_params)
+    if @adress.save
+      redirect_to sign_up_card_users_path
+    else
+      render :adress
+    end
+  end
+
   def card
   end
 
@@ -50,5 +59,11 @@ class UsersController < ApplicationController
   end
 
   def identification
+  end
+
+
+  private
+  def adress_params
+    params.require(:adress).permit(:family_name, :first_name, :family_name_kana, :first_name_kana, :postal_code, :prefecture_id, :city, :block, :building).merge(user_id: current_user.id)
   end
 end
