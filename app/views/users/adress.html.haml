@@ -9,13 +9,13 @@
     %main.main-block
       %section.main-block__container
         %h2.main-block__head.registration 発送元・お届け先住所入力
-        %form.main-block__inner.registration-form
+        = form_for(@user, html: {class: "main-block__inner registration-form"}) do |f| 
           .main-block__content
             .form-group
-              %label.main-block__label お名前
+              = f.label [:family_name, :first_name], "お名前",class: "main-block__label"
               %span.form-require.main-block__name 必須
-              %input.input_default{placeholder: "例）山田"}
-                %input.input_default{placeholder: "例）彩"}
+              = f.text_field :family_name, placeholder: "例) 山田", class:"input_default"
+              = f.text_field :first_name, placeholder: "例) 彩", class:"input_default"
             .form-group
               %label.main-block__label お名前カナ
               %span.form-require.main-block__name 必須

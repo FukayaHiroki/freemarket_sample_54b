@@ -15,9 +15,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+  end
 
   # PUT /resource
   def update
@@ -28,6 +28,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def destroy
   #   super
   # end
+
+  def add_phone
+    if current_user.update(phone: params[:user][:phone])
+      redirect_to sign_up_sms_confirmation_sms_users_path
+    else
+      render sign_up_sms_confirmation_users_path
+    end 
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -56,7 +64,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
+  def after_inactive_sign_up_path_for(resource)
+    sign_up_sms_confirmation_sms_users_path
+  end
+
+  # def after_update_path_for(resource)
+  #   sign_up_sms_confirmation_sms_users_path
   # end
 end
+

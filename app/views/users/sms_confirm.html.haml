@@ -9,14 +9,13 @@
     %main.main-block
       %section.main-block__container.height
         %h2.main-block__head.registration 電話番号認証
-        %form.main-block__inner.registration-form
+        %form.main-block__inner.registration-form{method: "post", action: "/confirm"}
           .main-block__content
             .form-group
               %label.main-block__label 認証番号
-              %input.input_default{placeholder: "認証番号を入力"}
+              %input.input_default{type: "text", name: "confirm",placeholder: "認証番号を入力"}
             %p.number_text.number_left SMSで届いた認証番号を入力してください
-            %button.profile_chapter__btn
-              認証して完了
+            %input.profile_chapter__btn{type: "submit", value: "認証して完了"}
             .main-block__content
               .form-group
                 %label.main-block__label 30秒たっても認証番号が届かない方へ

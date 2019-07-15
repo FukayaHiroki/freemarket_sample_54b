@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
   }
+  devise_scope :user do
+    patch 'users/:id', to: 'users/registrations#add_phone'
+  end 
+  
   root 'products#index'
   resources :users, only: [:show] do
     collection  do
@@ -13,14 +17,15 @@ Rails.application.routes.draw do
       get 'sign_up/card' => 'users#card'
       get 'sign_up/done' => 'users#done'
       get :logout
-
     end
     member do
       get :identification, :mycard, :mycard_create, :profile 
+      post :update 
     end
   end
   resources :products, except: [:edit]
   get 'products/buy/:id' => 'products#buy'
+  post 'confirm' => 'users#confirm'
 
   # view確認用仮置き
   get 'identification' => 'users#identification'
