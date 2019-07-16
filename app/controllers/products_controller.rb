@@ -7,4 +7,24 @@ class ProductsController < ApplicationController
 
   def buypage
   end
+
+  def new
+    @product = Product.new
+    @product.images.build
+  end
+
+  def create
+    @product = Product.create!(product_params)
+    if @product.save
+      redirect_to root_path
+    else
+      render :new
+    end
+
+  end
+  
+  private
+  def product_params
+    params.require(:product).permit(:name, :detail, images_attributes: [:url, :image_id]).merge(user_id: 1)
+  end
 end

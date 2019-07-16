@@ -4,7 +4,7 @@
     %main.main-block
       %section.main-block__container
         %h2.main-block__head.registration 商品の情報を入力
-        %form.sell_form
+        = form_for @product, url: {action: "create"}, html: { class: 'sell_form' } do |f|
           .sell_upload
             .form-group
               %label.main-block__label 出品画像
@@ -12,20 +12,23 @@
               %br
               %p.sell_upload__text
                 最大10枚までアップロードできます
-              .sell_upload__box
-                %input.sell_upload__drop
+              = f.fields_for :images do |i|
+                .sell_upload__box
+                = i.file_field :url, type: 'file', class: 'sell_upload__drop'
                 %pre.visible-pc
                   ドラッグアンドドロップまたはクリックしてファイルをアップロード
+                = f.submit class: 'profile_chapter__btn'
           .sell_content
             .form-group
               %label.main-block__label 商品名
               %span.form-require.main-block__name 必須
-              %input.sell_center{placeholder: "商品名（必須 40文字まで)"}
+              = f.text_field :name, class: 'sell_center', placeholder: "商品名（必須 40文字まで)"
+
             .form-group
               %label.main-block__label 商品の説明
               %span.form-require.main-block__name 必須
               %br
-              %input.textarea_defult{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）"}
+              = f.text_field :detail, class: 'textarea_defult', placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）"
           .sell_content.clearfix
             %h3.sell_sub 商品の詳細
             .sell_form_box
@@ -95,7 +98,7 @@
               %p 禁止されている出品、行為を必ずご確認ください。
               %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
               %p また、出品をもちまして加盟店規約に同意したことになります。
-            %button.profile_chapter__btn
+            -# = f.submit class: 'profile_chapter__btn' do
               出品する
             .btn-gray
               = link_to '' do
