@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_16_084003) do
+ActiveRecord::Schema.define(version: 2019_07_16_111238) do
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "url", null: false
@@ -18,6 +18,12 @@ ActiveRecord::Schema.define(version: 2019_07_16_084003) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_images_on_product_id"
+  end
+
+  create_table "large_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -32,6 +38,8 @@ ActiveRecord::Schema.define(version: 2019_07_16_084003) do
     t.integer "delivery_fee_id", null: false
     t.integer "shipping_speed_id", null: false
     t.integer "shipping_method_id", null: false
+    t.bigint "large_category_id"
+    t.index ["large_category_id"], name: "index_products_on_large_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -65,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_07_16_084003) do
   end
 
   add_foreign_key "images", "products"
+  add_foreign_key "products", "large_categories"
   add_foreign_key "products", "users"
   add_foreign_key "tradings", "products"
   add_foreign_key "tradings", "users"

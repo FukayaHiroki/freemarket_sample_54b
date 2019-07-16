@@ -14,7 +14,7 @@
                 最大10枚までアップロードできます
               = f.fields_for :images do |i|
                 .sell_upload__box
-                = i.file_field :url, type: 'file', class: 'sell_upload__drop'
+                = i.file_field :url, type: 'file', url: "images[:url][]", class: 'sell_upload__drop'
                 %pre.visible-pc
                   ドラッグアンドドロップまたはクリックしてファイルをアップロード
                 
@@ -36,8 +36,12 @@
                 %label.main-block__label カテゴリー
                 %span.form-require.main-block__name 必須
               .sell_form_box__tab
-                .select-wrap
-                  %select.select-default
+                = f.fields_for :large_category do |k|
+                  .select-wrap
+                  = k.text_field :name, class: 'select-default'
+                  -# = k.select :name, {prompt: "--"}, {class: "select-default"}
+                -# .select-wrap
+                -#   %select.select-default
               .sell_space
               .form-first
                 %label.main-block__label 商品の状態

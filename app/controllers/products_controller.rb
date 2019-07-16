@@ -12,11 +12,15 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.images.build
     @product.build_trading
+    @product.build_large_category
   end
 
   def create
     @product = Product.create!(product_params)
     if @product.save
+      # params[:images]['url'].each do |a|
+      #   @images = @product.images.create!(url: a)
+      # end
       redirect_to root_path
     else
       render :new
@@ -35,7 +39,8 @@ class ProductsController < ApplicationController
       :shipping_speed_id,
       :shipping_method_id,
       images_attributes: [:url, :product_id], 
-      trading_attributes: [:status, :user_id]
+      trading_attributes: [:status, :user_id],
+      large_category_attributes: [:name],
     ).merge(user_id: 1)
   end
 end
