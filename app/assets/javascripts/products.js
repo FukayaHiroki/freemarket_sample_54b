@@ -7,7 +7,7 @@ $(function() {
 	function moneyCalc() {
 		let inputNum = $('#sell_center').val();
 		let Input = parseInt(inputNum);
-		if (Input < 300 || Input > 1000000 || inputNum == ""){
+		if (Input < 300 || Input > 9999999 || inputNum == ""){
 			$(".sales-commission").text("-");
 			$(".sales-profit").text("-");
 			console.log(Input)
