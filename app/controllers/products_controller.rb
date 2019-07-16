@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.build
+    @product.build_trading
   end
 
   def create
@@ -20,11 +21,21 @@ class ProductsController < ApplicationController
     else
       render :new
     end
-
   end
   
   private
   def product_params
-    params.require(:product).permit(:name, :detail, images_attributes: [:url, :image_id]).merge(user_id: 1)
+    params.require(:product).permit(
+      :name, 
+      :detail,
+      :price, 
+      :prefecture_id, 
+      :condition_id,
+      :delivery_fee_id,
+      :shipping_speed_id,
+      :shipping_method_id,
+      images_attributes: [:url, :product_id], 
+      trading_attributes: [:status, :user_id]
+    ).merge(user_id: 1)
   end
 end
