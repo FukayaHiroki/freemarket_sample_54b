@@ -1,7 +1,7 @@
 .sub-container
   %header.progress-header
-    %a.progress-header__image
-      = image_tag "logo.svg"
+    = link_to root_path, class:"sub-header__image" do
+      = image_tag"logo.svg"
     .progress-header__image.progress
       = image_tag "progress_bar4.png"
 
@@ -9,17 +9,17 @@
   %main.main-block
     %section.main-block__container
       %h2.main-block__head.registration 支払い方法
-      %form.main-block__inner.registration-form
+      = form_tag(set_card_path, method: :post, class: "main-block__inner registration-form ", id: "charge-form") do
+        .payment-errors
         .main-block__content
           .card.mypage_card
-            %form.card__form{:action => "/pay", :method => "POST"}
             %span.charge-errors
             .card__form__content
               .card__form__group
                 .card__form__group__title
                   %label カード番号
                   %span.form-require 必須
-                %input.number{maxlength: "16", name: "number", placeholder: "半角数字のみ", type: "text", class: "card__form__group__box"}/
+                %input.number{maxlength: "16", name: "number", placeholder: "半角数字のみ", type: "text", class: "card__form__group__box number", id: "card_number"}/
                 %ul.card__form__group__images
                   %li 
                   = image_tag "credit_card/visa.svg",class: "card__img"
@@ -44,7 +44,7 @@
                     %label
                       = fa_icon 'angle-down', class:"card-icon"
                     .select
-                      %select.exp_month{id: "exp_month", class: "card__form__group__box card__form__group__box--number"}
+                      %select.exp_month{name: "exp_month", class: "card__form__group__box card__form__group__box--number", id: "exp_month"}
                         %option{value: 1}01
                         %option{value: 2}02
                         %option{value: 3}03
@@ -62,9 +62,9 @@
                     %label
                       = fa_icon 'angle-down', class:"card-icon"
                     .select
-                      %select.exp_month{id: "exp_year", class: "card__form__group__box card__form__group__box--number"}
-                        %option{value: 2019}19
-                        %option{value: 2020}20
+                      %select.exp_month{name: "exp_year", class: "card__form__group__box card__form__group__box--number", id: "exp_year"}
+                        %option{value: "2019"}19
+                        %option{value: "2020"}20
                         %option{value: 2021}21
                         %option{value: 2022}22
                         %option{value: 2023}23
@@ -79,13 +79,12 @@
                 .card__form__group__title
                   %label セキュリティコード
                   %span.form-require 必須
-                %input.cvc{:maxlength => "4", :name => "cvc", :placeholder => "カード背面4桁もしくは3桁の番号", :type => "text", class:"card__form__group__box"}/
+                %input.cvc{:maxlength => "4", :name => "cvc", :placeholder => "カード背面4桁もしくは3桁の番号", :type => "text", class:"card__form__group__box cvc",id: "cvc"}
                 .uinfo_chapter__right.u_text
                   %p
                     = link_to '' do
                       = fa_icon 'question-circle', class: "uinfo_l_icon"
                       カード裏面の番号とは？
-              -# =f.submit "追加する", class: "card__form__submit"
-              %button{type: "submit", class:"card__form__submit"} 次へ進む
+              = submit_tag "次へ進む", class: "card__form__submit", id: "token_submit"
 .m_footer
   =render 'common/sub_footer'

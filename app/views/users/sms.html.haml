@@ -1,7 +1,7 @@
 .sub-container
   %header.progress-header
-    %a.progress-header__image
-      = image_tag "logo.svg"
+    = link_to root_path, class:"sub-header__image" do
+      = image_tag"logo.svg"
     .progress-header__image.progress
       = image_tag "progress_bar2.png"
     

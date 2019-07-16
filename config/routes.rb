@@ -13,9 +13,10 @@ Rails.application.routes.draw do
       get 'sign_up/registration' => 'users#registration'
       get 'sign_up/sms_confirmation' => 'users#sms'
       get 'sign_up/sms_confirmation/sms' => 'users#sms_confirm'
-      get 'sign_up/deliver_adrerss' => 'users#adress'
+      get 'sign_up/deliver_adress' => 'users#adress'
       get 'sign_up/card' => 'users#card'
       get 'sign_up/done' => 'users#done'
+      
       get :logout
     end
     member do
@@ -25,17 +26,22 @@ Rails.application.routes.draw do
   end
   resources :products, except: [:edit]
   get 'products/buy/:id' => 'products#buy'
-  post 'confirm' => 'users#confirm'
-  post 'adress' => 'users#set_adress'
 
+  resources :cards do
+    collection  do
+      post 'pay' => 'cards#pay'
+    end
+  end
+
+  post 'confirm' => 'users#confirm'
+  post 'set_adress' => 'users#set_adress'
+  post 'set_card' => 'users#set_card'
   # view確認用仮置き
   get 'identification' => 'users#identification'
   get 'mycard' => 'users#mycard'
   get 'mycard_create' => 'users#mycard_create'
   get 'profile' => 'users#profile'
   get 'users' => 'users#show'
-  get 'sign_up' => 'users#signup'
-  get 'sign_in' => 'users#login'
   get 'products/show' => 'products#show'
 
 end

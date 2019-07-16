@@ -1,7 +1,7 @@
 .sub-container.view-height
   %header.progress-header
-    %a.progress-header__image
-      = image_tag "logo.svg"
+    = link_to root_path, class:"sub-header__image" do
+      = image_tag"logo.svg"
     .progress-header__image.progress
       = image_tag "progress_bar5.png"
 
@@ -15,7 +15,7 @@
             %p.number_text ありがとうございます。
             %p.number_text 会員登録が完了しました。
             .form-group
-              %button.profile_chapter__btn.length_btn
+              = link_to root_path, class:"profile_chapter__btn length_btn" do
                 メルカリをはじめる
         .done_banner
           = image_tag "done-banner.jpg", class: "done_banner"

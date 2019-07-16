@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
-  protect_from_forgery except: :confirm
+  protect_from_forgery except: [:confirm, :set_card]
+  before_action :back_to_sign, only: [:registration, :sms, :sms_confirm, :adress, :card, :done]
 
+  require "payjp"
+  
   def mycard
   end
 
@@ -46,7 +49,15 @@ class UsersController < ApplicationController
   end
 
   def card
+    @card = Card.new(user_id: current_user.id)
   end
+
+  def set_card
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    customer = Payjp::Customer.create(card: params['payjp_token']) #念の為metadataにuser_idを入れましたがなくてもOK
+    @card = Card.create(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+    redirect_to sign_up_done_users_path
+end
 
   def done
   end
@@ -65,5 +76,11 @@ class UsersController < ApplicationController
   private
   def adress_params
     params.require(:adress).permit(:family_name, :first_name, :family_name_kana, :first_name_kana, :postal_code, :prefecture_id, :city, :block, :building).merge(user_id: current_user.id)
+  end
+
+  def back_to_sign
+    if user_signed_in?
+      redirect_to new_user_session_path
+    end
   end
 end
