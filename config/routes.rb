@@ -43,5 +43,5 @@ Rails.application.routes.draw do
   get 'profile' => 'users#profile'
   get 'users' => 'users#show'
   get 'products/show' => 'products#show'
-
+  get 'item/buypage'  => 'products#buypage'
 end

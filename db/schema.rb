@@ -36,6 +36,46 @@ ActiveRecord::Schema.define(version: 2019_07_17_085550) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_cards_on_user_id"
+
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "url", null: false
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_images_on_product_id"
+  end
+
+  create_table "large_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "detail", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.integer "price"
+    t.integer "prefecture_id"
+    t.integer "condition_id", null: false
+    t.integer "delivery_fee_id", null: false
+    t.integer "shipping_speed_id", null: false
+    t.integer "shipping_method_id", null: false
+    t.bigint "large_category_id"
+    t.index ["large_category_id"], name: "index_products_on_large_category_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "tradings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "status", null: false
+    t.bigint "product_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_tradings_on_product_id"
+    t.index ["user_id"], name: "index_tradings_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -57,6 +97,12 @@ ActiveRecord::Schema.define(version: 2019_07_17_085550) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
   add_foreign_key "adresses", "users"
   add_foreign_key "cards", "users"
+  add_foreign_key "images", "products"
+  add_foreign_key "products", "users"
+  add_foreign_key "tradings", "products"
+  add_foreign_key "tradings", "users"
+
 end

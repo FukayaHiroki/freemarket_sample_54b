@@ -9,6 +9,7 @@
       = text_area :page, :comtent, class: 'comment_chapter__set-content'
       %button.comment_chapter__btn
         コメントする
+  = render partial: 'products/item-change-box'
   %ul.around-item
     %li
       = link_to "#" do
@@ -33,3 +34,20 @@
     = image_tag "top_page_footer_banner.jpg", class: "topbanner"
   = render partial: 'common/top-footer'
 = render partial: 'common/sell_btn'
+.modal-container
+  #modal-content
+    .modal-content__box
+      .modal-content__box__text 確認
+      %p.modal-text-small
+        削除すると二度と復活できません
+        %br
+        削除する代わりに停止することもできます。
+        %br
+        %br
+        本当に削除しますか？
+    .modal-content__box__btn
+      .modal-content__box__btn__delete#modal-close
+        キャンセル
+      .modal-content__box__btn__delete
+        = link_to product_path, method: :delete, class: "button-link", id: "modal-close" do
+          削除する

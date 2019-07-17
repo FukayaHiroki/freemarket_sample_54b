@@ -164,6 +164,31 @@
     }
   }
 }
+.item-change-box{
+  margin: 20px auto;
+  background: #fff;
+  padding: 8px 16px 8px 16px;
+  width: 668px;
+  float: center;
+  &__btn{
+    margin: 16px auto;
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    text-align: center;
+  }
+  .item-btn-edit{
+    background: #ea352d;
+    border: 1px solid #ea352d;
+    color: #fff;
+  }
+  .item-btn-gray{
+    background: #aaa;
+    border: 1px solid #aaa;
+    color: #fff;
+  }
+}
 .around-item{
   margin: 24px auto 0;
   width: 700px;
