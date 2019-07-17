@@ -39,9 +39,6 @@
                 = f.fields_for :large_category do |k|
                   .select-wrap
                   = k.text_field :name, class: 'select-default'
-                  -# = k.select :name, {prompt: "--"}, {class: "select-default"}
-                -# .select-wrap
-                -#   %select.select-default
               .sell_space
               .form-first
                 %label.main-block__label 商品の状態
