@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :large_category
   accepts_nested_attributes_for :large_category
   has_many :images, dependent: :destroy
