@@ -89,3 +89,13 @@
 .bg_gray{
   background-color: #f5f5f5;
 }
+
+.buy__done {
+  background-color: #FFFFAA;
+  height: 100px;
+  list-style: none;
+  padding-top: 50px;
+  &--head {
+    color: #FF570D;
+  }
+}
