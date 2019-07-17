@@ -1,0 +1,40 @@
+.user-container
+  = render partial: 'common/main-header'
+  .bread
+    = render 'common/bread'
+  .content.clearfix
+    .card
+      %h2.card__header 支払い方法
+      .card__info
+        .card__info__title
+          %h3 クレジットカード一覧
+        - if @card.present?
+          %ul.card__info__index
+            %li
+              .a-card
+                .a-card__image
+                  = image_tag "credit_card/visa.svg",class: "a-card__img"
+                .a-card__num
+                  = "**** **** ****" + @card.last4
+                .a-card__exp
+                  - exp_month = @card.exp_month.to_s
+                  - exp_year = @card.exp_year.to_s.slice(2,3)
+                  = exp_month + " / " + exp_year
+                = form_tag(delete_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
+                  %input{ type: "hidden", name: "card_id", value: "" }
+                  %button{class:"a-card__remove"} 削除する
+        - else 
+          .card__add
+            .card__add__btn
+              =link_to new_card_path do
+                = fa_icon 'credit-card', class: "card__add__btn__icon"
+                クレジットカードを追加する
+        .card__how
+          %a 支払い方法について＞
+    .side 
+      = render partial: "users/mycard_side_bar"
+    .clearfix::after
+  .top-banner
+    = image_tag "top_page_footer_banner.jpg", class: "topbanner"
+  = render partial: 'common/top-footer'
+= render partial: 'common/sell_btn'

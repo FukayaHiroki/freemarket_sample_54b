@@ -1,2 +1,86 @@
-%form{action: "/cards/pay", method: "post"}
-  %script.payjp-button{"data-key": "pk_test_19264dd500666ba93f0a5706", src: "https://checkout.pay.jp/"}
+.user-container
+  = render partial: 'common/main-header'
+  .bread
+    = render 'common/bread'
+  .content.clearfix
+    .card
+      %h2.card__header クレジットカード情報入力
+      = form_tag(cards_path, method: :post, class: "card__form",id:"charge-form") do
+        %span.charge-errors
+        .card__form__content
+          .card__form__group
+            .card__form__group__title
+              %label カード番号
+              %span.form-require 必須
+            %input.number{maxlength: "16", name: "number", placeholder: "半角数字のみ", type: "text", class: "card__form__group__box", id: "payment_card_no"}/
+            %ul.card__form__group__images
+              %li 
+              = image_tag "credit_card/visa.svg",class: "card__img"
+              %li 
+              = image_tag "credit_card/master-card.svg",class: "card__img"
+              %li 
+              = image_tag "credit_card/saison-card.svg",class: "card__img"
+              %li 
+              = image_tag "credit_card/jcb.svg",class: "card__img"
+              %li 
+              = image_tag "credit_card/american_express.svg",class: "card__img"
+              %li 
+              = image_tag "credit_card/dinersclub.svg",class: "card__img"
+              %li 
+              = image_tag "credit_card/discover.svg",class: "card__img"
+          .card__form__group
+            .card__form__group__title
+              %label 有効期限
+              %span.form-require 必須
+            .card__form__group__date
+              .card__form__group__date__sub
+                %label
+                  = fa_icon 'angle-down', class:"card-icon"
+                .select
+                  %select.exp_month{id: "card_expire_mm", :name => "exp_month", class: "card__form__group__box card__form__group__box--number"}
+                    %option{value: 1}01
+                    %option{value: 2}02
+                    %option{value: 3}03
+                    %option{value: 4}04
+                    %option{value: 5}05
+                    %option{value: 6}06
+                    %option{value: 7}07
+                    %option{value: 8}08
+                    %option{value: 9}09
+                    %option{value: 10}10
+                    %option{value: 11}11
+                    %option{value: 12}12
+                  %span 月
+              .card__form__group__date__sub
+                %label
+                  = fa_icon 'angle-down', class:"card-icon"
+                .select
+                  %select.exp_month{id: "card_expire_yy", :name => "exp_year", class: "card__form__group__box card__form__group__box--number"}
+                    %option{value: 2019}19
+                    %option{value: 2020}20
+                    %option{value: 2021}21
+                    %option{value: 2022}22
+                    %option{value: 2023}23
+                    %option{value: 2024}24
+                    %option{value: 2025}25
+                    %option{value: 2026}26
+                    %option{value: 2027}27
+                    %option{value: 2028}28
+                    %option{value: 2029}29
+                  %span 年
+          .card__form__group
+            .card__form__group__title
+              %label セキュリティコード
+              %span.form-require 必須
+            %input.cvc{:maxlength => "4", :name => "cvc", :placeholder => "カード背面4桁もしくは3桁の番号", :type => "text", class:"card__form__group__box", id: "cvc_code"}/
+            %p.form__help
+              %span.form__help__mark ？
+              カード裏面の番号とは？
+          %button{type: "submit", class:"card__form__submit", id:"submit-charge"} 追加する
+    .side 
+      = render partial: "users/mycard_side_bar"
+    .clearfix::after
+  .top-banner
+    = image_tag "top_page_footer_banner.jpg", class: "topbanner"
+  = render partial: 'common/top-footer'
+= render partial: 'common/sell_btn'
