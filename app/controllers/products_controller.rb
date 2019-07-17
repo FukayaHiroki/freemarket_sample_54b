@@ -34,6 +34,7 @@ class ProductsController < ApplicationController
     customer: card.customer_id,
     currency: 'jpy'
     )
+    # product_pathを使うとshowアクションになってしまうため、URLで指定
     redirect_to "/products/#{@product.id}/buy/done"
   end
 
