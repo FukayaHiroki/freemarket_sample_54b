@@ -93,7 +93,7 @@
                     %span ¥
                     .l-right.sell-price-input
                       .l-mark
-                      = f.number_field :price, class: 'sell_center', placeholder: "例）300"
+                      = f.text_field :price, id: 'sell_center', placeholder: "例）300"
                     = f.fields_for :trading do |n|
                       = n.hidden_field :status, value: 1
                       = n.hidden_field :user_id, value: 1
