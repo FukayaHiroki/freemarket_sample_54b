@@ -20,3 +20,18 @@
     updated_at: 2020-2-2
   )
 end
+
+10.times do |n|
+  Product.create!(
+    name: "item#{n}",
+    detail: "itemdetail#{n}",
+    user_id: 1,
+  )
+  1.upto(5) do |m|
+    Image.create!(
+      url: open('app/assets/images/item_detail.jpg'),
+    )
+  end
+end
+
+
