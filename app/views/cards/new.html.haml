@@ -37,7 +37,7 @@
                 %label
                   = fa_icon 'angle-down', class:"card-icon"
                 .select
-                  %select.exp_month{id: "card_expire_mm", :name => "exp_month", class: "card__form__group__box card__form__group__box--number"}
+                  %select.exp_month{id: "card_expire_mm", name: "exp_month", class: "card__form__group__box card__form__group__box--number"}
                     %option{value: 1}01
                     %option{value: 2}02
                     %option{value: 3}03
@@ -55,7 +55,7 @@
                 %label
                   = fa_icon 'angle-down', class:"card-icon"
                 .select
-                  %select.exp_month{id: "card_expire_yy", :name => "exp_year", class: "card__form__group__box card__form__group__box--number"}
+                  %select.exp_month{id: "card_expire_yy", name: "exp_year", class: "card__form__group__box card__form__group__box--number"}
                     %option{value: 2019}19
                     %option{value: 2020}20
                     %option{value: 2021}21
@@ -72,7 +72,7 @@
             .card__form__group__title
               %label セキュリティコード
               %span.form-require 必須
-            %input.cvc{:maxlength => "4", :name => "cvc", :placeholder => "カード背面4桁もしくは3桁の番号", :type => "text", class:"card__form__group__box", id: "cvc_code"}/
+            %input.cvc{maxlength: "4", name: "cvc", placeholder: "カード背面4桁もしくは3桁の番号", type: "text", class:"card__form__group__box", id: "cvc_code"}/
             %p.form__help
               %span.form__help__mark ？
               カード裏面の番号とは？
