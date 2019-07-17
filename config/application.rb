@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module FreemarketSample54b
   class Application < Rails::Application
-    config.action_controller.include_all_helpers = false
+    config.action_controller = false
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
