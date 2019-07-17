@@ -10,13 +10,13 @@ Rails.application.routes.draw do
   root 'products#index'
   resources :users, only: [:show] do
     collection  do
-      get 'sign_up/registration' => 'users#registration'
+      get 'sign_up/registration' => 'users/registrations#new'
       get 'sign_up/sms_confirmation' => 'users#sms'
       get 'sign_up/sms_confirmation/sms' => 'users#sms_confirm'
       get 'sign_up/deliver_adress' => 'users#adress'
       get 'sign_up/card' => 'users#card'
       get 'sign_up/done' => 'users#done'
-      
+      get 'new' => 'users#new'
       get :logout
     end
     member do

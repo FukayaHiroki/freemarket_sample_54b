@@ -1,19 +1,18 @@
 class UsersController < ApplicationController
   protect_from_forgery except: [:confirm, :set_card]
-  before_action :back_to_sign, only: [:registration, :sms, :sms_confirm, :adress, :card, :done]
+  before_action :back_to_sign, only: [:show, :profile, :identification, :mycard, :mycard_create, :logout] 
 
   require "payjp"
   
+  def profile
+  end
+
   def mycard
   end
 
   def mycard_create
   end
   
-  def registration
-    @user = User.new
-  end
-
   def sms
     @user = current_user
   end
@@ -79,8 +78,9 @@ end
   end
 
   def back_to_sign
-    if user_signed_in?
+    unless user_signed_in?
       redirect_to new_user_session_path
     end
   end
+
 end
