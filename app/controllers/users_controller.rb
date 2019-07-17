@@ -22,8 +22,8 @@ class UsersController < ApplicationController
 
   def confirm
     num = params[:confirm]
-    unless params[:confirm] == ""
-      redirect_to sign_up_deliver_adrerss_users_path
+    unless params[:confirm] == "" 
+      redirect_to sign_up_deliver_adress_users_path
     else 
       render :sms_confirm
     end
