@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :products, except: [:edit]
     get  'products/:id/buy'      => 'products#buy'
     get  'products/:id/buy/done' => 'products#done'
-    post 'products/pay'          => 'products#pay'
+    post 'products/:id/pay'      => 'products#pay'
   resources :cards, only: [:index, :new, :create] do
     collection  do
       post 'delete' => 'cards#delete'

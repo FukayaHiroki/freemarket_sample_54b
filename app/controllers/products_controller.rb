@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
   end
 
   def pay
-    @product = Product.find(1)
+    @product = Product.find(params[:id])
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
@@ -34,11 +34,11 @@ class ProductsController < ApplicationController
     :customer => card.customer_id,
     :currency => 'jpy'
     )
-    redirect_to "/products/buy/1/done"
+    redirect_to "/products/#{@product.id}/buy/done"
   end
 
   def done
-    @product = Product.find(1)
+    @product = Product.find(params[:id])
     card = Card.find_by(user_id: current_user.id)
     if card.blank?
     else
