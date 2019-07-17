@@ -9,7 +9,7 @@
     %main.main-block
       %section.main-block__container
         %h2.main-block__head.registration 電話番号の確認
-        = form_for(@user, html: {class: "main-block__inner registration-form"}) do |f| 
+        = form_for(current_user, html: {class: "main-block__inner registration-form"}) do |f| 
           .main-block__content
             .form-group
               = f.label :phone, "携帯電話の番号",class: "main-block__label"

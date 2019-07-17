@@ -29,8 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def add_phone
-    @user = current_user
-    if @user.update(phone: params[:user][:phone])
+    if current_user.update(phone: params[:user][:phone])
       redirect_to sign_up_sms_confirmation_sms_users_path
     else
       render template: "users/sms"

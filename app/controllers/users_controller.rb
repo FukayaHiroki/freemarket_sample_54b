@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   end
   
   def sms
-    @user = current_user
   end
 
   def sms_confirm
