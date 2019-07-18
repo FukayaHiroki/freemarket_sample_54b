@@ -28,3 +28,4 @@ public/uploads/*
 /app/controllers/application_controller.rb
 .DS_store
 config/credentials.yml.enc
+

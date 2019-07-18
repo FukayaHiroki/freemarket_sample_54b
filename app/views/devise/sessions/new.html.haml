@@ -6,7 +6,7 @@
     .login-panel
       .login-panel__no-account
         %p アカウントをお持ちでない方はこちら
-        = link_to '' do
+        = link_to users_path do
           新規会員登録
       .login-form-inner
         .main-block__buttons.facebook
@@ -15,17 +15,17 @@
         .main-block__buttons.google
           %i.fa.fa-google.sns__icon
           %p Googleでログイン
-      %form
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .login-inner
           .form-group_l
-            %input.login-form-inner__input{placeholder: "メールアドレス"}
-            %input.login-form-inner__input{placeholder: "パスワード"}
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス", class: "login-form-inner__input"
+            = f.password_field :password, autocomplete: "current-password", placeholder:"パスワード", class: "login-form-inner__input"
           .form-group
             %figure
-              = image_tag 'recaptcha.png', class: "recaptcha-center"
+              = image_tag 'recaptcha.png', class: "recaptcha-center"    
           .form-group
-            %button.profile_chapter__btn
-              ログイン
+            = hidden_field_tag :authenticity_token, form_authenticity_token
+            = f.submit "ログイン", class: "profile_chapter__btn"
             .form-group.uinfo_chapter__right
               %p.number_text.number_left
                 = link_to '' do

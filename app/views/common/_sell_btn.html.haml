@@ -1,3 +1,9 @@
 .sell__btn
-  .sell__btn--text 出品
-  %i.sell__btn--camera.fa.fa-camera
+  - if user_signed_in?
+    =link_to "" do
+      .sell__btn--text 出品
+      %i.sell__btn--camera.fa.fa-camera
+  - else
+    =link_to new_user_session_path do
+      .sell__btn--text 出品
+      %i.sell__btn--camera.fa.fa-camera

@@ -24,9 +24,12 @@
               %span ブランドから探す
       .header-bottom__right
         %ul
-          %li.header-bottom__right--signup
-            = link_to "",class:"header_btn--signup user-btn" do
-              新規登録会員
-          %li.header-bottom__right--logout
-            = link_to "",class: "header_btn--logout user-btn" do
-              ログイン
+          - unless user_signed_in?
+            %li.header-bottom__right--signup
+              = link_to users_path,class:"header_btn--signup user-btn" do
+                新規登録会員
+            %li.header-bottom__right--logout
+              = link_to new_user_session_path ,class: "header_btn--logout user-btn" do
+                ログイン
+          - else
+            = current_user.nickname

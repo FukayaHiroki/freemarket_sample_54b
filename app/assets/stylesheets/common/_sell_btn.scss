@@ -9,11 +9,14 @@
   border-radius: 50%;
   text-align: center;
   position: fixed;
+  text-decoration: none;
   &--text{
     margin-top: 32px;
+    color: white;
   }
   &--camera{
     font-size: 54px;
     vertical-align: center;
+    color: white;
   }
 }

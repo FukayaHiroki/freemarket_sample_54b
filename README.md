@@ -12,7 +12,7 @@
 |family_name_kana|string|null:false|
 |first_name_kana|string|null:false|
 |birthday|date|null:false|
-|phone|integer|null:false|
+|phone|string|null:false|
 
 
 ### Association
@@ -40,7 +40,7 @@
 |city|string|null: false|
 |block|string|null: false|
 |building|string|null: true|
-|sub_phone|integer|null: true|
+|sub_phone|string|null: true|
 |user_id|references|foreign_key: true|
 
 ### Association

@@ -12,8 +12,7 @@
     .profile_container
       %section.profile_chapter
         .profile_chapter__set-content
-          %button.profile_chapter__btn.length_btn.center_btn
-            ログアウト
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'profile_chapter__btn length_btn.center_btn'
   .top-banner
     = image_tag "top_page_footer_banner.jpg", class: "topbanner"
   .my_page_footer
