@@ -6,7 +6,7 @@ set :repo_url, "git@example.com:me/my_repo.git"
 
 # config valid only for current version of Capistrano
 # capistranoのバージョンを記載。固定のバージョンを利用し続け、バージョン変更によるトラブルを防止する
-
+set :linked_files, fetch(:linked_files, []).push("config/master.key")
 
 # Capistranoのログの表示に利用する
 set :application, 'freemarket_sample_54b'
