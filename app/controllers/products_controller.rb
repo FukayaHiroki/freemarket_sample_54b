@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
       )
     end
     # product_pathを使うとshowアクションになってしまうため、URLで指定
-    redirect_to "/products/#{@product.id}/buy/done"
+    redirect_to buy_done_product_path
   end
 
   def done
