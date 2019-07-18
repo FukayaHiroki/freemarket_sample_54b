@@ -7,14 +7,14 @@
   .main_wrapper  
     %main.main-block
       %section.main-block__container
-        %h2.main-block__head.registration 会員情報入力
+        %h2.main-block__head.registration#registration 会員情報入力
         = form_for(@user, method: "get", url: sign_up_sms_confirmation_users_path, class: "main-block__inner registration-form") do |f|
           = render "devise/shared/error_messages", resource: resource
           .main-block__content
             .form-group
               = f.label :nickname, "ニックネーム",class: "main-block__label"
               %span.form-require.main-block__name 必須
-              = f.text_field :nickname, placeholder: "例) メルカリ太郎", class:"input_default",  autofocus: true
+              = f.text_field :nickname, placeholder: "例) メルカリ太郎", class:"input_default",id: "nickname",  autofocus: true
             .form-group
               = f.label :email, "メールアドレス",class: "main-block__label"
               %span.form-require.main-block__name 必須
@@ -60,7 +60,7 @@
             .form-group
               %p.main-block__text.text_center
                 「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします
-              =f.submit "次へ進む", class: "profile_chapter__btn"
+              =f.submit "次へ進む", class: "profile_chapter__btn", id: "register-btn"
             .form-group.uinfo_chapter__right
               %p
                 = link_to '' do
