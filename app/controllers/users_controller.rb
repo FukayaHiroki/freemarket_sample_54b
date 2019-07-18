@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   end
   
   def sms
+    @user = User.new
   end
 
   def sms_confirm
@@ -30,10 +31,6 @@ class UsersController < ApplicationController
     else 
       render :sms_confirm
     end
-  end
-
-  def update
-    current_user.update(phone: params[:phone])
   end
 
 

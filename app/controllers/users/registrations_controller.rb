@@ -49,22 +49,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :family_name, :first_name, :family_name_kana, :first_name_kana, :birthday])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :family_name, :first_name, :family_name_kana, :first_name_kana, :birthday, :phone])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:phone])
-  end
+  # def configure_account_update_params
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:phone])
+  # end
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    sign_up_sms_confirmation_users_path
+    sign_up_sms_confirmation_sms_users_path
   end
 
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
-    sign_up_sms_confirmation_users_path
+    sign_up_sms_confirmation_sms_users_path
   end
 
   # def after_update_path_for(resource)
