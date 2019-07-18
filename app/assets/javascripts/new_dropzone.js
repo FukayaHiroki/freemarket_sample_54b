@@ -1,20 +1,21 @@
 $(function() {
-  $(document).on("turbolinks: load", function() {
-    var drop = $(".sell_upload__drop");
-    var derop2 = $(".sell_upload__drop2");
-    var appendzone = $(".sell_upload__area");
-    var preview = $("#preview");
-    var preview2 = $("#preview2");
+  $(document).on("change",'input[type= "file"].upload-image', function(e){
+    var file = e.target.files[0];
+    var reader = new FileReader();
+    
 
-    // 新規追加画像を格納する配列（ビュー用）
-    var photos = [];
+    // if(file.type.index0f("image") < 0){
+    //   alert("画像ファイルを指定してください。");
+    //   return false;
+    // }
 
-    // 新規追加画像を格納する配列（DB用）
-    var new_image_files = [];
+    reader.onload = (function(file){
+      console.log(this)
+      return function(e){
+        $("#preview").attr("src", e.target.result);
+      };
+    })(file);
+    reader.readAsDataURL(file);
 
-    $("#new_item .sell_upload__box, #new_item ..sell_upload__box2").on("change", 'input[type= "file"].upload-image', function() {
-
-      var file
-    })
   });
 });

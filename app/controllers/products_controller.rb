@@ -61,12 +61,12 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create!(product_params)
+    @product = Product.create(product_params)
     
     if @product.save
-      # new_image_params[:images].each do |image|
-      #   @product.images.create(url: image)
-      # end
+        # new_image_params[:images].each do |image|
+        #   @product.images.create(url: image)
+        # end
       redirect_to root_path
     else
       render :new
