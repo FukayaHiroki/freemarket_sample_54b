@@ -22,14 +22,31 @@
               %i
               =fa_icon "angle-double-left"
               %span ブランドから探す
-      .header-bottom__right
-        %ul
-          - unless user_signed_in?
+      - if user_signed_in?
+        .header-bottom__right
+          %ul
+            %li.header-bottom__right--likelist
+              = link_to "#",class:"header-bottom__right--font" do
+                %i.fa.fa-heart-o
+                %span いいね！一覧
+            %li.header-bottom__right--information
+              = link_to "#",class:"header-bottom__right--font" do
+                %i.fa.fa-bell-o
+                %span お知らせ
+            %li.header-bottom__right--todolist
+              = link_to "#",class:"header-bottom__right--font" do
+                %i.fa.fa-check
+                %span やることリスト
+            %li.header-bottom__right--mypage
+              = link_to "#",class:"header-bottom__right--font" do
+                %i.fa.fa-user
+                %span マイページ
+      - else
+        .header-bottom__right
+          %ul
             %li.header-bottom__right--signup
-              = link_to users_path,class:"header_btn--signup user-btn" do
+              = link_to "",class:"header_btn--signup user-btn" do
                 新規登録会員
             %li.header-bottom__right--logout
-              = link_to new_user_session_path ,class: "header_btn--logout user-btn" do
+              = link_to "",class: "header_btn--logout user-btn" do
                 ログイン
-          - else
-            = current_user.nickname

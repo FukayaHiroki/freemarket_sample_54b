@@ -12,7 +12,43 @@ class ProductsController < ApplicationController
     redirect_to("/")
   end
 
-  def buypage
+  require 'payjp'
+
+  def buy
+    @product = Product.find(params[:id])
+    card = Card.find_by(user_id: current_user.id)
+    if card.blank?
+    else
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @card = customer.cards.retrieve(card.card_id) 
+    end
+  end
+
+  def pay
+    @product = Product.find(params[:id])
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+    else
+      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+      Payjp::Charge.create(
+      amount:   @product.price,
+      customer: card.customer_id,
+      currency: 'jpy'
+      )
+    end
+    redirect_to buy_done_product_path
+  end
+
+  def done
+    @product = Product.find(params[:id])
+    card = Card.find_by(user_id: current_user.id)
+    if card.blank?
+    else
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @card = customer.cards.retrieve(card.card_id) 
+    end
   end
 
   def new

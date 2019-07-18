@@ -24,12 +24,16 @@ Rails.application.routes.draw do
       post :update 
     end
   end
-  resources :products, except: [:edit]
-  get 'products/buy/:id',  to: 'products#buy'
-
-  resources :cards do
+  resources :products, except: [:edit] do
+    member  do
+      get  'buy'      => 'products#buy'
+      get  'buy/done' => 'products#done'
+      post 'pay'      => 'products#pay'
+    end
+  end
+  resources :cards, only: [:index, :new, :create] do
     collection  do
-      post 'pay',  to: 'cards#pay'
+      post 'delete' => 'cards#delete'
     end
   end
 

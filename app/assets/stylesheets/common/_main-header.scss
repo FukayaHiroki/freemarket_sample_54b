@@ -96,6 +96,16 @@
           transition: 0.4s;
         }
       }
+      & li {
+        display: inline-block;
+      }
+      & span {
+        margin-left: 10px;
+      }
+      &--font {
+        color: #333333;
+        margin: 10px;
+      }
       .header_btn--logout{
         display: inline-block;
         color: #0099e8;
