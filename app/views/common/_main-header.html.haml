@@ -31,3 +31,5 @@
             %li.header-bottom__right--logout
               = link_to new_user_session_path ,class: "header_btn--logout user-btn" do
                 ログイン
+          - else
+            = current_user.nickname
