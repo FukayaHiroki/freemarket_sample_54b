@@ -66,8 +66,6 @@ ActiveRecord::Schema.define(version: 2019_07_17_085550) do
     t.integer "shipping_method_id", null: false
     t.bigint "large_category_id"
     t.index ["large_category_id"], name: "index_products_on_large_category_id"
-    t.bigint "image_id"
-    t.index ["image_id"], name: "index_products_on_image_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -103,9 +101,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_085550) do
   add_foreign_key "adresses", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "images", "products"
-  add_foreign_key "products", "images"
   add_foreign_key "products", "users"
   add_foreign_key "tradings", "products"
   add_foreign_key "tradings", "users"
-
 end
