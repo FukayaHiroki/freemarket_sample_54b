@@ -36,6 +36,8 @@ Rails.application.routes.draw do
       post 'delete' => 'cards#delete'
     end
   end
+  resources :products
+  get 'products/buy/:id' => 'products#buy'
 
   post 'confirm',  to: 'users#confirm'
   post 'set_adress',  to: 'users#set_adress'

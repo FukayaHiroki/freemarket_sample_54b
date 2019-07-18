@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: [:edit, :update]
+
   def index
   end
 
@@ -62,9 +64,25 @@ class ProductsController < ApplicationController
     @product = Product.create!(product_params)
     
     if @product.save
+      # new_image_params[:images].each do |image|
+      #   @product.images.create(url: image)
+      # end
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def edit
+    @product.images.build
+    @product.build_large_category
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
     end
   end
   
@@ -83,5 +101,13 @@ class ProductsController < ApplicationController
       trading_attributes: [:status, :user_id],
       large_category_attributes: [:name],
     ).merge(user_id: 1)
+  end
+
+  # def new_image_params
+  #   params.require(:new_images).permit({photos: []})
+  # end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 end
