@@ -37,7 +37,6 @@ class ProductsController < ApplicationController
       currency: 'jpy'
       )
     end
-    # product_pathを使うとshowアクションになってしまうため、URLで指定
     redirect_to buy_done_product_path
   end
 
