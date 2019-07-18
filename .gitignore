@@ -27,4 +27,5 @@ public/uploads/*
 /config/master.key
 /app/controllers/application_controller.rb
 .DS_store
-.env
+config/credentials.yml.enc
+
