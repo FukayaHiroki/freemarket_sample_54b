@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2019_07_19_032432) do
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
     t.date "birthday", null: false
-    t.integer "phone"
+    t.string "phone"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -101,7 +101,6 @@ ActiveRecord::Schema.define(version: 2019_07_19_032432) do
   add_foreign_key "adresses", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "images", "products"
-  add_foreign_key "products", "large_categories"
   add_foreign_key "products", "users"
   add_foreign_key "tradings", "products"
   add_foreign_key "tradings", "users"
