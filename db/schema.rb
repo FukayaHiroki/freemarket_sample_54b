@@ -55,9 +55,9 @@ ActiveRecord::Schema.define(version: 2019_07_17_085550) do
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "detail", null: false
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.integer "price"
     t.integer "prefecture_id"
     t.integer "condition_id", null: false
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_085550) do
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
     t.date "birthday", null: false
-    t.string "phone"
+    t.integer "phone"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
