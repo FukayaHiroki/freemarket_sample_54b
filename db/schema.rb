@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_17_085550) do
+ActiveRecord::Schema.define(version: 2019_07_19_032432) do
 
   create_table "adresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name", null: false
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_085550) do
   add_foreign_key "adresses", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "images", "products"
+  add_foreign_key "products", "large_categories"
   add_foreign_key "products", "users"
   add_foreign_key "tradings", "products"
   add_foreign_key "tradings", "users"
