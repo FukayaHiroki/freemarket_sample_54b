@@ -100,7 +100,7 @@ class ProductsController < ApplicationController
       images_attributes: [:url, :product_id], 
       trading_attributes: [:status, :user_id],
       large_category_attributes: [:name],
-    ).merge(user_id: 1)
+    ).merge(user_id: current_user.id)
   end
 
   # def new_image_params
