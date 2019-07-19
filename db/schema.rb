@@ -55,9 +55,9 @@ ActiveRecord::Schema.define(version: 2019_07_19_032432) do
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "detail", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.integer "price"
     t.integer "prefecture_id"
     t.integer "condition_id", null: false
@@ -101,7 +101,6 @@ ActiveRecord::Schema.define(version: 2019_07_19_032432) do
   add_foreign_key "adresses", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "images", "products"
-  add_foreign_key "products", "large_categories"
   add_foreign_key "products", "users"
   add_foreign_key "tradings", "products"
   add_foreign_key "tradings", "users"
