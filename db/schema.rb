@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 2019_07_19_032432) do
     t.bigint "large_category_id"
     t.index ["large_category_id"], name: "index_products_on_large_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
-    
   end
 
   create_table "tradings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -102,6 +101,7 @@ ActiveRecord::Schema.define(version: 2019_07_19_032432) do
   add_foreign_key "adresses", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "images", "products"
+  add_foreign_key "products", "large_categories"
   add_foreign_key "products", "users"
   add_foreign_key "tradings", "products"
   add_foreign_key "tradings", "users"

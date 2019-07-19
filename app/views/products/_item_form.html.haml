@@ -3,6 +3,10 @@
     %section.main-block__container
       %h2.main-block__head.registration 商品の情報を入力
       = form_for @product, html: { class: 'sell_form' } do |f|
+        - if @product.errors.any?
+          %ul
+          - @product.errors.full_messages.each do |message|
+            %li= message
         .sell_upload
           .form-group
             %label.main-block__label 出品画像
