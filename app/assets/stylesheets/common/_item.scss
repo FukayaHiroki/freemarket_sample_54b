@@ -13,6 +13,15 @@
       width: 213px;
       height: 213px;
       background-color:#ffffff;
+      figure {
+        margin: 0 auto;
+      }
+      img {
+        width: 213px;
+        height: 213px;
+        left: 0;
+        
+      }
     }
     &__body{
       background-color: #ffffff;
