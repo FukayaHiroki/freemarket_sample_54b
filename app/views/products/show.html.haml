@@ -9,14 +9,15 @@
       = text_area :page, :comtent, class: 'comment_chapter__set-content'
       %button.comment_chapter__btn
         コメントする
-  = render partial: 'products/item-change-box'
-  %ul.around-item
-    %li
-      = link_to "#" do
-        %i
-    %li
-      =link_to "#" do
-        %i
+  - if user_signed_in? && current_user.id == @product.user.id
+    = render partial: 'products/item-change-box'
+    %ul.around-item
+      %li
+        = link_to "#" do
+          %i
+      %li
+        =link_to "#" do
+          %i
   .sns-box
     %ul.sns-btn
       %li
