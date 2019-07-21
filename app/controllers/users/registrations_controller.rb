@@ -11,12 +11,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
+    SnsCredential.create(sns_params)
   end
 
   # GET /resource/edit
-  def edit
-    super
-  end
+  # def edit
+  #   super
+  # end
 
   # PUT /resource
   def update
@@ -65,6 +66,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
     sign_up_sms_confirmation_sms_users_path
+  end
+
+  def sns_params
+    params.require(:sns_credential).permit(:uid, :provider, :sns_token).merge(user_id: @user.id)
   end
 
   # def after_update_path_for(resource)

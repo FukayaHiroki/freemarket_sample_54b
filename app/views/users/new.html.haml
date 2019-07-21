@@ -9,7 +9,7 @@
           = link_to  new_user_registration_path ,class:"main-block__buttons mail" do
             %i.fa.fa-envelope-o.sns__icon
             メールアドレスで登録
-          = link_to "" ,class:"main-block__buttons facebook" do
+          = link_to user_facebook_omniauth_authorize_path ,class:"main-block__buttons facebook" do
             %i.fa.fa-facebook-square.sns__icon
             Facebookで登録
           = link_to "" ,class:"main-block__buttons google" do

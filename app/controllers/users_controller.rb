@@ -17,8 +17,14 @@ class UsersController < ApplicationController
   def mycard_create
   end
   
+  def facebook
+    @user = User.new
+    @sns_credemtial
+  end 
+
   def sms
     @user = User.new
+    @sns_credential = SnsCredential.new
   end
 
   def sms_confirm
@@ -76,6 +82,7 @@ end
   def adress_params
     params.require(:adress).permit(:family_name, :first_name, :family_name_kana, :first_name_kana, :postal_code, :prefecture_id, :city, :block, :building).merge(user_id: current_user.id)
   end
+
 
   def back_to_sign
     unless user_signed_in?

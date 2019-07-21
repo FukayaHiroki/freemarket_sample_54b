@@ -9,9 +9,9 @@
         = link_to users_path do
           新規会員登録
       .login-form-inner
-        .main-block__buttons.facebook
+        = link_to user_facebook_omniauth_authorize_path ,class:"main-block__buttons facebook" do
           %i.fa.fa-facebook-square.sns__icon
-          %p Facebookでログイン
+          Facebookで登録
         .main-block__buttons.google
           %i.fa.fa-google.sns__icon
           %p Googleでログイン
