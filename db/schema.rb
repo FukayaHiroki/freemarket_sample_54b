@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_20_095737) do
+ActiveRecord::Schema.define(version: 2019_07_21_052022) do
+
   create_table "adresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name", null: false
     t.string "first_name", null: false
@@ -35,6 +36,12 @@ ActiveRecord::Schema.define(version: 2019_07_20_095737) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -93,6 +100,7 @@ ActiveRecord::Schema.define(version: 2019_07_20_095737) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "introduction"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
