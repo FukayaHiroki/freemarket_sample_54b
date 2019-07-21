@@ -24,4 +24,7 @@ class Product < ApplicationRecord
   validates :prefecture_id, presence: { message: "選択してください" }
   validates :shipping_speed_id, presence: { message: "選択してください" }
   validates :user_id, presence: true
+
+  has_many :comments
+  has_many :comments_users, through: :comments
 end

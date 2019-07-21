@@ -20,6 +20,9 @@ class User < ApplicationRecord
   validates :family_name_kana, presence: true, format: { with: /[\p{katakana} ー－&&[^ -~｡-ﾟ]]+/, message: "カタカナで入力して下さい"}
   validates :first_name_kana, presence: true, format: { with: /[\p{katakana} ー－&&[^ -~｡-ﾟ]]+/, message: "カタカナで入力して下さい"}
 
+  has_many :comments, dependent: :destroy
+  has_many :comments_products, through: :comments
+
   def date_cannot_be_in_the_future
     if birthday.present? && birthday >= Date.today
       errors.add(:date, ": 正しい日付を入力してください")
