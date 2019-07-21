@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   require "payjp"
   
   def profile
+    
   end
 
   def mycard
