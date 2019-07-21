@@ -7,6 +7,10 @@ class UsersController < ApplicationController
   def profile
   end
 
+  def edit
+    
+  end
+
   def mycard
   end
 
