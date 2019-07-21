@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end 
   
   root 'products#index'
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :edit] do
     collection  do
       get 'sign_up/registration',  to: 'users/registrations#new'
       get 'sign_up/sms_confirmation',  to: 'users#sms'

@@ -33,10 +33,14 @@
               = link_to "#",class:"header-bottom__right--font" do
                 %i.fa.fa-bell-o
                 %span お知らせ
+              %ul.header-hide-item
+                %li
             %li.header-bottom__right--todolist
               = link_to "#",class:"header-bottom__right--font" do
                 %i.fa.fa-check
                 %span やることリスト
+              %ul.header-hide-item
+                %li.header-hide-item__todo 現在、やることリストはありません
             %li.header-bottom__right--mypage
               = link_to "/users/#{current_user.id}",class:"header-bottom__right--font" do
                 %i.fa.fa-user
