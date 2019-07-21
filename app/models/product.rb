@@ -12,7 +12,7 @@ class Product < ApplicationRecord
     belongs_to_active_hash :prefecture
     belongs_to_active_hash :condition
     belongs_to_active_hash :delivery
-    belongs_to_active_hash :shipping
+    belongs_to_active_hash :shipping_speed
     belongs_to_active_hash :shipping_method
 
   validates :name, presence: true, length: { maximum: 40 }
