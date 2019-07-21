@@ -7,6 +7,10 @@ class UsersController < ApplicationController
   def profile
   end
 
+  def edit
+    
+  end
+
   def mycard
   end
 
@@ -51,7 +55,7 @@ class UsersController < ApplicationController
   end
 
   def set_card
-    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp.api_key = Rails.application.credentials.payjp[:payjp_api_secret_key]
     customer = Payjp::Customer.create(card: params['payjp_token']) #念の為metadataにuser_idを入れましたがなくてもOK
     @card = Card.create(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
     redirect_to sign_up_done_users_path

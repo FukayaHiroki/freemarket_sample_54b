@@ -3,7 +3,7 @@
     .header-top
       .header-top__logo
         %h1
-          = link_to "#",class:"header-top__logo--href" do
+          = link_to "/",class:"header-top__logo--href" do
             %img.header-top__logo--img{src:"//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?270352715",alt:"mercari",width:"134"}
       .form.header-top__search
         %input.header-top__search--input{placeholder:"何かお探しですか？", type: "search"}
@@ -33,12 +33,16 @@
               = link_to "#",class:"header-bottom__right--font" do
                 %i.fa.fa-bell-o
                 %span お知らせ
+              %ul.header-hide-item
+                %li
             %li.header-bottom__right--todolist
               = link_to "#",class:"header-bottom__right--font" do
                 %i.fa.fa-check
                 %span やることリスト
+              %ul.header-hide-item
+                %li.header-hide-item__todo 現在、やることリストはありません
             %li.header-bottom__right--mypage
-              = link_to "#",class:"header-bottom__right--font" do
+              = link_to "/users/#{current_user.id}",class:"header-bottom__right--font" do
                 %i.fa.fa-user
                 %span マイページ
       - else

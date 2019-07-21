@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
     card = Card.find_by(user_id: current_user.id)
     if card.blank?
     else
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      Payjp.api_key = Rails.application.credentials.payjp[:payjp_api_secret_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @card = customer.cards.retrieve(card.card_id) 
     end
@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
     card = Card.where(user_id: current_user.id).first
     if card.blank?
     else
-      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+      Payjp.api_key = Rails.application.credentials.payjp[:payjp_api_secret_key]
       Payjp::Charge.create(
       amount:   @product.price,
       customer: card.customer_id,
@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
     card = Card.find_by(user_id: current_user.id)
     if card.blank?
     else
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      Payjp.api_key = Rails.application.credentials.payjp[:payjp_api_secret_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @card = customer.cards.retrieve(card.card_id) 
     end
