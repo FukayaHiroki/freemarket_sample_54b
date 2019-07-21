@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find_by(id: 1)
+    @product = Product.find(params[:id])
   end
   
   def destroy
