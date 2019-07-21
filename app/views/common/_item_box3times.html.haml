@@ -1,4 +1,4 @@
-%p.category__text 新着アイテム
+%p.category__text #{@product.user.nickname}さんのその他の出品
 .pickup-item__box.three
   - 3.times do
     = render partial: "common/item"

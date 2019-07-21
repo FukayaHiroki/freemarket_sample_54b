@@ -29,9 +29,7 @@
         %i.fa.fa-pinterest-square
 
   .pickup-item
-    %h3.pickup-item__heading ピックアップカテゴリー
-    - 3.times do
-      = render partial: 'common/item_box3times'
+    = render partial: 'common/item_box3times'
   .top-banner
     = image_tag "top_page_footer_banner.jpg", class: "topbanner"
   = render partial: 'common/top-footer'
