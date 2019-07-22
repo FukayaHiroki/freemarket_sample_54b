@@ -131,6 +131,7 @@
 }
 .header-hide-item{
   position: absolute;
+  // top: 44px;
   z-index: 1;
   display: none;
   width: 320px;
@@ -147,64 +148,7 @@
     font-size: 16px;
     color: #ccc;
   }
-  &__mypage{
-    position: absolute;
-    z-index: 1;
-    width: 320px;
-    background: #fff;
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
-    font-size: 14px;
-    .mypage-container{
-      text-align: center;
-      .mypage-top{
-        padding: 28px 0 0;
-        height: 80px;
-        background-image: image-url("mypage_user_head.png");
-        background-repeat: no-repeat;
-        background-size: 320px 80px;
-        .image-box{
-          overflow: hidden;
-          width: 60px;
-          height: 60px;
-          margin: 0 auto;
-          border-radius: 50%;
-          -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.08);
-          box-shadow: 0 1px 1px 0 rgba(0,0,0,0.08);
-          img{
-            width: 60px;
-            height: 60px;
-          }
-          &__name{
-            margin: 8px 0 0;
-            padding: 0 8px;
-            font-size: 16px;
-          }
-        }
-        .mypage-evaluation{
-          margin: 40px 0 0;
-          padding: 8px 8px 0;
-          font-size: 0;
-          text-align: center;
-        }
-      }
-    }
-  }
 }
 .activ{
   display: block;
-}
-
-
-.my_page_top {
-  height: 200px;
-  position: relative;
-  padding: 20px;
-  background-image: image-url("mypage_user_head.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  text-align: center;
-  &__number {
-    margin: 8px 0 0;
-    padding: 0;
-  }
 }
