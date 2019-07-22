@@ -26,5 +26,4 @@ class Product < ApplicationRecord
   validates :user_id, presence: true
 
   has_many :comments
-  has_many :comments_users, through: :comments
 end
