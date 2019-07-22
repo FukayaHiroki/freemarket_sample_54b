@@ -1,10 +1,13 @@
 .pickup-item__box__item
   .pickup-item__box__item__image
-    = image_tag "sample_bag.png"
+    %figure
+      = image_tag "#{product.images.first.url}"
   .pickup-item__box__item__body
-    %h3.pickup-item__box__item__body__text ブランドバッグ
+    %h3.pickup-item__box__item__body__text
+      = product.name
     .pickup-item__box__item__body__price
-      %p ¥5,000
+      %p 
+        = product.price
       .pickup-item__box__item__body__price__icon
         %p.pickup-item__box__item__body__price__icon__like
           %i.fa.fa-heart-o

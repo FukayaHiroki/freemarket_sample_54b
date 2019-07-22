@@ -24,7 +24,9 @@ Rails.application.routes.draw do
       post :update 
     end
   end
-  resources :products , except: [:edit] do
+
+  resources :products do
+
     member  do
       get  'buy'      => 'products#buy'
       get  'buy/done' => 'products#done'

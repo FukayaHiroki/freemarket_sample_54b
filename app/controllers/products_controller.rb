@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :update]
 
   def index
+    @products = Product.includes(:images).limit(4).order("created_at DESC")
+    # @products = Product.select(category_id: 1).includes(:images).limit(4).order("created_at DESC")
   end
 
   def show
