@@ -45,6 +45,14 @@
               = link_to "/users/#{current_user.id}",class:"header-bottom__right--font" do
                 %i.fa.fa-user
                 %span マイページ
+              .header-hide-item.header-hide-item__mypage
+                .mypage-container
+                  .mypage-top
+                    %div.image-box
+                      = image_tag 'mypage_user_icon.png'
+                      .image-box__name name
+                    %ul.mypage-evaluation
+                  
       - else
         .header-bottom__right
           %ul
