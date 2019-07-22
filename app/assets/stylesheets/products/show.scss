@@ -220,9 +220,27 @@
 .sns-btn {
   text-align: center;
   margin-top: 16px;
+  &__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    line-height: 44px;
+    &--facebook {
+      background-color: #385185;
+    }
+    &--twitter {
+      background-color: #5d9dc9;
+    }
+    &--pinterest {
+      background-color: #aa262a;
+    }
+  }
   li {
     display: inline-block;
     font-size: 30px;
+    i {
+      color: #ffffff;
+    }
   }
 }
 
