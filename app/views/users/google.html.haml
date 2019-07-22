@@ -14,11 +14,11 @@
             .form-group
               = f.label :nickname, "ニックネーム",class: "main-block__label"
               %span.form-require.main-block__name 必須
-              = f.text_field :nickname, placeholder: "例) メルカリ太郎", class:"input_default",id: "nickname",value: session['devise.facebook_data']['info']['name'],  autofocus: true
+              = f.text_field :nickname, placeholder: "例) メルカリ太郎", class:"input_default",id: "nickname",value: session['devise.google_data']['info']['name'],  autofocus: true
             .form-group
               = f.label :email, "メールアドレス",class: "main-block__label"
               %span.form-require.main-block__name 必須
-              = f.email_field :email, placeholder: "PC・携帯どちらでも可", class:"input_default", value: session['devise.facebook_data']['info']['email']
+              = f.email_field :email, placeholder: "PC・携帯どちらでも可", class:"input_default", value: session['devise.google_data']['info']['email']
             .form-group
               - pass = Devise.friendly_token(length = 6)
               = f.hidden_field :password, value: pass
@@ -55,9 +55,9 @@
             
             .form-group
               = fields_for(@sns_credential, url: sign_up_sms_confirmation_users_path) do |i|
-                = i.hidden_field :uid, value: session['devise.facebook_data']['uid']
-                = i.hidden_field :provider, value: session['devise.facebook_data']['provider']
-                = i.hidden_field :sns_token, value: session['devise.facebook_data']['credentials']['token']
+                = i.hidden_field :uid, value: session['devise.google_data']['uid']
+                = i.hidden_field :provider, value: session['devise.google_data']['provider']
+                = i.hidden_field :sns_token, value: session['devise.google_data']['credentials']['token']
             .form-group
               %p.main-block__text.text_center
                 「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     collection  do
       get 'sign_up/registration',  to: 'users/registrations#new'
       get 'sign_up/facebook', to: 'users#facebook'
+      get 'sign_up/google', to: 'users#google'
       get 'sign_up/sms_confirmation',  to: 'users#sms'
       get 'sign_up/sms_confirmation/sms',  to: 'users#sms_confirm'
       get 'sign_up/deliver_adress',  to: 'users#adress'

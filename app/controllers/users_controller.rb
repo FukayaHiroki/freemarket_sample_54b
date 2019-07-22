@@ -22,6 +22,11 @@ class UsersController < ApplicationController
     @sns_credemtial
   end 
 
+  def google
+    @user = User.new
+    @sns_credemtial
+  end
+
   def sms
     @user = User.new
     @sns_credential = SnsCredential.new
