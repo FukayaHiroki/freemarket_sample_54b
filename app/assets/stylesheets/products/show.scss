@@ -138,8 +138,16 @@
       border-radius: 15px;
       line-height: 1.5;
       margin: 10px 0 30px 0;
+    }
+    &__icon {
+      height: 20px;
       &--time {
         color: #aaaaaa;
+        float: left;
+      }
+      &--trash {
+        color: #aaaaaa;
+        float: right;
       }
     }
   }
