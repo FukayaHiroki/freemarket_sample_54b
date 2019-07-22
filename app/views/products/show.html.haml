@@ -3,13 +3,24 @@
   = render partial: 'common/bread'
 
   = render partial: 'item_detail'
-  - if user_signed_in?
-    .comment_chapter
-      %form.comment-form
+  .comment_chapter
+    .comment-content
+      - @comments.each do |comment|
+        .comment-content__username
+          = comment.user.nickname
+        %ul
+          %li.comment-content__body
+            = comment.content
+            .comment-content__body--time
+              %i.fa.fa-clock-o
+              = time_ago_in_words(comment.created_at)
+      
+    - if user_signed_in?
+      .comment-form
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        = text_area :page, :comtent, class: 'comment_chapter__set-content'
-        %button.comment_chapter__btn
-          コメントする
+        = form_for [@product, @comment] do |f|
+          = f.text_area :content, class: 'comment_chapter__set-content'
+          = f.submit 'コメントする', class: 'btn comment_chapter__btn'
   - if user_signed_in? && current_user.id == @product.user.id
     = render partial: 'products/item-change-box'
     %ul.around-item
