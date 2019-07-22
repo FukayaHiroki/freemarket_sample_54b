@@ -57,7 +57,6 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.images.build
     @product.build_trading
-    @product.build_large_category
 
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
@@ -80,7 +79,6 @@ class ProductsController < ApplicationController
 
   def edit
     @product.images.build
-    @product.build_large_category
   end
 
   def update
@@ -111,9 +109,9 @@ class ProductsController < ApplicationController
       :delivery_fee_id,
       :shipping_speed_id,
       :shipping_method_id,
+      :category_id,
       images_attributes: [:url, :product_id], 
       trading_attributes: [:status, :user_id],
-      large_category_attributes: [:name],
     ).merge(user_id: current_user.id)
   end
 
@@ -124,4 +122,6 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
   end
+
+  
 end
