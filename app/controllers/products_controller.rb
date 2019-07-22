@@ -7,7 +7,9 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product  = Product.find(params[:id])
+    @comments = @product.comments.includes(:user)
+    @comment  = Comment.new
   end
   
   def destroy
