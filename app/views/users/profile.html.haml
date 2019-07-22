@@ -16,10 +16,10 @@
         .profile_chapter__set-icon
           %figure
             = image_tag 'profile_icon.png'
-          = text_field :input,'', class: 'input_page', placeholder: 'ユーザー名'
+          = text_field :input,'', class: 'input_page', placeholder: '例)AYA☆セール中', value: current_user.nickname
         %form
           .profile_chapter__set-content
-            = text_area :page, :comtent, class: 'textarea', placeholder: 'こんにちは！ご覧いただきありがとうございます！'
+            = text_area :page, :comtent,class: 'textarea', placeholder: '例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪', value: current_user.introduction
             %button.profile_chapter__btn
               変更する
   .top-banner

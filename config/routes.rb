@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end 
   
   root 'products#index'
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :edit] do
     collection  do
       get 'sign_up/registration',  to: 'users/registrations#new'
       get 'sign_up/sms_confirmation',  to: 'users#sms'
@@ -24,11 +24,17 @@ Rails.application.routes.draw do
       post :update 
     end
   end
+
   resources :products do
+
     member  do
       get  'buy'      => 'products#buy'
       get  'buy/done' => 'products#done'
       post 'pay'      => 'products#pay'
+    end
+    collection do
+      get 'get_category_children', defaults: { format: 'json'}
+      get 'get_category_grandchildren', defaults: { format: 'json'}
     end
   end
   resources :cards, only: [:index, :new, :create] do

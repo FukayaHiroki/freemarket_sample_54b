@@ -1,7 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :user, optional: true
-  belongs_to :large_category
-  accepts_nested_attributes_for :large_category
+  belongs_to :category
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
   
@@ -24,6 +23,5 @@ class Product < ApplicationRecord
   validates :shipping_method_id, presence: { message: "選択してください" }
   validates :prefecture_id, presence: { message: "選択してください" }
   validates :shipping_speed_id, presence: { message: "選択してください" }
-  # validates :large_category_id, presence: { message: "選択してください" }
   validates :user_id, presence: true
 end
