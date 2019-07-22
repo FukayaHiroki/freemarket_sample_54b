@@ -24,11 +24,15 @@ Rails.application.routes.draw do
       post :update 
     end
   end
-  resources :products, except: [:edit] do
+  resources :products , except: [:edit] do
     member  do
       get  'buy'      => 'products#buy'
       get  'buy/done' => 'products#done'
       post 'pay'      => 'products#pay'
+    end
+    collection do
+      get 'get_category_children', defaults: { format: 'json'}
+      get 'get_category_grandchildren', defaults: { format: 'json'}
     end
   end
   resources :cards, only: [:index, :new, :create] do

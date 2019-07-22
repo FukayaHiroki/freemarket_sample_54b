@@ -51,10 +51,10 @@
             .form-first
               %label.main-block__label カテゴリー
               %span.form-require.main-block__name 必須
-            .sell_form_box__tab
-              = f.fields_for :large_category do |k|
-                .select-wrap
-                = k.text_field :name, class: 'select-default'
+            .sell_form_box__tab.sell_detail
+              .select-wrap
+                = f.select :category_id, @category_parent_array,{}, {class: "select-default", id: "parent-category"}
+                -# = f.collection_select :category_id, @parents,:name,{prompt: "---"}, class: "select-default", id: "parent-category", name: 'product[category_ids][]'
             .sell_space
             .form-first
               %label.main-block__label 商品の状態
@@ -109,7 +109,7 @@
                   %span ¥
                   .l-right.sell-price-input
                     .l-mark
-                    = f.number_field :price, class: 'sell_center', placeholder: "例）300"
+                    = f.text_field :price, id: 'sell_center', placeholder: "例）300"
                   = f.fields_for :trading do |n|
                     = n.hidden_field :status, value: 1
                     = n.hidden_field :user_id, value: 1
