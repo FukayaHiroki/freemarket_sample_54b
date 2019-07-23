@@ -2,3 +2,7 @@
 .pickup-item__box.three
   - @seller_products.each do |product|
     = render partial: "common/item", locals: { product: product }
+%p.category__text #{@product.category.name}その他の商品
+.pickup-item__box.three
+  - @category_products.each do |product|
+    = render partial: "common/item", locals: { product: product }
