@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   $('.header-bottom__right--todolist').hover(function(){
     $(this).addClass('active');
     var hideItem = $('.active').children('.header-hide-item');
