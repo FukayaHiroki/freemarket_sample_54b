@@ -14,6 +14,7 @@ class Product < ApplicationRecord
     belongs_to_active_hash :delivery
     belongs_to_active_hash :shipping
     belongs_to_active_hash :shipping_method
+    belongs_to_active_hash :size
 
   validates :name, presence: true, length: { maximum: 40 }
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999,message: "販売価格は300以上9,999,999以内で入力してください" }

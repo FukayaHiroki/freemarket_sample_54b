@@ -1,29 +1,14 @@
-$(function() {
-  $('upload-image').on('change', 'input[type="file"]', function(e){
-    var file = e.target.files[0],
-        reader = new FileReader(),
-        $preview = $("#preview");
-        t = this;
-
-    
-
-    if(file.type.index0f("image") < 0){
-      alert("画像ファイルを指定してください。");
-      return false;
-    }
+$(document).on("turbolinks:load", function() {
+  $('#new_item .sell_upload__box').on("change", 'input[type="file"].upload-image', function(e){
+    var file = e.target.files[0];
+    console.log(file)
+    var reader = new FileReader();
 
     reader.onload = (function(file){
-      console.log(reader)
       return function(e){
-        $preview.append($('<img>').attr({
-          src: e.target.result,
-          width: "150px",
-          title: file.name
-        }));
+        $("#img1").attr("src", e.target.result);
       };
     })(file);
     reader.readAsDataURL(file);
-    console.log(reader)
-
   });
 });
