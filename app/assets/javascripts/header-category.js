@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function(){
+  // HACK:同じ様なことをしているので、リファクタリング可能
   $('.w2').hover(function(){
     $(this).addClass('active');
     var hideItem = $('.active').children('.header-category-list');
