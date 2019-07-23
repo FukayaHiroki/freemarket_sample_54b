@@ -6,7 +6,7 @@
       .item__body__photo--bottom
         - @images.each do |image|
           .photo__block
-            = image_tag image[:url]
+            = image_tag image[:url], class: "photo__block--image"
     %table.item__body__detail
       %tbody
         %tr.tr_data
