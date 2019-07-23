@@ -267,3 +267,17 @@
     object-fit: cover;
   }
 }
+.font {
+  &__link {
+    color: #0099e8;
+  }
+  &__smile {
+    color: #ef5185;
+  }
+  &__meh {
+    color: #fba933;
+  }
+  &__frown {
+    color: #6ab5d8;
+  }
+}

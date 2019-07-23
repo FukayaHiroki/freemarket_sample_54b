@@ -11,13 +11,25 @@
       %tbody
         %tr.tr_data
           %th.th-left 出品者
-          %td.td-right #{@product.user.nickname}
+          %td.td-right
+            .font__link #{@product.user.nickname}
+            %i.fa.fa-smile-o.font__smile
+            0
+            %i.fa.fa-meh-o.font__meh
+            0
+            %i.fa.fa-frown-o.font__frown
+            0
         %tr.tr_data
           %th.th-left カテゴリー
-          %td.td-right レディース
+          %td.td-right.font__link 
+            #{@product.category.root.name}
+            %br
+            > #{@product.category.parent.name}
+            %br
+            > #{@product.category.name}
         %tr.tr_data
           %th.th-left ブランド
-          %td.td-right
+          %td.td-right.font__link
         %tr.tr_data
           %th.th-left 商品のサイズ
           %td.td-right FREE SIZE
@@ -32,7 +44,7 @@
           %td.td-right #{@product.shipping_method.name}
         %tr.tr_data
           %th.th-left 配送元地域
-          %td.td-right #{@product.prefecture.name}
+          %td.td-right.font__link #{@product.prefecture.name}
         %tr.tr_data
           %th.th-left 発送日の目安
           %td.td-right #{@product.shipping_speed.name}
@@ -48,8 +60,10 @@
   .btn-footer
     .btn-footer__left
       .btn-footer__left__like
-        %span いいね!
+        %i.fa.fa-heart-o
+        %span いいね! 0
       .btn-footer__left__report
+        %i.fa.fa-flag-o
         %span 不適切な商品の報告
     .btn-footer__right
       %p
