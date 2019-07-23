@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
 
   def show
     @product  = Product.find(params[:id])
+    @images   = @product.images
     @comments = @product.comments.includes(:user)
     @comment  = Comment.new
   end

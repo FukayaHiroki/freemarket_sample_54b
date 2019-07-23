@@ -2,7 +2,11 @@
   %h1.item__name #{@product.name}
   .item__body
     .item__body__photo
-      = image_tag @product.images[0][:url], class: "item__body__photo--image"
+      = image_tag @images[0][:url], class: "item__body__photo--image"
+      .item__body__photo--bottom
+        - @images.each do |image|
+          .photo__block
+            = image_tag image[:url]
     %table.item__body__detail
       %tbody
         %tr.tr_data
