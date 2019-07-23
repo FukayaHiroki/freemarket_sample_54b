@@ -23,6 +23,15 @@
         = form_for [@product, @comment] do |f|
           = f.text_area :content, class: 'comment_chapter__set-content', wrap: "hard" 
           = f.submit 'コメントする', class: 'btn comment_chapter__btn'
+  %ul.nav__link
+    %li.nav__link--prev
+      - if @product.previous
+        = link_to product_path(@product.previous) do
+          #{@product.previous.name}
+    %li.nav__link--next
+      - if @product.next
+        = link_to product_path(@product.next) do
+          #{@product.next.name}
   - if user_signed_in? && current_user.id == @product.user.id
     = render partial: 'products/item-change-box'
     %ul.around-item

@@ -281,3 +281,12 @@
     color: #6ab5d8;
   }
 }
+.nav__link {
+  width: 700px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  a {
+    color: #0099e8;
+  }
+}
