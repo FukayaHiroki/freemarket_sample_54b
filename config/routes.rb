@@ -1,10 +1,10 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw do #オーバーライドにともなって、使用するコントローラーの場所を指定
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
     omniauth_callbacks: "users/omniauth_callbacks" 
   }
-  devise_scope :user do
+  devise_scope :user do #deviseにアクション追加
     patch 'users/:id', to: 'users/registrations#add_phone'
   end 
   

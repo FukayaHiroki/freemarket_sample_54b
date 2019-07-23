@@ -10,7 +10,6 @@
         %h2.main-block__head.registration#registration 会員情報入力
         = form_for(@user, method: "get", url: sign_up_sms_confirmation_users_path, class: "main-block__inner registration-form") do |f|
           .main-block__content
-            -# = f.hidden_field :password, value: session[]
             .form-group
               = f.label :nickname, "ニックネーム",class: "main-block__label"
               %span.form-require.main-block__name 必須
