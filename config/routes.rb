@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   end
 
   resources :products do
-
     member  do
       get  'buy'      => 'products#buy'
       get  'buy/done' => 'products#done'
@@ -43,10 +42,9 @@ Rails.application.routes.draw do
       post 'delete' => 'cards#delete'
     end
   end
-  resources :products
-    post 'confirm',  to: 'users#confirm'
-    post 'set_adress',  to: 'users#set_adress'
-    post 'set_card',  to: 'users#set_card'
+  post 'confirm',  to: 'users#confirm'
+  post 'set_adress',  to: 'users#set_adress'
+  post 'set_card',  to: 'users#set_card'
   
   # view確認用仮置き
   get 'identification',  to: 'users#identification'
