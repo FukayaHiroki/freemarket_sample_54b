@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :update]
 
   def index
+    @category = Category.all
     @products = Product.include.limited(4)
     @category_men   = Product.include.category(340..470).limited(4)
     @category_women = Product.include.category(160..339).limited(4)
@@ -10,6 +11,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @category = Category.all
     @product  = Product.find(params[:id])
     @images   = @product.images
     @comments = @product.comments.includes(:user)
@@ -67,6 +69,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.images.build
     @product.build_trading
+    @category = Category.all
 
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|

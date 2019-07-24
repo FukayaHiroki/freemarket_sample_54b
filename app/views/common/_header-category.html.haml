@@ -1,0 +1,20 @@
+// HACK:同じ様なことをしているので、リファクタリング可能
+%ul.header-category-list
+  - @category.each do |parent| 
+    - if parent[:ancestry] == nil
+      %li.header-category-list__name
+        %h3.parent-category
+          = link_to "/",class:"category-list-link" do
+            = parent[:name]
+          %ul.header-category-children
+            - parent.children.each do |child|
+              %li.header-category-children__name
+                %h4.child-category
+                  = link_to "/", class: "category-child" do
+                    = child[:name]
+                  %ul.header-category-grandchildren
+                    - child.children.each do |grandchild|
+                      %li.header-category-grandchildren__name
+                        %h5
+                          = link_to "/", class:"category-grandchild" do
+                            = grandchild[:name]

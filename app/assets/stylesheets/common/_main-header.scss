@@ -152,3 +152,83 @@
 .activ{
   display: block;
 }
+// HACK:同じ様なことをしているので、リファクタリング可能
+.header-category-list{
+  height: 640px;
+  width: auto;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  display: none;
+  &__name{
+    width: 224px;
+    h3{
+      font-weight: 400;
+      font-size: 14px;
+      .category-list-link{
+        padding: 0 16px;
+        line-height: 44px;
+        color: #000000;
+        display: block;
+        &:hover{
+          background: #EA352D;
+          color: white;
+        }
+      }
+    }
+  }
+}
+.header-category-children{
+  display: none;
+  position: absolute;
+  width: auto;
+  top: 0;
+  left: 224px;
+  bottom: 0;
+  background: #fff;
+  box-shadow: 1px 0 0 0 #eee inset;
+  &__name{
+    width: 224px;
+    h4{
+      font-weight: 400px;
+      font-size: 14px;
+      .category-child{
+        padding: 0 16px;
+        line-height: 38px;
+        color: #000000;
+        display: block;
+        &:hover{
+          background: #EA352D;
+          color: white;
+        }
+      }
+    }
+  }
+}
+.header-category-grandchildren{
+  display: none;
+  position: absolute;
+  width: auto;
+  top: 0;
+  left: 224px;
+  bottom: 0;
+  background: #fff;
+  box-shadow: 1px 0 0 0 #eee inset;
+  &__name{
+    width: 224px;
+    h5{
+      font-weight: 400px;
+      font-size: 14px;
+      .category-grandchild{
+        padding: 0 16px;
+        line-height: 22px;
+        color: #000000;
+        display: block;
+        &:hover{
+          background: #EA352D;
+          color: white;
+        }
+      }
+    }
+  }
+}
