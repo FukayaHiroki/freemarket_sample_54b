@@ -120,6 +120,8 @@ class ProductsController < ApplicationController
       :shipping_speed_id,
       :shipping_method_id,
       :category_id,
+      :size_id,
+      :brand,
       images_attributes: [:url, :product_id], 
       trading_attributes: [:status, :user_id],
     ).merge(user_id: current_user.id)
