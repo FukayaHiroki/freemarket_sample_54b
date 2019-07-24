@@ -24,4 +24,8 @@ class Product < ApplicationRecord
   validates :prefecture_id, presence: { message: "選択してください" }
   validates :shipping_speed_id, presence: { message: "選択してください" }
   validates :user_id, presence: true
+
+  scope :include,  -> { includes(:images) }
+  scope :limited,  -> (count) { order("created_at DESC").limit(count) }
+  scope :category, -> (count) { where(category_id: count) }
 end
