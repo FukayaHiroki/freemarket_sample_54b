@@ -1,4 +1,8 @@
-%p.category__text 新着アイテム
+%p.category__text #{@product.user.nickname}さんのその他の出品
 .pickup-item__box.three
-  - 3.times do
-    = render partial: "common/item"
+  - @seller_products.each do |product|
+    = render partial: "common/item", locals: { product: product }
+%p.category__text #{@product.category.name}その他の商品
+.pickup-item__box.three
+  - @category_products.each do |product|
+    = render partial: "common/item", locals: { product: product }
