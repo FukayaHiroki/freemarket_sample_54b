@@ -2,7 +2,7 @@
   %h1.item__name #{@product.name}
   .item__body
     .item__body__photo
-      = image_tag @images[0][:url], class: "item__body__photo--image"
+      = image_tag "#{product.images.first.url}", class: "item__body__photo--image"
       .item__body__photo--bottom
         - @images.each do |image|
           .photo__block
