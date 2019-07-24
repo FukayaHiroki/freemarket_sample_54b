@@ -17,7 +17,8 @@
 
             = f.fields_for :images, @product.images.first do |image|
               .sell_upload__box.clearfix
-                -# #preview
+                .sell-upload-items
+                  %ul
                 .sell_upload__drop
                   = image.label :url, for: "upload-image" do
                     .sell_upload__area
@@ -25,13 +26,19 @@
                 %pre.visible-pc
                   ドラッグアンドドロップまたはクリックしてファイルをアップロード
 
-              .sell_upload__box.clearfix
-                #preview
-                  .sell-upload-items
-                    %ul
-                      %li.sell-upload-items
-                        %figure.sell-upload-figure
-                          = image_tag '', id: "img1"
+              -# .sell_upload__box.clearfix
+              -#   #preview
+              -#     .sell-upload-items
+              -#       %ul
+              -#         %li.sell-upload-item
+              -#           %figure.sell-upload-figure
+              -#             = image_tag 'white_dress.png', id: "img1"
+              -#           .sell-upload-button
+              -#             = link_to '', class: "" do
+              -#               編集
+              -#             = link_to '', class: "" do
+              -#               削除
+
                 -# .sell_upload__drop
                 -#   = image.label :url, for: "upload-image" do
                 -#     .sell_upload__area

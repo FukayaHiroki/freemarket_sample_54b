@@ -5,9 +5,9 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
   
 
-  has_one :trading
+  has_one :trading, dependent: :destroy
   has_one :trading_user, through: :tradings
-  accepts_nested_attributes_for :trading
+  accepts_nested_attributes_for :trading, allow_destroy: true
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to_active_hash :prefecture
     belongs_to_active_hash :condition
