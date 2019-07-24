@@ -17,22 +17,34 @@
 
             = f.fields_for :images, @product.images.first do |image|
               .sell_upload__box.clearfix
-                #preview
+                .sell-upload-items
+                  %ul
                 .sell_upload__drop
                   = image.label :url, for: "upload-image" do
                     .sell_upload__area
-                    = image.file_field :url, type: "file", id: "upload-image", class: "upload-image", 'data-image': 0
+                      = image.file_field :url, type: "file", id: "upload-image", class: "upload-image", 'data-image': 0
                 %pre.visible-pc
                   ドラッグアンドドロップまたはクリックしてファイルをアップロード
 
-              -# .sell_upload__box2.clearfix
-              -#   #preview2
-              -#   .sell_upload__drop2
-              -#     = image.label :url, for: "upload-image" do
-              -#       .sell_upload__area
-              -#       = image.file_field :url, id: "upload-image", class: "upload-image", 'data-image': 0
-              -#   %pre.visible-pc
-              -#     ドラッグアンドドロップまたはクリックしてファイルをアップロード
+              -# .sell_upload__box.clearfix
+              -#   #preview
+              -#     .sell-upload-items
+              -#       %ul
+              -#         %li.sell-upload-item
+              -#           %figure.sell-upload-figure
+              -#             = image_tag 'white_dress.png', id: "img1"
+              -#           .sell-upload-button
+              -#             = link_to '', class: "" do
+              -#               編集
+              -#             = link_to '', class: "" do
+              -#               削除
+
+                -# .sell_upload__drop
+                -#   = image.label :url, for: "upload-image" do
+                -#     .sell_upload__area
+                -#     = image.file_field :url, id: "upload-image", class: "upload-image", 'data-image': 0
+                -# %pre.visible-pc
+                -#   ドラッグアンドドロップまたはクリックしてファイルをアップロード
                 
         .sell_content
           .form-group
@@ -54,7 +66,23 @@
             .sell_form_box__tab.sell_detail
               .select-wrap
                 = f.select :category_id, @category_parent_array,{}, {class: "select-default", id: "parent-category"}
-                -# = f.collection_select :category_id, @parents,:name,{prompt: "---"}, class: "select-default", id: "parent-category", name: 'product[category_ids][]'
+
+            .sell_space
+            .form-first
+              %label.main-block__label サイズ
+              %span.form-require.main-block__name 必須
+            .sell_form_box__tab
+              .select-wrap
+                = f.collection_select :size_id, Size.all, :id, :name, {prompt: "--"}, {class: "select-default"}
+
+            .sell_space
+            .form-first
+              %label.main-block__label ブランド
+              %span.form-arbitray.main-block__name 任意
+            .sell_form_box__tab
+              .select-wrap
+                = f.text_field :brand, class: 'select-default', placeholder: "例）シャネル"
+
             .sell_space
             .form-first
               %label.main-block__label 商品の状態
@@ -73,7 +101,7 @@
               %span.form-require.main-block__name 必須
             .sell_form_box__tab
               .select-wrap
-                = f.collection_select :delivery_fee_id, Delivery.all, :id, :name, {prompt: "--"}, {class: "select-default"}
+                = f.collection_select :delivery_fee_id, DeliveryFee.all, :id, :name, {prompt: "--"}, {class: "select-default"}
             .sell_space
             .form-first
               %label.main-block__label 配送の方法
@@ -94,7 +122,7 @@
               %span.form-require.main-block__name 必須
             .sell_form_box__tab
               .select-wrap
-                = f.collection_select :shipping_speed_id, Shipping.all, :id, :name, {prompt: "--"}, {class: "select-default"}
+                = f.collection_select :shipping_speed_id, ShippingSpeed.all, :id, :name, {prompt: "--"}, {class: "select-default"}
             
         .sell_content.clearfix
           %h3.sell_sub

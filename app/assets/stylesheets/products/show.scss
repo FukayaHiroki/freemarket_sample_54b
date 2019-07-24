@@ -20,12 +20,17 @@
       float: left;
       min-width: 300px;
       max-width: 300px;
-      min-height: 375px;
+      min-height: 300px;
+      max-height: 300px;
       margin: 0 auto;
       background: #fafafa;
       &--image{
-        width: 100%;
-        height: 100%;
+        width: 300px;
+        height: 300px;
+        object-fit: contain;
+      }
+      &--bottom {
+        font-size: 0;
       }
     }
     &__detail{
@@ -75,8 +80,8 @@
     height: 60px;
     margin-top: 16px;
     background-color: #ea352d;
+    text-align: center;
     &__text{
-      text-align: center;
       color: white;
       font-size: 24px;
       font-weight: 600;
@@ -126,6 +131,31 @@
   width: 700px;
   color: rgb(51,51,51);
   background: #fff;
+  .comment-content {
+    padding: 24px;
+    &__username {
+      color: #ea352d;
+      text-align: right;
+    }
+    &__body {
+      background-color: #fbf0e6;
+      padding: 16px;
+      border-radius: 15px;
+      line-height: 1.5;
+      margin: 10px 0 30px 0;
+    }
+    &__icon {
+      height: 20px;
+      &--time {
+        color: #aaaaaa;
+        float: left;
+      }
+      &--trash {
+        color: #aaaaaa;
+        float: right;
+      }
+    }
+  }
   .comment-form{
     padding: 24px;
     p{
@@ -203,9 +233,60 @@
 .sns-btn {
   text-align: center;
   margin-top: 16px;
+  &__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    line-height: 44px;
+    &--facebook {
+      background-color: #385185;
+    }
+    &--twitter {
+      background-color: #5d9dc9;
+    }
+    &--pinterest {
+      background-color: #aa262a;
+    }
+  }
   li {
     display: inline-block;
     font-size: 30px;
+    i {
+      color: #ffffff;
+    }
   }
 }
 
+.photo__block {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  & img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+  }
+}
+.font {
+  &__link {
+    color: #0099e8;
+  }
+  &__smile {
+    color: #ef5185;
+  }
+  &__meh {
+    color: #fba933;
+  }
+  &__frown {
+    color: #6ab5d8;
+  }
+}
+.nav__link {
+  width: 700px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  a {
+    color: #0099e8;
+  }
+}
