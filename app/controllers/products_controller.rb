@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by(id: 1)
+    @category = Category.all
   end
   
   def destroy
@@ -60,6 +61,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.images.build
     @product.build_trading
+    @category = Category.all
 
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|

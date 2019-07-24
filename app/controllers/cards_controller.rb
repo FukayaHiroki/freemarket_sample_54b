@@ -3,6 +3,7 @@ class CardsController < ApplicationController
   require "payjp"
 
   def index
+    @category = Category.all
     card = Card.where(user_id: current_user.id).first
     if card.blank?
     else
