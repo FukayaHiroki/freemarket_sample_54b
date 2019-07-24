@@ -3,7 +3,10 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.includes(:images).limit(4).order("created_at DESC")
-    # @products = Product.select(category_id: 1).includes(:images).limit(4).order("created_at DESC")
+    @category_men   = Product.includes(:images).where(category_id: 340..470).limit(4).order("created_at DESC")
+    @category_women = Product.includes(:images).where(category_id: 160..339).limit(4).order("created_at DESC")
+    @category_baby  = Product.includes(:images).where(category_id: 471..586).limit(4).order("created_at DESC")
+    @category_cosme = Product.includes(:images).where(category_id: 867..954).limit(4).order("created_at DESC")
   end
 
   def show
