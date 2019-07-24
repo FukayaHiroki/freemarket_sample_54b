@@ -73,7 +73,7 @@
               %span.form-require.main-block__name 必須
             .sell_form_box__tab
               .select-wrap
-                = f.collection_select :delivery_fee_id, Delivery.all, :id, :name, {prompt: "--"}, {class: "select-default"}
+                = f.collection_select :delivery_fee_id, DeliveryFee.all, :id, :name, {prompt: "--"}, {class: "select-default"}
             .sell_space
             .form-first
               %label.main-block__label 配送の方法
@@ -94,7 +94,7 @@
               %span.form-require.main-block__name 必須
             .sell_form_box__tab
               .select-wrap
-                = f.collection_select :shipping_speed_id, Shipping.all, :id, :name, {prompt: "--"}, {class: "select-default"}
+                = f.collection_select :shipping_speed_id, ShippingSpeed.all, :id, :name, {prompt: "--"}, {class: "select-default"}
             
         .sell_content.clearfix
           %h3.sell_sub

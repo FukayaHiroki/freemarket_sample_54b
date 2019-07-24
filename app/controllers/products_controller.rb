@@ -10,7 +10,12 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find_by(id: 1)
+    @product  = Product.find(params[:id])
+    @images   = @product.images
+    @comments = @product.comments.includes(:user)
+    @comment  = Comment.new
+    @seller_products   = Product.where(user_id:     @product.user_id)    .limit(6).order("created_at DESC")
+    @category_products = Product.where(category_id: @product.category_id).limit(6).order("created_at DESC")
   end
   
   def destroy

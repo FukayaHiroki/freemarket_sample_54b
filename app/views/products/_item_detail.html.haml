@@ -1,60 +1,69 @@
 %section.item
-  %h1.item__name ブーツ！
+  %h1.item__name #{@product.name}
   .item__body
     .item__body__photo
-      = image_tag "item_detail.jpg", class: "item__body__photo--image"
+      = image_tag @images[0][:url], class: "item__body__photo--image"
+      .item__body__photo--bottom
+        - @images.each do |image|
+          .photo__block
+            = image_tag image[:url], class: "photo__block--image"
     %table.item__body__detail
       %tbody
         %tr.tr_data
           %th.th-left 出品者
-          %td.td-right うっちー
+          %td.td-right
+            .font__link #{@product.user.nickname}
+            %i.fa.fa-smile-o.font__smile
+            0
+            %i.fa.fa-meh-o.font__meh
+            0
+            %i.fa.fa-frown-o.font__frown
+            0
         %tr.tr_data
           %th.th-left カテゴリー
-          %td.td-right レディース
+          %td.td-right.font__link 
+            #{@product.category.root.name}
+            %br
+            > #{@product.category.parent.name}
+            %br
+            > #{@product.category.name}
         %tr.tr_data
           %th.th-left ブランド
-          %td.td-right UCCHI
+          %td.td-right.font__link
         %tr.tr_data
           %th.th-left 商品のサイズ
           %td.td-right FREE SIZE
         %tr.tr_data
           %th.th-left 商品の状態
-          %td.td-right 目立った傷や汚れなし
+          %td.td-right #{@product.condition.name}
         %tr.tr_data
           %th.th-left 配送料の負担
-          %td.td-right 送料込み(出品者負担)
+          %td.td-right #{@product.delivery_fee.name}
         %tr.tr_data
           %th.th-left 配送の方法
-          %td.td-right クリックポスト
+          %td.td-right #{@product.shipping_method.name}
         %tr.tr_data
           %th.th-left 配送元地域
-          %td.td-right 埼玉県
+          %td.td-right.font__link #{@product.prefecture.name}
         %tr.tr_data
           %th.th-left 発送日の目安
-          %td.td-right 4~7日で発送
+          %td.td-right #{@product.shipping_speed.name}
   .item__price-box
-    %span.item__price-box__price ￥1,000
+    %span.item__price-box__price ￥#{@product.price.to_s(:delimited)}
     %span.item__price-box__tax (税込)
-    %span.item__price-box__delivery_fee 送料込み
+    %span.item__price-box__delivery_fee #{@product.delivery_fee.short_name}
   .btn-buy
-    %ul.btn-buy__text 購入画面に進む
+    = link_to "購入画面に進む", buy_product_path, class: 'btn btn-buy__text'
   .item__description-box
     %p.description
-      着丈約95
-      身幅約49
-      Marble SUD 
-      ㈲ライトマン
-      %br
-      両腰ポケットあり
-      目立つ汚れなどはありませんが古着ご理解の上神経質な方はご遠慮ください。
-      %br
-      ワンピース
-      チュニック
+      #{@product.detail}
   .btn-footer
     .btn-footer__left
       .btn-footer__left__like
-        %span いいね!
+        %i.fa.fa-heart-o
+        %span いいね! 0
       .btn-footer__left__report
+        %i.fa.fa-flag-o
         %span 不適切な商品の報告
     .btn-footer__right
       %p

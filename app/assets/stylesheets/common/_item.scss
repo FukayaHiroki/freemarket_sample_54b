@@ -1,14 +1,13 @@
 .pickup-item__box {
   width: 700px;
   text-align: center;
-  height: 330px;
   display: flex;
   &__item{
     width: 213px;
     height: 100%;
     position: relative;
     margin:  auto;
-    margin-left: 20px;
+    margin: 10px 0 0 20px;
     &__image{
       width: 213px;
       height: 213px;
@@ -56,5 +55,6 @@
 }
 
 .three {
-  margin-left: 100px;
+  margin: 0 0 100px 100px;
+  flex-wrap: wrap;
 }

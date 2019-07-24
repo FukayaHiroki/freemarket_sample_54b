@@ -3,7 +3,8 @@ class Product < ApplicationRecord
   belongs_to :category
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
-  
+
+  has_many :comments
 
   has_one :trading
   has_one :trading_user, through: :tradings
@@ -11,8 +12,8 @@ class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to_active_hash :prefecture
     belongs_to_active_hash :condition
-    belongs_to_active_hash :delivery
-    belongs_to_active_hash :shipping
+    belongs_to_active_hash :delivery_fee
+    belongs_to_active_hash :shipping_speed
     belongs_to_active_hash :shipping_method
 
   validates :name, presence: true, length: { maximum: 40 }
@@ -28,4 +29,12 @@ class Product < ApplicationRecord
   scope :include,  -> { includes(:images) }
   scope :limited,  -> (count) { order("created_at DESC").limit(count) }
   scope :category, -> (count) { where(category_id: count) }
+
+  def previous
+    Product.where("id < ?", self.id).order("id DESC").first
+  end
+ 
+  def next
+    Product.where("id > ?", self.id).order("id ASC").first
+  end
 end
