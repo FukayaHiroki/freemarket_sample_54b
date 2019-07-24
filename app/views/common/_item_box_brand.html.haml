@@ -1,0 +1,27 @@
+%p.category__text シャネル 新着アイテム
+.pickup-item__box
+  - @products.each do |product|
+    = render partial: "common/item", locals: { product: product }
+.show-items
+  = link_to "すべての商品を見る"
+
+%p.category__text ルイヴィトン 新着アイテム
+.pickup-item__box
+  - @products.each do |product|
+    = render partial: "common/item", locals: { product: product }
+.show-items
+  = link_to "すべての商品を見る"
+
+%p.category__text シュプリーム 新着アイテム
+.pickup-item__box
+  - @products.each do |product|
+    = render partial: "common/item", locals: { product: product }
+.show-items
+  = link_to "すべての商品を見る"
+
+%p.category__text ナイキ 新着アイテム
+.pickup-item__box
+  - @products.each do |product|
+    = render partial: "common/item", locals: { product: product }
+.show-items
+  = link_to "すべての商品を見る"
