@@ -3,7 +3,8 @@ class Product < ApplicationRecord
   belongs_to :category
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
-  
+
+  has_many :comments
 
   has_one :trading
   has_one :trading_user, through: :tradings
@@ -25,7 +26,9 @@ class Product < ApplicationRecord
   validates :shipping_speed_id, presence: { message: "選択してください" }
   validates :user_id, presence: true
 
-  has_many :comments
+  scope :include,  -> { includes(:images) }
+  scope :limited,  -> (count) { order("created_at DESC").limit(count) }
+  scope :category, -> (count) { where(category_id: count) }
 
   def previous
     Product.where("id < ?", self.id).order("id DESC").first

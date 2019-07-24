@@ -4,13 +4,11 @@
     .top-banner
       = image_tag "top_page_header_banner.jpg", class: "topbanner"
     .pickup-item
-      - 4.times do
-        %h3.pickup-item__heading ピックアップカテゴリー
-        = render partial: 'common/item_box'
+      %h3.pickup-item__heading ピックアップカテゴリー
+      = render partial: 'common/item_box_category'
     .pickup-item
-      - 4.times do
-        %h3.pickup-item__heading ピックアップブランド
-        = render partial: 'common/item_box'
+      %h3.pickup-item__heading ピックアップブランド
+      = render partial: 'common/item_box_brand'
     .top-banner
       = image_tag "top_page_footer_banner.jpg", class: "topbanner"
   = render partial: 'common/top-footer'

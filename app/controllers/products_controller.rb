@@ -2,8 +2,11 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :update]
 
   def index
-    @products = Product.includes(:images).limit(4).order("created_at DESC")
-    # @products = Product.select(category_id: 1).includes(:images).limit(4).order("created_at DESC")
+    @products = Product.include.limited(4)
+    @category_men   = Product.include.category(340..470).limited(4)
+    @category_women = Product.include.category(160..339).limited(4)
+    @category_baby  = Product.include.category(471..586).limited(4)
+    @category_cosme = Product.include.category(867..954).limited(4)
   end
 
   def show
