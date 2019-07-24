@@ -1,14 +1,15 @@
-.pickup-item__box__item
-  .pickup-item__box__item__image
-    %figure
-      = image_tag "#{product.images.first.url}"
-  .pickup-item__box__item__body
-    %h3.pickup-item__box__item__body__text
-      = product.name
-    .pickup-item__box__item__body__price
-      %p 
-        = product.price
-      .pickup-item__box__item__body__price__icon
-        %p.pickup-item__box__item__body__price__icon__like
-          %i.fa.fa-heart-o
-        %p.pickup-item__box__item__body__price__icon__count 15
+= link_to product_path(product[:id]), class: "show-link" do
+  .pickup-item__box__item
+    .pickup-item__box__item__image
+      %figure
+        = image_tag "#{product.images.first.url}"
+    .pickup-item__box__item__body
+      %h3.pickup-item__box__item__body__text
+        = product.name
+      .pickup-item__box__item__body__price
+        %p 
+          = product.price
+        .pickup-item__box__item__body__price__icon
+          %p.pickup-item__box__item__body__price__icon__like
+            %i.fa.fa-heart-o
+          %p.pickup-item__box__item__body__price__icon__count 15
