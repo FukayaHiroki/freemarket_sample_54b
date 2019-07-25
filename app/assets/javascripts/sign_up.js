@@ -1,3 +1,4 @@
+// TODO: あとで記述追加します
 $(function(){
   $('#new_user').on('submit', function(e){
     e.preventDefault();
