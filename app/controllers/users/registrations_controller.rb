@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  prepend_before_action :check_captcha, only: [:create]
   # GET /users/sign_up
   def new
     super
@@ -10,8 +11,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
-    SnsCredential.create(sns_params)
+    if verify_recaptcha
+      super
+      SnsCredential.create(sns_params)
+    else
+      self.resource = resource_class.new
+      respond_with_navigational(resource) { render :new }
+    end
   end
 
   # GET /resource/edit
@@ -28,6 +34,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def destroy
   #   super
   # end
+
+
 
   def add_phone
     if current_user.update(phone: params[:user][:phone])
@@ -47,6 +55,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # protected
+
+  private
+    def check_captcha
+      unless verify_recaptcha
+        self.resource = resource_class.new sign_up_params
+        resource.validate # Look for any other validation errors besides Recaptcha
+        set_minimum_password_length
+        respond_with resource
+      end 
+    end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
