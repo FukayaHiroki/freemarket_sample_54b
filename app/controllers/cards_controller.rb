@@ -16,6 +16,7 @@ class CardsController < ApplicationController
 
   def new
     card = Card.where(user_id: current_user.id).first
+    @category = Category.all
     if card.blank?
     else
       redirect_to cards_path
