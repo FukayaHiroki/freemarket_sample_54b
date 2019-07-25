@@ -21,6 +21,7 @@ Rails.application.routes.draw do #オーバーライドにともなって、使�
       get 'sign_up/done',  to: 'users#done'
       get 'new',  to: 'users#new'
       get :logout
+      get :email_valid
     end
     member do
       get :identification, :mycard, :mycard_create, :profile 

@@ -25,6 +25,14 @@ class UsersController < ApplicationController
   def mycard_create
   end
   
+  def email_valid
+    @user = User.find_by(email: params[:email])
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+  
   def facebook
     @user = User.new
     @sns_credemtial
