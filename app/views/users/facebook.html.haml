@@ -9,24 +9,18 @@
       %section.main-block__container
         %h2.main-block__head.registration#registration 会員情報入力
         = form_for(@user, method: "get", url: sign_up_sms_confirmation_users_path, class: "main-block__inner registration-form") do |f|
-          = render "devise/shared/error_messages", resource: resource
           .main-block__content
             .form-group
               = f.label :nickname, "ニックネーム",class: "main-block__label"
               %span.form-require.main-block__name 必須
-              = f.text_field :nickname, placeholder: "例) メルカリ太郎", class:"input_default",id: "nickname",  autofocus: true
+              = f.text_field :nickname, placeholder: "例) メルカリ太郎", class:"input_default",id: "nickname",value: session['devise.facebook_data']['info']['name'],  autofocus: true
             .form-group
               = f.label :email, "メールアドレス",class: "main-block__label"
               %span.form-require.main-block__name 必須
-              = f.email_field :email, placeholder: "PC・携帯どちらでも可", class:"input_default"
+              = f.email_field :email, placeholder: "PC・携帯どちらでも可", class:"input_default", value: session['devise.facebook_data']['info']['email']
             .form-group
-              = f.label :password, "パスワード",class: "main-block__label"
-              %span.form-require.main-block__name 必須
-              = f.password_field :password, placeholder:"6文字以上" , class:"input_default"
-            .form-group
-              = f.label :password_confirmation, "パスワード（確認）",class: "main-block__label"
-              %span.form-require.main-block__name 必須
-              = f.password_field :password_confirmation, placeholder: "6文字以上", class:"input_default"
+              - pass = Devise.friendly_token(length = 6)
+              = f.hidden_field :password, value: pass
             .form-group
               %h3 本人確認
               %br
@@ -53,10 +47,16 @@
                 %p.uinfo_text
                   ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
               .card-date
-
+ 
             .form-group
               %figure
                 = image_tag 'recaptcha.png', class: "recaptcha"
+            
+            .form-group
+              = fields_for(@sns_credential, url: sign_up_sms_confirmation_users_path) do |i|
+                = i.hidden_field :uid, value: session['devise.facebook_data']['uid']
+                = i.hidden_field :provider, value: session['devise.facebook_data']['provider']
+                = i.hidden_field :sns_token, value: session['devise.facebook_data']['credentials']['token']
             .form-group
               %p.main-block__text.text_center
                 「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします
