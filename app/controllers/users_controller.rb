@@ -12,9 +12,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    
   end
 
+  def logout
+    @category = Category.all
+  end
+  
   def mycard
     @category = Category.all
   end
@@ -82,7 +85,6 @@ end
   end
 
   def login
-    @category = Category.all
   end
 
   def identification

@@ -48,9 +48,4 @@ Rails.application.routes.draw do #オーバーライドにともなって、使�
   post 'confirm',  to: 'users#confirm'
   post 'set_adress',  to: 'users#set_adress'
   post 'set_card',  to: 'users#set_card'
-  
-  # view確認用仮置き
-  get 'identification',  to: 'users#identification'
-  get 'profile',  to: 'users#profile'
-  get 'users',  to: 'users#show'
 end

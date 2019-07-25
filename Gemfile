@@ -81,6 +81,8 @@ gem 'carrierwave', '>= 2.0.0.rc', '<3.0'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'ancestry'
+gem 'gretel'
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+
