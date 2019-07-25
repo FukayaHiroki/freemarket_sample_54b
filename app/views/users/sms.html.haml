@@ -28,6 +28,7 @@
                 = i.hidden_field :uid, value: params[:uid]
                 = i.hidden_field :provider, value: params[:provider]
                 = i.hidden_field :sns_token, value: params[:sns_token]
+              %input.input_default{type: "hidden", name:'g-recaptcha-response', value: params['g-recaptcha-response']}
             .form-group
               =f.submit "SMSを送信する", class: "profile_chapter__btn"
               %p.number_text.number_left
