@@ -82,3 +82,7 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem 'ancestry'
 gem 'gretel'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+

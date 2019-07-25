@@ -25,6 +25,7 @@ class Product < ApplicationRecord
   validates :shipping_method_id, presence: { message: "選択してください" }
   validates :prefecture_id, presence: { message: "選択してください" }
   validates :shipping_speed_id, presence: { message: "選択してください" }
+  validates :category_id, presence: { message: "選択してください" }
   validates :user_id, presence: true
 
   scope :include,  -> { includes(:images) }
