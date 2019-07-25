@@ -3,8 +3,12 @@ class UsersController < ApplicationController
   before_action :back_to_sign, only: [:show, :profile, :identification, :mycard, :mycard_create, :logout] 
 
   require "payjp"
-  
+  def show
+    @category = Category.all
+  end
+
   def profile
+    @category = Category.all
   end
 
   def edit
@@ -12,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def mycard
+    @category = Category.all
   end
 
   def mycard_create
@@ -77,9 +82,11 @@ end
   end
 
   def login
+    @category = Category.all
   end
 
   def identification
+    @category = Category.all
   end
 
 

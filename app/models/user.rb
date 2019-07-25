@@ -14,7 +14,7 @@ class User < ApplicationRecord
   # has_many :comment_products, through: :comments
   # has_many :like_products, through: :likes
   has_many :sns_credentials, dependent: :destroy
-
+  has_many :comments, dependent: :destroy
 
   with_options on: :create do |create|
     create.validates :nickname, presence: true
@@ -48,6 +48,7 @@ class User < ApplicationRecord
   end
   
   private
+
   def date_cannot_be_in_the_future
     if birthday.present? && birthday >= Date.today
       errors.add(:date, ": 正しい日付を入力してください")

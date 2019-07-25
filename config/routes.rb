@@ -29,7 +29,6 @@ Rails.application.routes.draw do #オーバーライドにともなって、使�
   end
 
   resources :products do
-
     member  do
       get  'buy'      => 'products#buy'
       get  'buy/done' => 'products#done'
@@ -39,25 +38,19 @@ Rails.application.routes.draw do #オーバーライドにともなって、使�
       get 'get_category_children', defaults: { format: 'json'}
       get 'get_category_grandchildren', defaults: { format: 'json'}
     end
+    resources :comments, only: [:create]
   end
   resources :cards, only: [:index, :new, :create] do
     collection  do
       post 'delete' => 'cards#delete'
     end
   end
-  resources :products
-  get 'products/buy/:id' => 'products#buy'
-
   post 'confirm',  to: 'users#confirm'
   post 'set_adress',  to: 'users#set_adress'
   post 'set_card',  to: 'users#set_card'
   
   # view確認用仮置き
   get 'identification',  to: 'users#identification'
-  get 'mycard',  to: 'users#mycard'
-  get 'mycard_create',  to: 'users#mycard_create'
   get 'profile',  to: 'users#profile'
   get 'users',  to: 'users#show'
-  get 'products/show',  to: 'products#show'
-  get 'item/buypage' ,  to: 'products#buypage'
 end

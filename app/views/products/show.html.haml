@@ -4,32 +4,57 @@
 
   = render partial: 'item_detail'
   .comment_chapter
-    %form.comment-form
-      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      = text_area :page, :comtent, class: 'comment_chapter__set-content'
-      %button.comment_chapter__btn
-        コメントする
-  = render partial: 'products/item-change-box'
-  %ul.around-item
-    %li
-      = link_to "#" do
-        %i
-    %li
-      =link_to "#" do
-        %i
+    .comment-content
+      - @comments.each do |comment|
+        .comment-content__username
+          = comment.user.nickname
+        %ul
+          %li.comment-content__body
+            = comment.content
+            .comment-content__icon
+              .comment-content__icon--time
+                %i.fa.fa-clock-o
+                = time_ago_in_words(comment.created_at)
+              .comment-content__icon--trash
+                %i.fa.fa-trash
+    - if user_signed_in?
+      .comment-form
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        = form_for [@product, @comment] do |f|
+          = f.text_area :content, class: 'comment_chapter__set-content', wrap: "hard" 
+          = f.submit 'コメントする', class: 'btn comment_chapter__btn'
+  %ul.nav__link
+    %li.nav__link--prev
+      - if @product.previous
+        = link_to product_path(@product.previous) do
+          #{@product.previous.name}
+    %li.nav__link--next
+      - if @product.next
+        = link_to product_path(@product.next) do
+          #{@product.next.name}
+  - if user_signed_in? && current_user.id == @product.user.id
+    = render partial: 'products/item-change-box'
+    %ul.around-item
+      %li
+        = link_to "#" do
+          %i
+      %li
+        =link_to "#" do
+          %i
   .sns-box
     %ul.sns-btn
       %li
-        %i.fa.fa-facebook-square
+        .sns-btn__icon.sns-btn__icon--facebook
+          %i.fa.fa-facebook-square
       %li
-        %i.fa.fa-twitter-square
+        .sns-btn__icon.sns-btn__icon--twitter
+          %i.fa.fa-twitter
       %li
-        %i.fa.fa-pinterest-square
+        .sns-btn__icon.sns-btn__icon--pinterest
+          %i.fa.fa-pinterest
 
   .pickup-item
-    %h3.pickup-item__heading ピックアップカテゴリー
-    - 3.times do
-      = render partial: 'common/item_box3times'
+    = render partial: 'common/item_box3times'
   .top-banner
     = image_tag "top_page_footer_banner.jpg", class: "topbanner"
   = render partial: 'common/top-footer'
