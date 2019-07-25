@@ -11,8 +11,8 @@ class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to_active_hash :prefecture
     belongs_to_active_hash :condition
-    belongs_to_active_hash :delivery
-    belongs_to_active_hash :shipping
+    belongs_to_active_hash :delivery_fee
+    belongs_to_active_hash :shipping_speed
     belongs_to_active_hash :shipping_method
     belongs_to_active_hash :size
 
@@ -26,4 +26,14 @@ class Product < ApplicationRecord
   validates :shipping_speed_id, presence: { message: "選択してください" }
   validates :category_id, presence: { message: "選択してください" }
   validates :user_id, presence: true
+
+  has_many :comments
+
+  def previous
+    Product.where("id < ?", self.id).order("id DESC").first
+  end
+ 
+  def next
+    Product.where("id > ?", self.id).order("id ASC").first
+  end
 end
