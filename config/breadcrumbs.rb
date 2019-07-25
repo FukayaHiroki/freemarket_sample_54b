@@ -2,10 +2,30 @@ crumb :root do
   link "メルカリ", root_path
 end
 
-crumb :mypage do
-  link "マイページ", users_path
+crumb :user_mypage do 
+  link "マイページ", "/users/#{current_user.id}"
+  parent :root
 end
 
+crumb :profile do
+  link "プロフィール", profile_user_path(current_user.id)
+  parent :user_mypage
+end
+
+crumb :user_sign_out do
+  link "ログアウト"
+  parent :user_mypage
+end
+
+crumb :identification do
+  link "本人情報の確認", identification_user_path
+  parent :user_mypage
+end
+
+crumb :products_show do
+  link Product.find(params[:id]).name, products_path(Product.find(params[:id]))
+  parent :root
+end
 # crumb :projects do
 #   link "Projects", projects_path
 # end

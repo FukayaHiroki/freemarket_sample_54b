@@ -1,5 +1,15 @@
 .bread
   %ul.bread__content
-    - breadcrumb :root
-    - breadcrumb :mypage
-    = breadcrumbs separator: " &rsaquo; "
+    %li.bread__link
+      - case params.values_at :controller, :action
+      - when ['users', 'show']
+        - breadcrumb :user_mypage
+      - when ['users', 'profile']
+        - breadcrumb :profile
+      - when ['users', 'logout']
+        - breadcrumb :user_sign_out
+      - when ['users', 'identification']
+        - breadcrumb :identification
+      - when ['products','show']
+        - breadcrumb :products_show
+      = breadcrumbs separator: " &rsaquo; "
