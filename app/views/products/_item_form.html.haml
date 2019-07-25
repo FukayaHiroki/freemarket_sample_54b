@@ -2,7 +2,7 @@
   %main.main-block
     %section.main-block__container
       %h2.main-block__head.registration 商品の情報を入力
-      = form_for @product, html: { class: 'sell_form' } do |f|
+      = form_for @product, html: { class: 'sell_form', id: 'new_product' } do |f|
         - if @product.errors.any?
           %ul
           - @product.errors.full_messages.each do |message|
@@ -22,30 +22,19 @@
                 .sell_upload__drop
                   = image.label :url, for: "upload-image" do
                     .sell_upload__area
-                      = image.file_field :url, type: "file", id: "upload-image", class: "upload-image", 'data-image': 0
+                      = image.file_field :url, type: "file", id: "upload-image", class: "upload-image"
                 %pre.visible-pc
                   ドラッグアンドドロップまたはクリックしてファイルをアップロード
-
-              -# .sell_upload__box.clearfix
-              -#   #preview
-              -#     .sell-upload-items
-              -#       %ul
-              -#         %li.sell-upload-item
-              -#           %figure.sell-upload-figure
-              -#             = image_tag 'white_dress.png', id: "img1"
-              -#           .sell-upload-button
-              -#             = link_to '', class: "" do
-              -#               編集
-              -#             = link_to '', class: "" do
-              -#               削除
-
-                -# .sell_upload__drop
-                -#   = image.label :url, for: "upload-image" do
-                -#     .sell_upload__area
-                -#     = image.file_field :url, id: "upload-image", class: "upload-image", 'data-image': 0
-                -# %pre.visible-pc
-                -#   ドラッグアンドドロップまたはクリックしてファイルをアップロード
-                
+              .sell_upload__box2.clearfix
+                .sell-upload-items2
+                  %ul
+                .sell_upload__drop2
+                  = image.label :url, for: "upload-image2" do
+                    .sell_upload__area
+                    = image.file_field :url, id: "upload-image2", class: "upload-image2", 'data-image': 0
+                %pre.visible-pc
+                  ドラッグアンドドロップまたはクリックしてファイルをアップロード
+                  
         .sell_content
           .form-group
             %label.main-block__label 商品名
@@ -154,7 +143,7 @@
             %p 禁止されている出品、行為を必ずご確認ください。
             %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
             %p また、出品をもちまして加盟店規約に同意したことになります。
-            = f.submit '出品する', class: 'profile_chapter__btn'
+            = f.submit '出品する', class: 'profile_chapter__btn', id: 'submit'
           .btn-gray
             = link_to '' do
               もどる

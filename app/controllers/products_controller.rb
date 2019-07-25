@@ -79,11 +79,12 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.create(product_params)
+
     
     if @product.save
-        # new_image_params[:images].each do |image|
-        #   @product.images.create(url: image)
-        # end
+      image_params[:url].each do |image|
+        @product.images.create(url: image)
+      end
       redirect_to root_path
     else
       render :new
@@ -125,14 +126,14 @@ class ProductsController < ApplicationController
       :category_id,
       :size_id,
       :brand,
-      images_attributes: [:url, :product_id], 
+   
       trading_attributes: [:status, :user_id],
     ).merge(user_id: current_user.id)
   end
 
-  # def new_image_params
-  #   params.require(:new_images).permit({photos: []})
-  # end
+  def image_params
+    params.require(:images).permit({url: []})
+  end
 
   def set_product
     @product = Product.find(params[:id])
