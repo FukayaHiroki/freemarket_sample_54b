@@ -6,7 +6,7 @@
       = image_tag "progress_bar1.png"
   .main_wrapper  
     %main.main-block
-      %section.main-block__container
+      %section.main-block__container#register-container
         %h2.main-block__head.registration#registration 会員情報入力
         = form_for(@user, method: "get", url: sign_up_sms_confirmation_users_path, class: "main-block__inner registration-form", id: "register-form") do |f|
           = render "devise/shared/error_messages", resource: resource

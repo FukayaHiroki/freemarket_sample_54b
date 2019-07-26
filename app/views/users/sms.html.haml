@@ -7,7 +7,7 @@
     
   .main_wrapper  
     %main.main-block
-      %section.main-block__container
+      %section.main-block__container#phone-container
         %h2.main-block__head.registration 電話番号の確認
         = form_for(@user, method: "post", url: user_registration_path, class: "main-block__inner registration-form") do |f|
           .main-block__content
@@ -21,7 +21,7 @@
             = f.hidden_field :birthday, value: params[:user][:birthday]
             .form-group
               = f.label :phone, "携帯電話の番号",class: "main-block__label"
-              = f.text_field :phone, placeholder: "携帯電話の番号を入力", class:"input_default"
+              = f.text_field :phone, placeholder: "携帯電話の番号を入力", class:"input_default", id: "phone"
             %p.number_text.number_left 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
             .form-group
               = fields_for(@sns_credential) do |i|
@@ -30,7 +30,7 @@
                 = i.hidden_field :sns_token, value: params[:sns_token]
               %input.input_default{type: "hidden", name:'g-recaptcha-response', value: params['g-recaptcha-response']}
             .form-group
-              =f.submit "SMSを送信する", class: "profile_chapter__btn"
+              =f.submit "SMSを送信する", class: "profile_chapter__btn", id: "sms_btn"
               %p.number_text.number_left
                 ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
             .form-group.uinfo_chapter__right
