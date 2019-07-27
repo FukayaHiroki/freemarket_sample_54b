@@ -92,7 +92,12 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
     @product.images.build
+    @category               = @product.category
+    @category_parent        = @category.parent.parent.siblings
+    @category_children      = @category.parent.siblings
+    @category_grandchildren = @category.siblings
   end
 
   def update
