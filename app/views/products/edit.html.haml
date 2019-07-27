@@ -1,7 +1,157 @@
 .sub-container
   =render 'common/sub_header'
   .main_wrapper
-    =render partial: 'item_form', locals: { product: @product }
+    #new_item
+      %main.main-block
+        %section.main-block__container
+          %h2.main-block__head.registration 商品の情報を入力
+          = form_for @product, html: { class: 'sell_form', id: 'new_product' } do |f|
+            - if @product.errors.any?
+              %ul
+              - @product.errors.full_messages.each do |message|
+                %li= message
+            .sell_upload
+              .form-group
+                %label.main-block__label 出品画像
+                %span.form-require.main-block__name 必須
+                %br
+                %p.sell_upload__text
+                  最大10枚までアップロードできます
+
+                = f.fields_for :images, @product.images.first do |image|
+                  .sell_upload__box.clearfix
+                    .sell-upload-items
+                      %ul
+                    .sell_upload__drop
+                      = image.label :url, for: "upload-image" do
+                        .sell_upload__area
+                          = image.file_field :url, type: "file", id: "upload-image", class: "upload-image"
+                    %pre.visible-pc
+                      ドラッグアンドドロップまたはクリックしてファイルをアップロード
+                  .sell_upload__box2.clearfix
+                    .sell-upload-items2
+                      %ul
+                    .sell_upload__drop2
+                      = image.label :url, for: "upload-image2" do
+                        .sell_upload__area
+                        = image.file_field :url, id: "upload-image2", class: "upload-image2", 'data-image': 0
+                    %pre.visible-pc
+                      ドラッグアンドドロップまたはクリックしてファイルをアップロード
+                      
+            .sell_content
+              .form-group
+                %label.main-block__label 商品名
+                %span.form-require.main-block__name 必須
+                = f.text_field :name, class: 'sell_center', placeholder: "商品名（必須 40文字まで)"
+
+              .form-group
+                %label.main-block__label 商品の説明
+                %span.form-require.main-block__name 必須
+                %br
+                = f.text_field :detail, class: 'textarea_defult', placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）"
+            .sell_content.clearfix
+              %h3.sell_sub 商品の詳細
+              .sell_form_box
+                .form-first
+                  %label.main-block__label カテゴリー
+                  %span.form-require.main-block__name 必須
+                .sell_form_box__tab.sell_detail
+                  .select-wrap
+                    = f.collection_select :category_name, @category_parent,      :name, :name, {selected: @category.root.name},   {class: "select-default", id: "parent-category"}
+                .sell_form_box__tab
+                  .select-wrap#children_wrapper
+                    = f.collection_select :category_id, @category_children,      :name, :name, {selected: @category.parent.name}, {class: "select-default", id: "child_category"}
+                .sell_form_box__tab
+                  .select-wrap#grandchildren_wrapper
+                    = f.collection_select :category_id, @category_grandchildren, :name, :name, {selected: @category.name},        {class: "select-default", id: "grandchild_category"}
+
+                .sell_space
+                .form-first
+                  %label.main-block__label サイズ
+                  %span.form-require.main-block__name 必須
+                .sell_form_box__tab
+                  .select-wrap
+                    = f.collection_select :size_id, Size.all, :id, :name, {prompt: "--"}, {class: "select-default"}
+
+                .sell_space
+                .form-first
+                  %label.main-block__label ブランド
+                  %span.form-arbitray.main-block__name 任意
+                .sell_form_box__tab
+                  .select-wrap
+                    = f.text_field :brand, class: 'select-default', placeholder: "例）シャネル"
+
+                .sell_space
+                .form-first
+                  %label.main-block__label 商品の状態
+                  %span.form-require.main-block__name 必須
+                .sell_form_box__tab
+                  .select-wrap
+                    = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: "--"}, {class: "select-default"}
+            .sell_content.clearfix
+              %h3.sell_sub 
+                配送について
+                = fa_icon 'question-circle'
+              .sell_form_box
+                .sell_space
+                .form-first
+                  %label.main-block__label 配送料の負担
+                  %span.form-require.main-block__name 必須
+                .sell_form_box__tab
+                  .select-wrap
+                    = f.collection_select :delivery_fee_id, DeliveryFee.all, :id, :name, {prompt: "--"}, {class: "select-default"}
+                .sell_space
+                .form-first
+                  %label.main-block__label 配送の方法
+                  %span.form-require.main-block__name 必須
+                .sell_form_box__tab
+                  .select-wrap
+                    = f.collection_select :shipping_method_id, ShippingMethod.all, :id, :name, {prompt: "--"}, {class: "select-default"}
+                .sell_space
+                .form-first
+                  %label.main-block__label 発送元の地域
+                  %span.form-require.main-block__name 必須
+                .sell_form_box__tab
+                  .select-wrap
+                    = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, {class: "select-default"}
+                .sell_space
+                .form-first
+                  %label.main-block__label 発送までの日数
+                  %span.form-require.main-block__name 必須
+                .sell_form_box__tab
+                  .select-wrap
+                    = f.collection_select :shipping_speed_id, ShippingSpeed.all, :id, :name, {prompt: "--"}, {class: "select-default"}
+                
+            .sell_content.clearfix
+              %h3.sell_sub
+                販売価格(300〜9,999,999)
+                = fa_icon 'question-circle'
+              .sell_form_box
+                %ul.sell_price
+                  %li.form-group
+                    .clearfix
+                      %label.main-block__label.l-left 価格
+                      %span.form-require.main-block__name 必須 
+                      %span ¥
+                      .l-right.sell-price-input
+                        .l-mark
+                        = f.text_field :price, id: 'sell_center', placeholder: "例）300"
+                      = f.fields_for :trading do |n|
+                        = n.hidden_field :status, value: 1
+                        = n.hidden_field :user_id, value: 1
+                  %li.clearfix
+                    .l-left
+                      販売手数料 (10%)
+                    .l-right.sales-commission -
+                  %li.clearfix.bold
+                    .l-left
+                      販売利益
+                    .l-right.sales-profit -
+            .sell_content.clearfix.sell-btn-box
+              .sell_content__text
+                = f.submit '変更する', class: 'profile_chapter__btn', id: 'submit'
+              .btn-gray
+                = link_to '' do
+                  キャンセル
 .m_footer
   =render 'common/sub_footer'
-    
