@@ -50,7 +50,7 @@
                         = exp_month + " / " + exp_year
                       .a-card__image
                         = image_tag "credit_card/visa.svg",class: "a-card__img"
-                      = link_to cards_path, class: "card-link" do
+                      = link_to user_cards_path(current_user), class: "card-link" do
                         %p.change_btn 変更する >
               - else 
                 %ul.card__info__index
@@ -58,7 +58,7 @@
                     .a-card
                       .a-card__exp
                       %p /
-                      = link_to new_card_path, class: "card-link" do
+                      = link_to new_user_card_path(current_user), class: "card-link" do
                         %p.change_btn 変更する >
 %footer.sub-footer.bg_gray
   %nav

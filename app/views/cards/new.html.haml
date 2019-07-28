@@ -5,7 +5,7 @@
   .content.clearfix
     .card
       %h2.card__header クレジットカード情報入力
-      = form_tag(cards_path, method: :post, class: "card__form",id:"charge-form") do
+      = form_tag(user_cards_path(current_user), method: :post, class: "card__form",id:"charge-form") do
         %span.charge-errors
         .card__form__content
           .card__form__group
