@@ -12,4 +12,8 @@
         - breadcrumb :identification
       - when ['products','show']
         - breadcrumb :products_show
+      - when ['cards','index']
+        - breadcrumb :cards_index
+      - when ['cards','new']
+        - breadcrumb :cards_new
       = breadcrumbs separator: " &rsaquo; "
