@@ -21,10 +21,16 @@ Rails.application.routes.draw do #オーバーライドにともなって、使�
       get 'sign_up/done',  to: 'users#done'
       get 'new',  to: 'users#new'
       get :logout
+      get :email_valid
     end
     member do
       get :identification, :mycard, :mycard_create, :profile 
       post :update 
+    end
+    resources :cards, only: [:index, :new, :create] do
+      collection  do
+        post 'delete' => 'cards#delete'
+      end
     end
   end
 
@@ -40,17 +46,8 @@ Rails.application.routes.draw do #オーバーライドにともなって、使�
     end
     resources :comments, only: [:create]
   end
-  resources :cards, only: [:index, :new, :create] do
-    collection  do
-      post 'delete' => 'cards#delete'
-    end
-  end
+
   post 'confirm',  to: 'users#confirm'
   post 'set_adress',  to: 'users#set_adress'
   post 'set_card',  to: 'users#set_card'
-  
-  # view確認用仮置き
-  get 'identification',  to: 'users#identification'
-  get 'profile',  to: 'users#profile'
-  get 'users',  to: 'users#show'
 end

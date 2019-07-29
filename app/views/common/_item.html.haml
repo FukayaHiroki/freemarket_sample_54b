@@ -7,8 +7,9 @@
       %h3.pickup-item__box__item__body__text
         = product.name
       .pickup-item__box__item__body__price
-        %p 
-          = product.price
+        %p
+          %span ¥ 
+          = product.price.to_s(:delimited)
         .pickup-item__box__item__body__price__icon
           %p.pickup-item__box__item__body__price__icon__like
             %i.fa.fa-heart-o

@@ -4,9 +4,9 @@
     .item__body__photo
       = image_tag "#{@product.images.first.url}", class: "item__body__photo--image"
       .item__body__photo--bottom
-        -# - @images.each do |image|
-        -#   .photo__block
-        -#     = image_tag image[:url], class: "photo__block--image"
+        - @images.each do |image|
+          .photo__block
+            = image_tag "#{image.url}", class: "photo__block--image"
     %table.item__body__detail
       %tbody
         %tr.tr_data
@@ -29,10 +29,10 @@
             > #{@product.category.name}
         %tr.tr_data
           %th.th-left ブランド
-          %td.td-right.font__link
+          %td.td-right.font__link #{@product.brand}
         %tr.tr_data
           %th.th-left 商品のサイズ
-          %td.td-right FREE SIZE
+          %td.td-right #{@product.size.name}
         %tr.tr_data
           %th.th-left 商品の状態
           %td.td-right #{@product.condition.name}
@@ -52,8 +52,16 @@
     %span.item__price-box__price ￥#{@product.price.to_s(:delimited)}
     %span.item__price-box__tax (税込)
     %span.item__price-box__delivery_fee #{@product.delivery_fee.short_name}
-  .btn-buy
-    = link_to "購入画面に進む", buy_product_path, class: 'btn btn-buy__text'
+  - if user_signed_in? && current_user.id == @product.user.id
+  - elsif user_signed_in?
+    = link_to buy_product_path, class: "buy-link" do
+      .btn-buy
+        .btn-buy__text 購入画面に進む
+  - else
+    = link_to new_user_session_path, class: "buy-link" do
+      .btn-buy
+        .btn-buy__text 購入画面に進む
+
   .item__description-box
     %p.description
       #{@product.detail}

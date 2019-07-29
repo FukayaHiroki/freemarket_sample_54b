@@ -76,6 +76,7 @@
   max-width: 320px;
   margin: 0 auto;
   font-size: 14px;
+  text-align: initial;
   h3{
     font-weight: 600;
   }
@@ -98,4 +99,18 @@
   &--head {
     color: #FF570D;
   }
+}
+.red-message {
+  font-size: 14px;
+  color: #ea352d
+}
+.gray-button {
+  border: 1px solid #888;
+  background: #888;
+  color: #fff;
+  display: block;
+  line-height: 48px;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
 }

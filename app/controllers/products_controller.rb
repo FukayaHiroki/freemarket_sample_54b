@@ -114,6 +114,11 @@ class ProductsController < ApplicationController
         gon.images_binary_datas << Base64.strict_encode64(binary_data)
       end
     end
+    @category               = @product.category
+    @category_parent        = @category.parent.parent.siblings
+    @category_children      = @category.parent.siblings
+    @category_grandchildren = @category.siblings
+
   end
 
   def update
