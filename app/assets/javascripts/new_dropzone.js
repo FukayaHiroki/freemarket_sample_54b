@@ -68,6 +68,7 @@ $(document).on("turbolinks:load", function() {
     files_array.forEach(function(file){
       formData.append("images[url][]", file)
     });
+    $("#submit").prop('disabled', false);
     $.ajax({
       url: '/products',
       type: "POST",
@@ -76,5 +77,8 @@ $(document).on("turbolinks:load", function() {
       processData: false,
     })
   });
-});
 
+  $('#submit').click(function() {
+    $('#submit').removeAttr("data-disable-with");
+  })
+});
