@@ -52,15 +52,15 @@
     %span.item__price-box__price ￥#{@product.price.to_s(:delimited)}
     %span.item__price-box__tax (税込)
     %span.item__price-box__delivery_fee #{@product.delivery_fee.short_name}
-  - if user_signed_in? && current_user.id == @product.user.id
-  - elsif user_signed_in?
-    = link_to buy_product_path, class: "buy-link" do
-      .btn-buy
-        .btn-buy__text 購入画面に進む
-  - else
+  - if not user_signed_in?
     = link_to new_user_session_path, class: "buy-link" do
       .btn-buy
         .btn-buy__text 購入画面に進む
+  -  elsif current_user.id != @product.user.id
+    = link_to buy_product_path, class: "buy-link" do
+      .btn-buy
+        .btn-buy__text 購入画面に進む
+
 
   .item__description-box
     %p.description
