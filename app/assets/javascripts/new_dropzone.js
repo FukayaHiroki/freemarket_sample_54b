@@ -76,6 +76,9 @@ $(document).on("turbolinks:load", function() {
       contentType: false,
       processData: false,
     })
+    .fail(function(){
+      alert('未入力の項目があります。');
+    })
   });
 
   $('#submit').click(function() {
