@@ -1,6 +1,5 @@
 .pickup-item__box {
   width: 700px;
-  text-align: center;
   display: flex;
   &__item{
     width: 213px;
@@ -36,7 +35,7 @@
         justify-content: space-between;
         margin-top: 8px;
         vertical-align: bottom;
-      
+        font-weight: 600;
         &__icon {
           &__like {
             float: left;

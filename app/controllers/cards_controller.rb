@@ -19,7 +19,7 @@ class CardsController < ApplicationController
     @category = Category.all
     if card.blank?
     else
-      redirect_to cards_path
+      redirect_to user_cards_path(current_user)
     end
   end
 
@@ -28,7 +28,7 @@ class CardsController < ApplicationController
     customer = Payjp::Customer.create
     card = customer.cards.create(card: params[:payjp_token])
     @card = Card.create(user_id: current_user.id, customer_id: customer.id, card_id: card.id)
-    redirect_to cards_path
+    redirect_to user_cards_path(current_user)
   end
 
   def delete
@@ -40,6 +40,6 @@ class CardsController < ApplicationController
       customer.delete
       card.delete
     end
-      redirect_to new_card_path
+      redirect_to new_user_card_path(current_user)
   end
 end

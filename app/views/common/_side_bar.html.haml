@@ -72,7 +72,7 @@
   %h3.my_page__nav--head 設定
   %ul.my_page__menu.little
     %li.list
-      = link_to '/profile', class: "my_page__list" do
+      = link_to profile_user_path(current_user), class: "my_page__list" do
         プロフィール
         = fa_icon 'angle-right', class: "my_page__list--icon"
     %li.list
@@ -80,7 +80,7 @@
         発送元・お届け先住所変更
         = fa_icon 'angle-right', class: "my_page__list--icon"
     %li.list
-      = link_to cards_path, class: "my_page__list" do
+      = link_to user_cards_path(current_user), class: "my_page__list" do
         支払い方法
         = fa_icon 'angle-right', class: "my_page__list--icon"
     %li.list

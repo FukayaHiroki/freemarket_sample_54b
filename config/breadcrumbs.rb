@@ -22,6 +22,16 @@ crumb :identification do
   parent :user_mypage
 end
 
+crumb :cards_index do
+  link "支払い方法", user_cards_path
+  parent :user_mypage
+end
+
+crumb :cards_new do
+  link "クレジットカード情報入力", new_user_card_path
+  parent :cards_index
+end
+
 crumb :products_show do
   link Product.find(params[:id]).name, products_path(Product.find(params[:id]))
   parent :root
