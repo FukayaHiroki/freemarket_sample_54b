@@ -1,4 +1,3 @@
-// TODO: あとで記述追加します
 $(function(){
   $('.g-recaptcha').attr("data-callback","onCheck");
   window.onCheck = onCheck;
