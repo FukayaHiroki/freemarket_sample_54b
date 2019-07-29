@@ -10,7 +10,12 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    super
+    if verify_recaptcha
+      super
+    else
+      self.resource = resource_class.new
+      respond_with_navigational(resource) { render :new }
+    end
   end
 
   # DELETE /resource/sign_out

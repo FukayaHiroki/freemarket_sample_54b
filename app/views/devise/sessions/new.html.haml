@@ -21,8 +21,7 @@
             = f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス", class: "login-form-inner__input"
             = f.password_field :password, autocomplete: "current-password", placeholder:"パスワード", class: "login-form-inner__input"
           .form-group
-            %figure
-              = image_tag 'recaptcha.png', class: "recaptcha-center"    
+            = recaptcha_tags    
           .form-group
             = hidden_field_tag :authenticity_token, form_authenticity_token
             = f.submit "ログイン", class: "profile_chapter__btn"
