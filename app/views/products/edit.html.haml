@@ -1,8 +1,5 @@
 .sub-container
   =render 'common/sub_header'
-  
-  .sub-container
-  =render 'common/sub_header'
   .main_wrapper
     #new_item
       %main.main-block
@@ -72,7 +69,7 @@
                 .sell_space
                 .form-first
                   %label.main-block__label ブランド
-                 %span.form-arbitray.main-block__name 任意
+                  %span.form-arbitray.main-block__name 任意
                 .sell_form_box__tab
                   .select-wrap
                     = f.text_field :brand, class: 'select-default', placeholder: "例）シャネル"
@@ -112,7 +109,7 @@
                     = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, {class: "select-default"}
                 .sell_space
                 .form-first
-                 %label.main-block__label 発送までの日数
+                  %label.main-block__label 発送までの日数
                   %span.form-require.main-block__name 必須
                 .sell_form_box__tab
                   .select-wrap
