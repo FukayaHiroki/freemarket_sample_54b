@@ -39,4 +39,6 @@ class Product < ApplicationRecord
   def next
     Product.where("id > ?", self.id).order("id ASC").first
   end
+
+  
 end

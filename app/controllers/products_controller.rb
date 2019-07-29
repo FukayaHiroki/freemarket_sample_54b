@@ -92,11 +92,35 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product.images.build
+    gon.product = @product
+    gon.images = @product.images
+    require 'base64'
+
+
+    gon.images_binary_datas = []
+    if Rails.env.production?
+      client = Aws::S3::Client.new(
+                              region: 'ap-northeast-1',
+                              access_key_id: Rails.application.credentials.aws[:access_key_id],
+                              secret_access_key: Rails.application.credentials.aws[:secret_access_key],
+                              )
+      @product.images.each do |image|
+        binary_data = client.get_object(bucket: '54teamb-mercari', key: image.url.file.path).body.read
+        gon.images_binary_datas << Base64.strict_encode64(binary_data)
+      end
+    else
+      @product.images.each do |image|
+        binary_data = File.read(image.url.file.file)
+        gon.images_binary_datas << Base64.strict_encode64(binary_data)
+      end
+    end
   end
 
   def update
     if @product.update(product_params)
+      image_params[:url].each do |image|
+        @product.images.create(url: image)
+      end
       redirect_to root_path
     else
       render :edit
@@ -126,7 +150,6 @@ class ProductsController < ApplicationController
       :category_id,
       :size_id,
       :brand,
-   
       trading_attributes: [:status, :user_id],
     ).merge(user_id: current_user.id)
   end
@@ -138,6 +161,4 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
   end
-
-  
 end
