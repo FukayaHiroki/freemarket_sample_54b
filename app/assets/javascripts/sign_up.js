@@ -17,14 +17,12 @@ $(function(){
     var value = $element.val();
     if(value == ''){
       Empty($element);
-      console.log('からだべ');
       $('#sms_btn').removeAttr("data-disable-with");
     }else if(value.match(/0[89]0-?\d{4}-?\d{4}/)){
       $phoneForm.unbind('submit').submit();
     }else{
       $element.addClass('error-box');
       $element.parent().append('<p class="sign-error">正しい電話番号を入力してください</p>');
-      console.log("変な番号だゔぇ")
       $('#sms_btn').removeAttr("data-disable-with");
     }
   });
@@ -121,12 +119,10 @@ $(function(){
     today.setMinutes(0);
     today.setSeconds(0);
     today.setMilliseconds(0);
-    console.log(today);
     var $element = $('#birthday');
     var value = $element.val();
     var valueArray = value.split("-");
     var birthday = new Date(valueArray[0],(valueArray[1] - 1),valueArray[2]); 
-    console.log(birthday);
     if(birthday < today){
       console.log("OK!");
     }else if (value == ""){
@@ -145,7 +141,7 @@ $(function(){
   function reCaptchaValid(){
     var $element = $('#recaptcha-check');
     if($element.length){
-      console.log("OKやで");
+      console.log("OK");
     }else{
       $('.g-recaptcha').find('iframe').addClass('error-box');
       $('.g-recaptcha').parent().append('<p class="sign-error">チェックしてください</p>');
@@ -158,7 +154,6 @@ $(function(){
     if(value == ''){
       Empty($element);
       OtherValid();
-      console.log('からだべ');
       $('#register-btn').removeAttr("data-disable-with");
     }else if (value.match(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/)){
       $('#register-btn').removeAttr("data-disable-with");
@@ -175,10 +170,8 @@ $(function(){
         }
         OtherValid();
         if($form.find('p').hasClass('sign-error')){
-          console.log("エラーあるで！");
           $('#register-btn').removeAttr("data-disable-with");
         }else{
-          console.log("送れるで！")
           $form.unbind('submit').submit();
         }
       });
@@ -186,7 +179,6 @@ $(function(){
       $element.addClass('error-box');
       $element.parent().append('<p class="sign-error">正しいメールアドレスを入力してください</p>');
       OtherValid();
-      console.log("まちがいだゔぇ")
       $('#register-btn').removeAttr("data-disable-with");
     }
   };
