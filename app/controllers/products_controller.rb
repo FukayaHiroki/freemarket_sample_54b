@@ -1,15 +1,14 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :buy, :done, :pay]
+  before_action :set_product,  only: [:show, :edit, :update, :buy, :done, :pay]
+  before_action :set_category, only: [:index, :new, :show]
 
   def index
-    @category = Category.all
     @products = Product.include.limited(4)
   end
 
   def show
     @seller_products   = Product.where(user_id:     @product.user_id)    .limited(6)
     @category_products = Product.where(category_id: @product.category_id).limited(6)
-    @category          = Category.all
     @comment           = Comment.new
   end
   
@@ -56,7 +55,6 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.images.build
     @product.build_trading
-    @category = Category.all
 
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
@@ -130,5 +128,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  
+  def set_category
+    @category = Category.all
+  end  
 end
