@@ -31,8 +31,7 @@ class ProductsController < ApplicationController
   def buy
     @product = Product.find(params[:id])
     card = Card.find_by(user_id: current_user.id)
-    if card.blank?
-    else
+    unless card.blank?
       Payjp.api_key = Rails.application.credentials.payjp[:payjp_api_secret_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @card = customer.cards.retrieve(card.card_id) 
@@ -42,8 +41,7 @@ class ProductsController < ApplicationController
   def pay
     @product = Product.find(params[:id])
     card = Card.where(user_id: current_user.id).first
-    if card.blank?
-    else
+    unless card.blank?
       Payjp.api_key = Rails.application.credentials.payjp[:payjp_api_secret_key]
       Payjp::Charge.create(
       amount:   @product.price,
@@ -57,8 +55,7 @@ class ProductsController < ApplicationController
   def done
     @product = Product.find(params[:id])
     card = Card.find_by(user_id: current_user.id)
-    if card.blank?
-    else
+    unless card.blank?
       Payjp.api_key = Rails.application.credentials.payjp[:payjp_api_secret_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @card = customer.cards.retrieve(card.card_id) 
