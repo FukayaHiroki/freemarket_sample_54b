@@ -16,8 +16,8 @@ class ProductsController < ApplicationController
     @images   = @product.images
     @comments = @product.comments.includes(:user)
     @comment  = Comment.new
-    @seller_products   = Product.where(user_id:     @product.user_id)    .limit(6).order("created_at DESC")
-    @category_products = Product.where(category_id: @product.category_id).limit(6).order("created_at DESC")
+    @seller_products   = Product.where(user_id:     @product.user_id)    .limited(6)
+    @category_products = Product.where(category_id: @product.category_id).limited(6)
   end
   
   def destroy
