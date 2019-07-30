@@ -5,7 +5,7 @@
   = render partial: 'item_detail'
   .comment_chapter
     .comment-content
-      - @comments.each do |comment|
+      - @product.comments.includes(:user).each do |comment|
         .comment-content__username
           = comment.user.nickname
         %ul

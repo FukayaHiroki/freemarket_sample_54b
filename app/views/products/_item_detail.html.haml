@@ -4,7 +4,7 @@
     .item__body__photo
       = image_tag "#{@product.images.first.url}", class: "item__body__photo--image"
       .item__body__photo--bottom
-        - @images.each do |image|
+        - @product.images.each do |image|
           .photo__block
             = image_tag "#{image.url}", class: "photo__block--image"
     %table.item__body__detail
