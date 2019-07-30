@@ -11,7 +11,6 @@ $(document).on('turbolinks:load', function() {
         exp_month: parseInt($("#card_expire_mm").val()),
         exp_year: parseInt($("#card_expire_yy").val())
     };
-    console.log(card)
     Payjp.createToken(card, function(status, response) {
       if (status == 200) {
         $(".number").removeAttr("name");

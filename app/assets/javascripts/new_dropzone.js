@@ -114,6 +114,7 @@ $(document).on("turbolinks:load", function() {
     files_array.forEach(function(file){
       formData.append("images[url][]", file)
     });
+    $("#submit").prop('disabled', false);
     $.ajax({
       url: '/products',
       type: "POST",
@@ -121,6 +122,12 @@ $(document).on("turbolinks:load", function() {
       contentType: false,
       processData: false,
     })
+    .fail(function(){
+      alert('未入力の項目があります。');
+    })
   });
-});
 
+  $('#submit').click(function() {
+    $('#submit').removeAttr("data-disable-with");
+  })
+});

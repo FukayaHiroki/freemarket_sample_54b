@@ -5,8 +5,7 @@ class CardsController < ApplicationController
   def index
     @category = Category.all
     card = Card.where(user_id: current_user.id).first
-    if card.blank?
-    else
+    unless card.blank?
       card = Card.find_by(user_id: current_user.id)
       Payjp.api_key = Rails.application.credentials.payjp[:payjp_api_secret_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
@@ -17,8 +16,7 @@ class CardsController < ApplicationController
   def new
     card = Card.where(user_id: current_user.id).first
     @category = Category.all
-    if card.blank?
-    else
+    unless card.blank?
       redirect_to user_cards_path(current_user)
     end
   end
@@ -33,8 +31,7 @@ class CardsController < ApplicationController
 
   def delete
     card = Card.where(user_id: current_user.id).first
-    if card.blank?
-    else
+    unless card.blank?
       Payjp.api_key = Rails.application.credentials.payjp[:payjp_api_secret_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete

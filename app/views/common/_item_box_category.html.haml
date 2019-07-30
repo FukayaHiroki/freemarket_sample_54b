@@ -1,27 +1,27 @@
 %p.category__text メンズ 新着アイテム
 .pickup-item__box
-  - @category_men.each do |product|
+  - Product.include.category(340..470).limited(4).each do |product|
     = render partial: "common/item", locals: { product: product }
 .show-items
   = link_to "すべての商品を見る"
 
 %p.category__text レディース 新着アイテム
 .pickup-item__box
-  - @category_women.each do |product|
+  - Product.include.category(160..339).limited(4).each do |product|
     = render partial: "common/item", locals: { product: product }
 .show-items
   = link_to "すべての商品を見る"
 
 %p.category__text ベビー・キッズ 新着アイテム
 .pickup-item__box
-  - @category_baby.each do |product|
+  - Product.include.category(471..586).limited(4).each do |product|
     = render partial: "common/item", locals: { product: product }
 .show-items
   = link_to "すべての商品を見る"
 
 %p.category__text コスメ・香水・美容 新着アイテム
 .pickup-item__box
-  - @category_cosme.each do |product|
+  - Product.include.category(867..954).limited(4).each do |product|
     = render partial: "common/item", locals: { product: product }
 .show-items
   = link_to "すべての商品を見る"
