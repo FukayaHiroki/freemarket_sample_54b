@@ -95,7 +95,7 @@ class ProductsController < ApplicationController
     gon.product = @product
     gon.images = @product.images
     require 'base64'
-
+    require 'aws-sdk'
 
     gon.images_binary_datas = []
     if Rails.env.production?
