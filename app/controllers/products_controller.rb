@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:edit, :update]
+  before_action :set_product, only: [:show, :edit, :update :buy, :done, :pay]
 
   def index
     @category = Category.all
@@ -11,11 +11,10 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @category = Category.all
-    @product  = Product.find(params[:id])
-    @comment  = Comment.new
     @seller_products   = Product.where(user_id:     @product.user_id)    .limited(6)
     @category_products = Product.where(category_id: @product.category_id).limited(6)
+    @category          = Category.all
+    @comment           = Comment.new
   end
   
   def destroy
@@ -27,7 +26,6 @@ class ProductsController < ApplicationController
   require 'payjp'
 
   def buy
-    @product = Product.find(params[:id])
     card = Card.find_by(user_id: current_user.id)
     unless card.blank?
       Payjp.api_key = Rails.application.credentials.payjp[:payjp_api_secret_key]
@@ -37,7 +35,6 @@ class ProductsController < ApplicationController
   end
 
   def pay
-    @product = Product.find(params[:id])
     card = Card.where(user_id: current_user.id).first
     unless card.blank?
       Payjp.api_key = Rails.application.credentials.payjp[:payjp_api_secret_key]
@@ -51,7 +48,6 @@ class ProductsController < ApplicationController
   end
 
   def done
-    @product = Product.find(params[:id])
     card = Card.find_by(user_id: current_user.id)
     unless card.blank?
       Payjp.api_key = Rails.application.credentials.payjp[:payjp_api_secret_key]
@@ -87,7 +83,6 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
     @product.images.build
     @category               = @product.category
     @category_parent        = @category.parent.parent.siblings
