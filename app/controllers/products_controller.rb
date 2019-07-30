@@ -6,6 +6,47 @@ class ProductsController < ApplicationController
     @products = Product.include.limited(4)
   end
 
+  def new
+    @product = Product.new
+    @product.images.build
+    @product.build_trading
+
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+  end
+
+  def create
+    @product = Product.create(product_params)
+
+    
+    if @product.save
+      image_params[:url].each do |image|
+        @product.images.create(url: image)
+      end
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @product.images.build
+    @category               = @product.category
+    @category_parent        = @category.parent.parent.siblings
+    @category_children      = @category.parent.siblings
+    @category_grandchildren = @category.siblings
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
   def show
     @seller_products   = Product.where(user_id:     @product.user_id)    .limited(6)
     @category_products = Product.where(category_id: @product.category_id).limited(6)
@@ -48,47 +89,6 @@ class ProductsController < ApplicationController
       Payjp.api_key = Rails.application.credentials.payjp[:payjp_api_secret_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @card = customer.cards.retrieve(card.card_id) 
-    end
-  end
-
-  def new
-    @product = Product.new
-    @product.images.build
-    @product.build_trading
-
-    @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
-  end
-
-  def create
-    @product = Product.create(product_params)
-
-    
-    if @product.save
-      image_params[:url].each do |image|
-        @product.images.create(url: image)
-      end
-      redirect_to root_path
-    else
-      render :new
-    end
-  end
-
-  def edit
-    @product.images.build
-    @category               = @product.category
-    @category_parent        = @category.parent.parent.siblings
-    @category_children      = @category.parent.siblings
-    @category_grandchildren = @category.siblings
-  end
-
-  def update
-    if @product.update(product_params)
-      redirect_to root_path
-    else
-      render :edit
     end
   end
 
