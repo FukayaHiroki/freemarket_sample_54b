@@ -10,5 +10,6 @@ FactoryBot.define do
     first_name_kana          {"タロウ"}
     birthday                 {"2019-01-01"}
     phone                    {"09012345678"}
+    created_at               { Date.today }
   end
 end

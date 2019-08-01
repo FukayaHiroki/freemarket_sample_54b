@@ -46,6 +46,6 @@
               %span.form-arbitray.main-block__name 任意
               = f.text_field :sub_phone, placeholder: "0312345678", class:"input_default"
             .form-group
-              =f.submit "次へ進む", class: "profile_chapter__btn"
+              =f.submit "次へ進む", class: "profile_chapter__btn", id: "adress_submit_btn"
   .m_footer
     =render 'common/sub_footer'
