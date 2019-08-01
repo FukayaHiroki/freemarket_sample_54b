@@ -21,9 +21,11 @@
   &__link{
     color: #333;
     text-decoration: none;
-    &:hover{
-      text-decoration: underline;
-      opacity: 0.6;
+    .breadcrumbs{
+      a:hover{
+        text-decoration: underline;
+        opacity: 0.7;
+      }
     }
   }
   &__icon{
