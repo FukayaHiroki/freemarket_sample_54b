@@ -28,11 +28,18 @@
         %section.buy_content
           .buy_user_data
             %h3 配送先
-            %address
-              %p 〒#{@product.user.adress.postal_code}
-              %p #{@product.prefecture.name} #{@product.user.adress.city} #{@product.user.adress.block} #{@product.user.adress.building}
-              %p #{@product.user.family_name} #{@product.user.first_name}
-            %p.change_btn 変更する >
+            - if current_user.adress.present?
+              %address
+                %p 〒#{current_user.adress.postal_code}
+                %p #{current_user.adress.prefecture.name} #{current_user.adress.city} #{current_user.adress.block} #{current_user.adress.building}
+                %p #{current_user.family_name} #{current_user.first_name}
+              %p.change_btn 変更する >
+            - else
+              %address
+                %p 〒123-4567
+                %p 東京都 渋谷区 神南 1-1
+                %p テスト ユーザー
+              %p.change_btn 変更する >
         %section.clearfix
           .card
             .card__info
