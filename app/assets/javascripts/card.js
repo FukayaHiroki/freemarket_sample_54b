@@ -1,10 +1,10 @@
 $(document).on('turbolinks:load', function() {
-  var $form = $("#charge-form");
+  var form = $("#charge-form");
   Payjp.setPublicKey('pk_test_19264dd500666ba93f0a5706');
 
-  $form.on("click", "#token_submit", function(e) {
+  form.on("click", "#token_submit", function(e) {
     e.preventDefault();
-    $form.find("input[type=submit]").prop("disabled", true);
+    form.find("input[type=submit]").prop("disabled", true);
     var card = {
         number: parseInt($("#card_number").val()),
         cvc: parseInt($("#cvc").val()),
@@ -25,8 +25,8 @@ $(document).on('turbolinks:load', function() {
       }
       else {
         alert("入力内容に誤りがあります")
-        $form.find("#token_submit").removeAttr("data-disable-with");
-        $form.find("#token_submit").prop('disabled', false);
+        form.find("#token_submit").removeAttr("data-disable-with");
+        form.find("#token_submit").prop('disabled', false);
       }
     });
   });
