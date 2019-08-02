@@ -22,8 +22,8 @@ class User < ApplicationRecord
     create.validates :password, presence: true, length: {in: 6..128}
     create.validates :family_name, presence: true
     create.validates :first_name, presence: true
-    create.validates :family_name_kana, presence: true, format: { with: /[\p{katakana} ー－&&[^ -~｡-ﾟ]]+/, message: "カタカナで入力して下さい"}
-    create.validates :first_name_kana, presence: true, format: { with: /[\p{katakana} ー－&&[^ -~｡-ﾟ]]+/, message: "カタカナで入力して下さい"}
+    create.validates :family_name_kana, presence: true, format: { with: /[\p{katakana} ー－&&[^ -~｡-ﾟ]]+/, message: "カタカナで入力してください"}
+    create.validates :first_name_kana, presence: true, format: { with: /[\p{katakana} ー－&&[^ -~｡-ﾟ]]+/, message: "カタカナで入力してください"}
     create.validate  :date_cannot_be_in_the_future
     create.validates :birthday, presence: true
     create.validates :phone, presence: true, format: { with: /0[89]0-?\d{4}-?\d{4}/, message: "正しい電話番号を入力してください"}
@@ -51,7 +51,7 @@ class User < ApplicationRecord
 
   def date_cannot_be_in_the_future
     if birthday.present? && birthday >= Date.today
-      errors.add(:date, ": 正しい日付を入力してください")
+      errors.add(:birthday, "正しい日付を入力してください")
     end
   end 
 

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   protect_from_forgery except: [:confirm, :set_card]
-  before_action :back_to_sign, only: [:show, :profile, :identification, :mycard, :mycard_create, :logout] 
+  before_action :back_to_sign, only: [:show, :profile, :identification, :mycard, :mycard_create, :logout, :adress, :card, :done] 
+  before_action :redirect_to_root, only: [:facebook, :google, :sms]
 
   require "payjp"
   def show
@@ -110,6 +111,10 @@ end
     unless user_signed_in?
       redirect_to new_user_session_path
     end
+  end
+
+  def redirect_to_root
+    redirect_to root_path if user_signed_in?
   end
 
 end

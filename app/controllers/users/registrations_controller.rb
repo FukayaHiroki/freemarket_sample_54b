@@ -2,7 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
-  before_action :configure_account_update_params, only: [:update]
+  # before_action :configure_account_update_params, only: [:update]
   # prepend_before_action :check_captcha, only: [:create]
   # GET /users/sign_up
   def new
@@ -51,13 +51,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
 
-  def add_phone
-    if current_user.update(phone: params[:user][:phone])
-      redirect_to sign_up_sms_confirmation_sms_users_path
-    else
-      render template: "users/sms"
-    end
-  end
+  # def add_phone
+  #   if current_user.update(phone: params[:user][:phone])
+  #     redirect_to sign_up_sms_confirmation_sms_users_path
+  #   else
+  #     render template: "users/sms"
+  #   end
+  # end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
