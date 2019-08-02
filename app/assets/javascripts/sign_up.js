@@ -35,7 +35,7 @@ $(document).on('turbolinks:load', function(){
 
     function Empty($element){
       $element.addClass('error-box');
-      $element.parent().append('<p class="sign-error">空だよ</p>');
+      $element.parent().append('<p class="sign-error">入力してください</p>');
     };
 
     function OtherValid(){
@@ -91,7 +91,7 @@ $(document).on('turbolinks:load', function(){
       if(familyVal == '' || firstVal == ''){
         $family.addClass('error-box');
         $first.addClass('error-box');
-        $family.parent().append('<p class="sign-error">空だよ</p>');
+        $family.parent().append('<p class="sign-error">入力してください</p>');
       }
     }
 
@@ -103,7 +103,7 @@ $(document).on('turbolinks:load', function(){
       if(familyVal == '' || firstVal == ''){
         $family.addClass('error-box');
         $first.addClass('error-box');
-        $family.parent().append('<p class="sign-error">空だよ</p>');
+        $family.parent().append('<p class="sign-error">入力してください</p>');
       }else if(familyVal.match(/^[ァ-ヶー　]*$/) && firstVal.match(/^[ァ-ヶー　]*$/)){
         console.log("カナOK")
       }else{
